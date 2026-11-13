@@ -1,0 +1,49 @@
+// Respuestas del asistente (modo sin IA). Edita aquí los textos.
+// <b>...</b> pone negrita. \n es un salto de línea.
+
+export type Tema = "web" | "app" | "sys" | "mail" | "price" | "proj" | "time" | "hi" | "human" | "contact" | "thanks" | "none";
+
+export const MENU = ["Páginas web", "Apps", "Sistemas", "Dominio y correo", "Precios", "Ver proyectos"] as const;
+export const CHIP_TEMA: Record<string, Tema> = {
+  "Páginas web": "web", Apps: "app", Sistemas: "sys", "Dominio y correo": "mail", Precios: "price", "Ver proyectos": "proj",
+};
+
+export const SALUDO =
+  "¡Hola! 👋 Soy el asistente de <b>NEXUSDV</b>.\nHacemos páginas web, apps para Android y iPhone, sistemas a medida, dominios y correos corporativos.\n\n¿Qué te interesa?";
+
+export const RESPUESTAS: Record<Tema, { tema: string; msg: string; chips: string[]; ir?: string }> = {
+  web: { tema: "una página web", msg: "Hacemos <b>páginas web a medida</b> para tu negocio:\n• Diseño propio, sin plantillas\n• Adaptada al celular\n• Botón directo a tu WhatsApp\n• Lista para aparecer en Google\n\nAntes de programar te mostramos el diseño para que lo apruebes. La cotización es sin costo.", chips: ["Precios", "Ver proyectos", "Dominio y correo"] },
+  app: { tema: "una app", msg: "Desarrollamos <b>apps para Android y iPhone</b>: para que tus clientes compren, reserven, sigan sus pedidos o acumulen puntos desde el celular.\n\nTambién te ayudamos a publicarla en <b>Google Play y App Store</b>. La cotización es sin costo.", chips: ["Sistemas", "Precios", "Ver proyectos"] },
+  sys: { tema: "un sistema", msg: "Creamos <b>sistemas a medida</b>: ventas, inventario, reservas, fidelización de clientes y más, con un panel para administrar todo.\n\nUn ejemplo es <b>Creatrix</b>, un sistema de puntos y promociones que entregamos. La cotización es sin costo.", chips: ["Apps", "Precios", "Ver proyectos"] },
+  mail: { tema: "dominio y correo corporativo", msg: "Con el <b>correo corporativo</b> dejas el Gmail personal y escribes con tu marca:\n• Tu dominio (tuempresa.com)\n• 4 correos con los nombres que elijas\n• Configurado en celular y computadora\n\nTodo a <b>S/ 550 el primer año</b>. Si solo quieres el dominio, también te lo cotizamos.", chips: ["Páginas web", "Precios"] },
+  price: { tema: "una cotización", msg: "Así trabajamos los precios:\n• <b>Páginas web:</b> a medida, cotización sin costo\n• <b>Apps y sistemas:</b> a medida, cotización sin costo\n• <b>Dominio + 4 correos:</b> S/ 550 el primer año\n\nCuéntanos qué necesitas por WhatsApp y te enviamos la propuesta.", chips: ["Páginas web", "Apps", "Sistemas"] },
+  proj: { tema: "sus proyectos", msg: "Algunos proyectos entregados:\n• <b>LML Agency</b>: página web de una productora audiovisual\n• <b>Creatrix</b>: sistema de fidelización con puntos y promociones\n\nTe llevo a la sección de proyectos 👇", chips: ["Páginas web", "Sistemas"], ir: "#proyectos" },
+  time: { tema: "los tiempos de entrega", msg: "El tiempo depende del proyecto: una web sencilla toma menos que una app o un sistema. Al cotizar te damos la fecha de entrega exacta.", chips: ["Precios", "Páginas web"] },
+  hi: { tema: "información", msg: "¡Hola! 😊 ¿En qué te puedo ayudar?", chips: [...MENU] },
+  human: { tema: "información", msg: "Claro, te paso con una persona del equipo por WhatsApp. Te responden lo antes posible.", chips: [] },
+  contact: { tema: "información", msg: "Puedes escribirnos por:\n• WhatsApp: <b>941 163 771</b>\n• Correo: <b>contacto@nexusdv.pe</b>\n• Instagram: <b>@nexusdvpe</b>", chips: ["Páginas web", "Apps", "Sistemas"] },
+  thanks: { tema: "información", msg: "¡Con gusto! 🙌 Si quieres avanzar, escríbenos por WhatsApp y te enviamos tu cotización sin costo.", chips: [] },
+  none: { tema: "información", msg: "No estoy seguro de haberte entendido 🤔 Elige una opción o escríbele directo a nuestro equipo por WhatsApp.", chips: [...MENU] },
+};
+
+// El orden importa: gana la primera coincidencia.
+const CLAVES: [Tema, RegExp][] = [
+  ["human", /(persona|humano|asesor|hablar con|llamar|llamada)/],
+  ["contact", /(contacto|correo de ustedes|telefono|numero|instagram|whats ?app|wsp|donde estan|ubicacion)/],
+  ["mail", /(correo|email|e-mail|gmail|dominio|\.com|\.pe|hosting)/],
+  // \bapps?\b: que "whatsapp" no cuente como "app"
+  ["app", /(\bapps?\b|aplicaci|android|iphone|\bios\b|play ?store|app ?store|celular)/],
+  ["sys", /(sistema|inventario|venta|reserva|punto|fideliz|panel|software|erp|crm)/],
+  ["web", /(web|pagina|sitio|landing|tienda online|e-?commerce|google)/],
+  ["proj", /(proyecto|trabajo|portafolio|ejemplo|clientes)/],
+  ["time", /(tiempo|demora|cuando|dias|semanas|entrega|plazo)/],
+  ["price", /(precio|cuanto|costo|cuesta|cotiz|tarifa|presupuesto|pago)/],
+  ["hi", /^(hola|buenas|buenos|hey|ola|que tal)/],
+  ["thanks", /(gracias|^ok$|listo|perfecto|genial)/],
+];
+
+export function detectarTema(texto: string): Tema {
+  const n = texto.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  for (const [tema, re] of CLAVES) if (re.test(n)) return tema;
+  return "none";
+}
