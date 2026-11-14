@@ -24,6 +24,14 @@ h3 { font-weight: 500; font-size: 24px; letter-spacing: -0.02em; line-height: 1.
 .nav__links { display: flex; gap: 26px; margin-right: auto; font-size: 15px; }
 .nav__links a { text-decoration: none; color: var(--soft); transition: color .2s; }
 .nav__links a:hover { color: var(--ink); }
+.nav__right { display: flex; align-items: center; gap: 8px; flex: none; }
+.burger { display: none; position: relative; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-2); background: transparent; color: var(--ink); cursor: pointer; flex: none; }
+.burger i { position: absolute; left: 13px; right: 13px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .3s, opacity .2s, top .3s; }
+.burger i:nth-child(1) { top: 15px; } .burger i:nth-child(2) { top: 20px; } .burger i:nth-child(3) { top: 25px; }
+.nav--open .burger i:nth-child(1) { top: 20px; transform: rotate(45deg); }
+.nav--open .burger i:nth-child(2) { opacity: 0; }
+.nav--open .burger i:nth-child(3) { top: 20px; transform: rotate(-45deg); }
+.nav__menu { display: none; }
 
 /* ---------- buttons */
 .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font-size: 16px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: transform .2s, background .2s, color .2s; }
@@ -322,13 +330,23 @@ main { padding-top: 104px; }
   .step { min-height: 0; }
   .nav__links { display: none; }
   .nav__in { justify-content: space-between; }
+  .burger { display: block; }
+  .nav__menu { display: grid; gap: 2px; margin-top: 8px; padding: 10px; border-radius: 24px; background: rgba(18,23,29,.96); border: 1px solid var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 24px 60px rgba(0,0,0,.5); transition: opacity .25s, transform .25s, visibility .25s; }
+  .nav__menu[hidden] { opacity: 0; transform: translateY(-8px); visibility: hidden; pointer-events: none; }
+  .nav__menu a:not(.btn) { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-radius: 14px; font-size: 18px; text-decoration: none; color: var(--ink); }
+  .nav__menu a:not(.btn):hover, .nav__menu a:not(.btn):active { background: var(--tile-2); }
+  .nav__menu a:not(.btn) svg { width: 18px; height: 18px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .nav__menu .btn { margin-top: 8px; justify-content: center; }
+  html.menu-open { overflow: hidden; }
 }
 @media (max-width: 639px) {
   body { font-size: 16px; }
   .wrap { width: calc(100% - 32px); }
   .nav { inset: 10px 0 auto; }
   .nav__in { padding: 8px 8px 8px 16px; }
-  .nav .btn span { display: none; }
+  .nav__in .btn span:not(.ico-wa) { display: none; }
+  .nav__in .btn--sm { width: 44px; height: 44px; padding: 0; justify-content: center; }
+  .nav__in .btn--sm .ico-wa { width: 20px; height: 20px; }
   main { padding-top: 84px; }
   .sec { padding-top: 88px; }
   .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -408,7 +426,7 @@ main { padding-top: 104px; }
 .bot__close:hover { background: var(--tile); border-color: var(--muted); }
 .bot__close svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 
-.bot__log { flex: 1; overflow-y: auto; padding: 18px 16px; display: flex; flex-direction: column; gap: 8px; scrollbar-width: thin; scrollbar-color: var(--line-2) transparent; }
+.bot__log { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 18px 16px; display: flex; flex-direction: column; gap: 8px; scrollbar-width: thin; scrollbar-color: var(--line-2) transparent; }
 .row { display: flex; align-items: flex-end; gap: 8px; max-width: 92%; animation: msgin .35s cubic-bezier(.2,.8,.2,1); }
 .row__av { width: 28px; height: 28px; border-radius: 10px; background: var(--lime); display: grid; place-items: center; flex: none; }
 .row__av .nexi { width: 20px; height: 20px; }
@@ -442,7 +460,10 @@ main { padding-top: 104px; }
   .bot-fab { right: 16px; bottom: calc(max(16px, env(safe-area-inset-bottom)) + 72px); width: 56px; height: 56px; }
   .bot-fab .face { width: 34px; height: 34px; }
   .bot-hint { right: 84px; bottom: calc(max(16px, env(safe-area-inset-bottom)) + 82px); font-size: 13px; }
-  .bot { right: 8px; left: 8px; bottom: 8px; width: auto; height: calc(100dvh - 16px); border-radius: 22px; z-index: 80; }
+  .bot { right: 8px; left: 8px; bottom: 8px; width: auto; height: calc(100dvh - 16px); border-radius: 22px; z-index: 80; transform-origin: bottom center; }
+  .bot[hidden] { transform: translateY(24px); }
+  .bot__form input { font-size: 16px; } /* 16px o más: el iPhone no hace zoom al escribir */
+  html.bot-open { overflow: hidden; } /* la página de fondo no se mueve con el chat abierto */
   .bot-open .bot-fab, .bot-open .actionbar { opacity: 0; pointer-events: none; }
 }
 @media (prefers-reduced-motion: reduce) { .bot-fab, .bot-fab:hover .nexi, .nexi .nexi__eye, .bot__t small::before { animation: none; } .msg, .row, .chips { animation: none; } }
