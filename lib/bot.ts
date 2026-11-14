@@ -3,13 +3,13 @@
 
 export type Tema = "ia" | "web" | "app" | "sys" | "mail" | "price" | "proj" | "time" | "hi" | "human" | "contact" | "thanks" | "none";
 
-export const MENU = ["Páginas web", "Apps", "Sistemas", "Dominio y correo", "Precios", "Ver proyectos"] as const;
+export const MENU = ["Páginas web", "Apps", "Sistemas", "Dominio y correo", "Asistentes con IA", "Precios", "Ver proyectos"] as const;
 export const CHIP_TEMA: Record<string, Tema> = {
-  "Páginas web": "web", Apps: "app", Sistemas: "sys", "Dominio y correo": "mail", Precios: "price", "Ver proyectos": "proj",
+  "Páginas web": "web", Apps: "app", Sistemas: "sys", "Dominio y correo": "mail", "Asistentes con IA": "ia", Precios: "price", "Ver proyectos": "proj",
 };
 
 export const SALUDO =
-  "¡Hola! 👋 Soy <b>Nexo</b>, el asistente de <b>NEXUSDV</b>.\nHacemos páginas web, apps para Android y iPhone, sistemas a medida, dominios y correos corporativos.\n\n¿Qué te interesa?";
+  "¡Hola! Soy <b>Nexo</b>, el asistente de <b>NEXUSDV</b>. Hacemos páginas web, apps, sistemas a medida, dominios con correo y asistentes con IA como yo.\n\n¿Qué te interesa?";
 
 export const RESPUESTAS: Record<Tema, { tema: string; msg: string; chips: string[]; ir?: string }> = {
   ia: { tema: "un asistente con IA", msg: "¡Sí, hacemos asistentes con IA para tu web! 🤖 Yo soy un ejemplo: atiendo a cualquier hora y te paso con el equipo por WhatsApp.\nTu asistente puede:\n• Responder preguntas frecuentes 24/7\n• Orientar a tus clientes\n• Tomar reservas o pedidos\n• Pasar la conversación a tu WhatsApp\n\n💰 Es <b>a medida</b> y la cotización es <b>sin costo</b>.", chips: ["Páginas web", "Precios", "Ver proyectos"] },
