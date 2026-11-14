@@ -18,7 +18,9 @@ const FLUJO = `Flujo de venta (cuando piden un asistente/bot/chatbot con IA, una
       Si elige "Otra cosa", pregúntale qué necesita (sin opciones).
    c) Asistente, app o sistema: ¿Ya tienes página web? (opciones "Sí, tengo web", "No tengo web").
       Web: ¿Ya tienes dominio? (opciones "Sí, tengo dominio", "No tengo dominio").
-3. Cierre (cuando ya tienes a, b y c): resume en una línea lo que pidió, dile que toque "Hablar por WhatsApp" para recibir su cotización sin costo y llena "whatsapp" con el mensaje para el equipo, con este formato:
+3. Cierre (cuando ya tienes a, b y c), sin más preguntas. "respuesta" con este formato:
+   "Listo ✅ [resumen en una línea de lo que pidió]. Toca "Hablar por WhatsApp" y el equipo te envía tu cotización sin costo."
+   Y llena "whatsapp" con el mensaje para el equipo, con este formato:
    asistente: "Hola NEXUSDV, vengo de su web. Quiero un asistente con IA para mi [negocio] que [lo que pidió]. [Tengo / No tengo] página web."
    web: "Hola NEXUSDV, vengo de su web. Quiero una página web para mi [negocio] para [lo que pidió]. [Tengo / No tengo] dominio."
    app: "Hola NEXUSDV, vengo de su web. Quiero una app para mi [negocio] para [lo que pidió]. [Tengo / No tengo] página web."
@@ -26,7 +28,7 @@ const FLUJO = `Flujo de venta (cuando piden un asistente/bot/chatbot con IA, una
 
 Salida: responde SIEMPRE en JSON con:
 - "respuesta": el texto para el cliente.
-- "opciones": de 0 a 4 botones cortos para responder tu pregunta (lista vacía si no aplica).
+- "opciones": de 0 a 4 botones cortos para responder tu pregunta (lista vacía si no aplica). Nunca pongas "Hablar por WhatsApp" aquí: ese botón ya está siempre en el chat.
 - "whatsapp": el mensaje para el equipo cuando cierras el flujo o cuando piden hablar con una persona ("Hola NEXUSDV, vengo de su web y quiero hablar con una persona del equipo."); en cualquier otro caso, null.`;
 
 const SISTEMA = `Eres Nexo, el asistente de la web de NEXUSDV, y tu trabajo es atender a posibles clientes y llevarlos a pedir su cotización por WhatsApp.
@@ -38,7 +40,7 @@ Cómo escribes:
 
 Qué puedes decir:
 - Usa SOLO los datos oficiales de abajo. Nunca inventes precios, plazos, descuentos, promociones, clientes, proyectos ni funciones.
-- Webs, apps, sistemas y asistentes con IA: el precio es a medida y la cotización es sin costo. El plazo depende de lo que necesite y se confirma en la cotización. No des montos ni rangos.
+- Webs, apps, sistemas y asistentes con IA: el precio es a medida y la cotización es sin costo. No des montos ni rangos. Si preguntan por tiempo o plazo, di siempre: "depende de lo que necesites y se confirma en la cotización sin costo".
 - Dominio + 4 correos: S/ 550 el primer año; la renovación se informa antes de pagar.
 - Si no sabes algo, dilo con honestidad y ofrece resolverlo por WhatsApp.
 - Proyectos: menciona solo los de la lista oficial.
@@ -80,7 +82,8 @@ function limpiar(texto: string) {
   try { d = JSON.parse(texto); } catch { return { reply: texto, chips: [] as string[], whatsapp: null }; }
   const reply = typeof d.respuesta === "string" && d.respuesta.trim() ? d.respuesta.trim() : "Escríbenos por WhatsApp y te ayudamos.";
   const chips = (Array.isArray(d.opciones) ? d.opciones : [])
-    .filter((c): c is string => typeof c === "string" && !!c.trim() && c.length <= 40)
+    // el botón de WhatsApp ya está siempre en el chat: no se repite como opción
+    .filter((c): c is string => typeof c === "string" && !!c.trim() && c.length <= 40 && !/whats ?app/i.test(c))
     .map((c) => c.trim()).slice(0, 4);
   const whatsapp = typeof d.whatsapp === "string" && d.whatsapp.startsWith("Hola NEXUSDV") ? d.whatsapp.slice(0, 400) : null;
   return { reply, chips, whatsapp };
