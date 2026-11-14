@@ -55,9 +55,9 @@ export function Proyectos() {
                 <div className="case">
                   <div className="case__browser">
                     <div className="case__bar"><span className="case__dots" aria-hidden="true"><i /><i /><i /></span><span className="case__url">{p.dominio}</span></div>
-                    <Image src={p.imgDesktop.src} width={p.imgDesktop.w} height={p.imgDesktop.h} alt={p.imgDesktop.alt} sizes="(max-width: 1023px) 100vw, 700px" />
+                    <Image src={p.imgDesktop.src} width={p.imgDesktop.w} height={p.imgDesktop.h} alt={p.imgDesktop.alt} quality={90} sizes="(max-width: 1023px) 140vw, 1000px" />
                   </div>
-                  <div className="case__phone"><Image src={p.imgMovil.src} width={p.imgMovil.w} height={p.imgMovil.h} alt={p.imgMovil.alt} sizes="200px" /></div>
+                  <div className="case__phone"><Image src={p.imgMovil.src} width={p.imgMovil.w} height={p.imgMovil.h} alt={p.imgMovil.alt} quality={90} sizes="(max-width: 1023px) 40vw, 260px" /></div>
                 </div>
               </div>
             ))}
