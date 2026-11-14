@@ -1,69 +1,61 @@
-import { Icon } from "./Icons";
-import { Tile } from "./Tile";
-import { FlutedGlass } from "./FlutedGlass";
-import { BubblesMock, ChecklistMock, DashMock, DomainMock, InboxMock, PhoneMock, SearchMock } from "./mocks/Mocks";
+"use client";
+import { useState } from "react";
 
+const SERVICIOS = [
+  {
+    ruta: "/web", titulo: "Páginas web a medida",
+    texto: "Diseño propio, sin plantillas genéricas. Tu web muestra quién eres, qué vendes y lleva al cliente directo a tu chat.",
+    precio: "A medida · cotización sin costo",
+    puntos: ["Diseño hecho para tu marca", "Se ve perfecta en celular", "Botón directo a tu WhatsApp", "Lista para aparecer en Google"],
+  },
+  {
+    ruta: "/apps", titulo: "Apps Android y iPhone",
+    texto: "Tu propia app para que tus clientes compren, reserven, sigan sus pedidos o acumulen puntos desde el celular.",
+    precio: "A medida · cotización sin costo",
+    puntos: ["Una app para Android y iPhone", "Publicación en Google Play y App Store", "Notificaciones a tus clientes", "Panel para administrarla"],
+  },
+  {
+    ruta: "/sistemas", titulo: "Sistemas a medida",
+    texto: "Ordena tu negocio con un sistema hecho para ti: ventas, inventario, reservas o fidelización de clientes.",
+    precio: "A medida · cotización sin costo",
+    puntos: ["Ventas, inventario y reservas", "Cuentas para tu equipo", "Reportes claros de tu negocio", "Funciona en celular y computadora"],
+  },
+  {
+    ruta: "/correo", titulo: "Dominio y correo corporativo",
+    texto: "Deja el Gmail personal. Registramos tu dominio y configuramos correos con el nombre de tu empresa.",
+    precio: "S/ 550 · dominio + 4 correos · primer año",
+    puntos: ["Tu dominio, como tuempresa.com o .pe", "4 correos con los nombres que elijas", "Configurados en celular y computadora", "También vendemos solo el dominio"],
+  },
+];
+
+/** Lista de servicios tipo acordeón: solo un ítem abierto a la vez. */
 export function Servicios() {
+  const [abierto, setAbierto] = useState<number | null>(0);
+
   return (
-    <section className="sec" id="servicios" aria-labelledby="svc-h">
+    <section className="sec" id="servicios">
       <div className="wrap">
-        <div className="head rv">
-          <h2 id="svc-h">Todo lo que tu negocio necesita en internet</h2>
-          <p>Webs, apps, sistemas, dominio y correo corporativo: un solo equipo para todo, con cotización sin costo.</p>
+        <div className="sec__top rv">
+          <div><p className="mono tag">Servicios</p><h2 className="display h2">Un solo equipo para <span className="mark">todo</span> lo digital</h2></div>
+          <p className="lead">Elige lo que tu negocio necesita hoy. Todo se cotiza sin costo y puedes pedir varios servicios en una sola propuesta.</p>
         </div>
-        <div className="bento">
-          <FlutedGlass as="article" seed={45} className="svc-web c-6 r-2">
-            <span className="kicker">Páginas web</span>
-            <h3>Páginas web a medida</h3>
-            <p>Diseño propio, sin plantillas genéricas. Pensada para que el cliente termine en tu chat.</p>
-            <ChecklistMock />
-          </FlutedGlass>
-
-          <Tile as="article" className="svc-app c-6 r-2" id="apps">
-            <div className="svc-app__top">
-              <div>
-                <span className="tile__ico"><Icon id="phone" /></span>
-                <h3>Apps para Android y iPhone</h3>
-                <p>Tu propia app para que tus clientes compren, reserven o sigan sus pedidos desde el celular.</p>
+        <div className="idx rv">
+          {SERVICIOS.map((s, i) => {
+            const open = abierto === i;
+            return (
+              <div key={s.ruta} className={`idx__item${open ? " open" : ""}`}>
+                <button className="idx__btn" type="button" aria-expanded={open} aria-controls={`srv-${i}`} onClick={() => setAbierto(open ? null : i)}>
+                  <span className="mono">{s.ruta}</span><h3>{s.titulo}</h3><span className="idx__plus" aria-hidden="true">+</span>
+                </button>
+                <div className="idx__panel" id={`srv-${i}`} inert={!open}>
+                  <div><div className="idx__body"><span />
+                    <div><p>{s.texto}</p><span className="idx__price">{s.precio}</span></div>
+                    <ul>{s.puntos.map((p) => <li key={p}>{p}</li>)}</ul>
+                  </div></div>
+                </div>
               </div>
-              <div className="stores"><span><Icon id="android" />Google Play</span><span><Icon id="apple" />App Store</span></div>
-            </div>
-            <PhoneMock />
-          </Tile>
-
-          <Tile as="article" className="svc-sys c-7" id="sistemas">
-            <span className="tile__ico"><Icon id="sys" /></span>
-            <h3>Sistemas a medida</h3>
-            <p>Ventas, inventario, reservas, fidelización de clientes: lo que tu negocio necesite, en un sistema hecho para ti.</p>
-            <DashMock />
-          </Tile>
-
-          <Tile as="article" className="svc-dom c-5" id="dominio">
-            <span className="tile__ico"><Icon id="globe" /></span>
-            <h3>Tu dominio propio</h3>
-            <p>Te ayudamos a elegir y registrar tu nombre en internet.</p>
-            <DomainMock />
-          </Tile>
-
-          <Tile as="article" className="svc-mail c-6" id="correo">
-            <span className="tile__ico"><Icon id="mail" /></span>
-            <h3>Correo corporativo</h3>
-            <p>Deja el Gmail personal. Configuramos tu dominio con 4 correos, listos en tu celular y tu computadora.</p>
-            <span className="price-chip">S/ 550 · dominio + 4 correos · primer año</span>
-            <InboxMock />
-          </Tile>
-
-          <Tile as="article" className="c-3">
-            <span className="tile__ico"><Icon id="wa" /></span>
-            <h3>Directo a tu WhatsApp</h3>
-            <BubblesMock />
-          </Tile>
-
-          <Tile as="article" className="c-3">
-            <span className="tile__ico"><Icon id="search" /></span>
-            <h3>Lista para Google</h3>
-            <SearchMock />
-          </Tile>
+            );
+          })}
         </div>
       </div>
     </section>

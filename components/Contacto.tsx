@@ -1,42 +1,49 @@
+"use client";
+import { useRef, useState } from "react";
 import { contacto } from "@/lib/data";
-import { Icon } from "./Icons";
-import { Tile } from "./Tile";
-import { FlutedGlass } from "./FlutedGlass";
+import { abrirNexo } from "./Asistente";
 
+/** Botón que copia el correo. Si el navegador no deja copiar, selecciona el texto para copiarlo a mano. */
+function Copiar({ texto }: { texto: string }) {
+  const [estado, setEstado] = useState("Copiar");
+  const ref = useRef<HTMLButtonElement>(null);
+  const seleccionar = () => {
+    const b = ref.current?.previousElementSibling;
+    if (!b) return;
+    const r = document.createRange(); r.selectNodeContents(b);
+    const s = window.getSelection(); s?.removeAllRanges(); s?.addRange(r);
+    setEstado("Seleccionado");
+  };
+  const copiar = () => {
+    const listo = () => { setEstado("Copiado"); setTimeout(() => setEstado("Copiar"), 1800); };
+    try { navigator.clipboard.writeText(texto).then(listo, seleccionar); } catch { seleccionar(); }
+  };
+  return <button ref={ref} className="copy" type="button" onClick={copiar}>{estado}</button>;
+}
+
+/** Cierre de la página: "Hablemos." gigante, filas de contacto y pie. */
 export function Contacto() {
   return (
-    <section className="sec" id="contacto" aria-labelledby="contacto-h">
+    <footer className="end night" id="contacto">
       <div className="wrap">
-        <div className="head rv">
-          <h2 id="contacto-h">Contáctanos</h2>
-          <p>Escríbenos por donde te sea más cómodo y te enviamos tu cotización sin costo.</p>
-        </div>
-        <div className="bento">
-          <Tile as="a" href={contacto.whatsappLink} className="tile--lime tile--link contact c-6">
-            <span className="tile__ico"><Icon id="wa" /></span>
-            <p>WhatsApp · la forma más rápida de pedir tu cotización</p>
-            <div className="tile__foot"><span className="contact__val">Contactanos</span><span className="arrow"><Icon id="arr" /></span></div>
-          </Tile>
-          <Tile as="a" href={`mailto:${contacto.correo}`} className="tile--link contact c-3">
-            <span className="tile__ico"><Icon id="mail" /></span>
-            <p>Correo · para enviarnos detalles, fotos o tu logo</p>
-            <div className="tile__foot"><span className="contact__val" style={{ fontSize: 22 }}>{contacto.correo}</span></div>
-          </Tile>
-          <Tile as="a" href={contacto.instagramLink} target="_blank" rel="noopener" className="tile--link contact c-3">
-            <span className="tile__ico"><Icon id="ig" /></span>
-            <p>Instagram · mira nuestros trabajos y novedades</p>
-            <div className="tile__foot"><span className="contact__val" style={{ fontSize: 24 }}>{contacto.instagram}</span></div>
-          </Tile>
-          <FlutedGlass seed={43} className="close c-12">
-            <h2>Cuéntanos qué necesita tu negocio</h2>
-            <p>Webs, apps y sistemas a medida con cotización sin costo. Dominio con 4 correos corporativos a S/ 550 el primer año.</p>
-            <div className="btn-row">
-              <a className="btn btn--lime" href={contacto.whatsappLink}><Icon id="wa" />Escríbenos por WhatsApp</a>
-              <a className="btn btn--ghost" href={`mailto:${contacto.correo}`}>Enviar un correo</a>
+        <p className="mono tag" style={{ color: "var(--lime)" }}>Contacto</p>
+        <h2 className="display">Hable<em>mos.</em></h2>
+        <div className="end__grid">
+          <div>
+            <p className="lead">Cuéntanos qué necesita tu negocio y te enviamos una cotización sin costo.</p>
+            <div className="hero__cta">
+              <a className="btn btn--lime" href={contacto.whatsappLink} target="_blank" rel="noopener"><span className="ico-wa" aria-hidden="true" />Escribir por WhatsApp</a>
+              <button className="btn btn--line" type="button" onClick={abrirNexo}>Hablar con Nexo</button>
             </div>
-          </FlutedGlass>
+          </div>
+          <div className="rows">
+            <div className="crow"><span className="mono">WhatsApp</span><b>{contacto.whatsapp}</b><a href={contacto.whatsappLink} target="_blank" rel="noopener">Abrir chat</a></div>
+            <div className="crow"><span className="mono">Correo</span><b>{contacto.correo}</b><Copiar texto={contacto.correo} /></div>
+            <div className="crow"><span className="mono">Instagram</span><b>{contacto.instagram}</b><a href={contacto.instagramLink} target="_blank" rel="noopener">Ver perfil</a></div>
+          </div>
         </div>
+        <div className="foot"><span>© {new Date().getFullYear()} NEXUSDV · {contacto.ciudad}</span><span className="mono">webs · apps · sistemas · dominios · correo</span></div>
       </div>
-    </section>
+    </footer>
   );
 }

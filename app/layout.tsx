@@ -1,16 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Martian_Mono, Onest, Sofia_Sans_Extra_Condensed } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const schibsted = localFont({
-  src: [
-    { path: "./fonts/schibsted-grotesk-latin-wght-normal.woff2", weight: "400 700", style: "normal" },
-    { path: "./fonts/schibsted-grotesk-latin-ext-wght-normal.woff2", weight: "400 700", style: "normal" },
-  ],
-  variable: "--font-schibsted",
-  display: "swap",
-});
+// Tipografías del diseño. globals.css las usa como --display, --body y --mono.
+const display = Sofia_Sans_Extra_Condensed({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
+const body = Onest({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-body", display: "swap" });
+const mono = Martian_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nexusdv.com"),
@@ -26,11 +22,11 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-export const viewport: Viewport = { themeColor: "#0b0f14", width: "device-width", initialScale: 1, viewportFit: "cover" };
+export const viewport: Viewport = { themeColor: "#ECEFE6", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={schibsted.variable} suppressHydrationWarning>
+    <html lang="es" className={`${display.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         {/* Marca que hay JavaScript para activar las animaciones de entrada sin parpadeo */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />

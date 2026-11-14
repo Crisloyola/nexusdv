@@ -1,37 +1,33 @@
 import { contacto, planes, preguntas } from "@/lib/data";
 import { Icon } from "./Icons";
-import { Tile } from "./Tile";
-import { FlutedGlass } from "./FlutedGlass";
 
+/** Tabla de 3 planes y preguntas frecuentes. Los datos vienen de lib/data.ts. */
 export function Precios() {
   return (
-    <section className="sec" id="precios" aria-labelledby="precios-h">
+    <section className="sec" id="precios" style={{ paddingTop: 0 }}>
       <div className="wrap">
-        <div className="head rv">
-          <h2 id="precios-h">Precios claros</h2>
-          <p>Webs, apps y sistemas se cotizan según lo que necesitas; el dominio con correo tiene precio fijo.</p>
+        <div className="sec__top rv">
+          <div><p className="mono tag">Precios</p><h2 className="display h2">Claros desde el inicio</h2></div>
+          <p className="lead">Webs, apps y sistemas se cotizan según lo que necesitas. El dominio con correo tiene precio fijo.</p>
         </div>
-        <div className="bento">
+        <div className="plans rv">
           {planes.map((p) => (
-            <Tile as="article" key={p.nombre} className={`plan c-4${p.destacado ? " tile--lime" : ""}`}>
-              {p.etiqueta && <span className="plan__tag">{p.etiqueta}</span>}
-              <h3>{p.nombre}</h3>
-              <div className="price"><span className="big">{p.precio}</span>{p.nota && <small>{p.nota}</small>}</div>
+            <article key={p.nombre} className={`plan${p.destacado ? " plan--hl" : ""}`}>
+              <h3>{p.nombre}{p.etiqueta && <span>{p.etiqueta}</span>}</h3>
+              <div className="plan__price">{p.precio}<small>{p.nota || "cotización sin costo"}</small></div>
               <p>{p.texto}</p>
-              <ul>{p.incluye.map((x) => <li key={x}>{x}</li>)}</ul>
-              <a className={`btn ${p.destacado ? "btn--dark" : "btn--ghost"}`} href={contacto.whatsappLink}>{p.boton}<Icon id="right" /></a>
-            </Tile>
+              <ul>{p.incluye.map((i) => <li key={i}>{i}</li>)}</ul>
+              <a className={`btn ${p.destacado ? "btn--lime" : "btn--line"}`} href={contacto.whatsappLink} target="_blank" rel="noopener">{p.boton}<Icon id="arr" /></a>
+            </article>
           ))}
-
-          <Tile className="faq c-8" id="preguntas">
-            <h3 className="sr">Preguntas frecuentes</h3>
-            {preguntas.map((f) => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}
-          </Tile>
-          <FlutedGlass as="a" seed={42} href={contacto.whatsappLink} className="tile--link c-4" style={{ minHeight: 280 }}>
-            <h3 style={{ fontSize: 30, letterSpacing: "-0.03em" }}>Preguntas frecuentes</h3>
-            <p>¿Te queda otra duda? Escríbenos y te respondemos rápido.</p>
-            <div className="tile__foot"><span>Preguntar por WhatsApp</span><span className="arrow"><Icon id="arr" /></span></div>
-          </FlutedGlass>
+        </div>
+        <div className="faq rv">
+          <div><p className="mono tag">Dudas</p><h3>Preguntas frecuentes</h3></div>
+          <div>
+            {preguntas.map((f, i) => (
+              <details key={f.q} open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>
+            ))}
+          </div>
         </div>
       </div>
     </section>

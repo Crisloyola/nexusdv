@@ -17,6 +17,20 @@ export function Logo({ className }: { className?: string }) {
   );
 }
 
+/** Nexo, el personaje del asistente. Colores en globals.css (.nh cara, .ne ojos, .ns sonrisa, .na antena). */
+export function NexoCara({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`nx ${className}`} viewBox="0 0 32 32" aria-hidden="true">
+      <path className="na" d="M16 8V4.5" />
+      <circle className="nh" cx="16" cy="3.6" r="2.1" />
+      <rect className="nh" x="4" y="8" width="24" height="20" rx="9" />
+      <rect className="ne" x="10.2" y="14.2" width="3.4" height="5.6" rx="1.7" />
+      <rect className="ne" x="18.4" y="14.2" width="3.4" height="5.6" rx="1.7" />
+      <path className="ns" d="M13.2 23.2q2.8 2 5.6 0" />
+    </svg>
+  );
+}
+
 export function IconSprite() {
   return (
     <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true">
