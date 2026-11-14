@@ -10,10 +10,14 @@ import { Precios } from "@/components/Precios";
 import { Contacto } from "@/components/Contacto";
 import { Asistente } from "@/components/Asistente";
 import { RevealInit } from "@/components/RevealInit";
+import { datosEstructurados } from "@/lib/seo";
 
 export default function Home() {
+  // Datos estructurados para Google (negocio, servicios, preguntas frecuentes). "<" escapado por seguridad.
+  const jsonLd = JSON.stringify(datosEstructurados()).replace(/</g, "\\u003c");
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <IconSprite />
       <Header />
       <main id="inicio">
