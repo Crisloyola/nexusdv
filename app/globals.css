@@ -383,18 +383,18 @@ main { padding-top: 104px; }
   .actionbar { display: block; position: fixed; left: 16px; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 60; }
   .actionbar .btn { width: 100%; justify-content: center; box-shadow: 0 16px 40px rgba(0,0,0,.5); }
 }
-/* ---------- asistente: Nexi */
+/* ---------- asistente: Nexo */
 /* Personaje: --nx-head (cara) y --nx-eye (ojos y sonrisa) */
-.nexi { --nx-head: var(--lime-ink); --nx-eye: var(--lime); display: block; overflow: visible; }
-.nexi .nexi__head { fill: var(--nx-head); stroke: none; }
-.nexi .nexi__ant { fill: none; stroke: var(--nx-head); stroke-width: 2; stroke-linecap: round; }
-.nexi .nexi__eye { fill: var(--nx-eye); stroke: none; transform-box: fill-box; transform-origin: center; animation: nxblink 4.5s infinite; }
-.nexi .nexi__smile { fill: none; stroke: var(--nx-eye); stroke-width: 2; stroke-linecap: round; }
+.nexo { --nx-head: var(--lime-ink); --nx-eye: var(--lime); display: block; overflow: visible; }
+.nexo .nexo__head { fill: var(--nx-head); stroke: none; }
+.nexo .nexo__ant { fill: none; stroke: var(--nx-head); stroke-width: 2; stroke-linecap: round; }
+.nexo .nexo__eye { fill: var(--nx-eye); stroke: none; transform-box: fill-box; transform-origin: center; animation: nxblink 4.5s infinite; }
+.nexo .nexo__smile { fill: none; stroke: var(--nx-eye); stroke-width: 2; stroke-linecap: round; }
 @keyframes nxblink { 0%, 90%, 100% { transform: scaleY(1); } 93% { transform: scaleY(.12); } 96% { transform: scaleY(1); } }
 
 .bot-fab { position: fixed; right: 24px; bottom: 24px; z-index: 70; width: 64px; height: 64px; border-radius: 50%; border: 0; cursor: pointer; background: var(--lime); color: var(--lime-ink); display: grid; place-items: center; box-shadow: 0 16px 40px rgba(0,0,0,.45), 0 0 0 0 rgba(200,241,53,.5); animation: botping 2.8s infinite; transition: transform .25s; }
 .bot-fab:hover { transform: scale(1.06); }
-.bot-fab:hover .nexi { animation: nxwave .6s ease; }
+.bot-fab:hover .nexo { animation: nxwave .6s ease; }
 .bot-fab svg { position: absolute; transition: transform .3s, opacity .2s; }
 .bot-fab .face { width: 38px; height: 38px; }
 .bot-fab .x { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; opacity: 0; transform: rotate(-90deg) scale(.6); }
@@ -415,7 +415,7 @@ main { padding-top: 104px; }
 
 .bot__head { display: flex; align-items: center; gap: 12px; padding: 16px 16px 16px 18px; border-bottom: 1px solid var(--line); background: rgba(23,29,36,.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 .bot__av { position: relative; width: 46px; height: 46px; border-radius: 16px; background: var(--lime); display: grid; place-items: center; flex: none; box-shadow: 0 8px 24px rgba(200,241,53,.25); }
-.bot__av .nexi { width: 32px; height: 32px; }
+.bot__av .nexo { width: 32px; height: 32px; }
 .bot__av::after { content: ""; position: absolute; right: -3px; bottom: -3px; width: 13px; height: 13px; border-radius: 50%; background: #3BE07A; border: 3px solid var(--tile-2); }
 .bot__t { flex: 1; display: grid; gap: 2px; line-height: 1.2; }
 .bot__t b { font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
@@ -429,7 +429,7 @@ main { padding-top: 104px; }
 .bot__log { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 18px 16px; display: flex; flex-direction: column; gap: 8px; scrollbar-width: thin; scrollbar-color: var(--line-2) transparent; }
 .row { display: flex; align-items: flex-end; gap: 8px; max-width: 92%; animation: msgin .35s cubic-bezier(.2,.8,.2,1); }
 .row__av { width: 28px; height: 28px; border-radius: 10px; background: var(--lime); display: grid; place-items: center; flex: none; }
-.row__av .nexi { width: 20px; height: 20px; }
+.row__av .nexo { width: 20px; height: 20px; }
 .row__av--off { visibility: hidden; }
 .msg { max-width: 86%; padding: 11px 14px; font-size: 14.5px; line-height: 1.5; border-radius: 18px; animation: msgin .35s cubic-bezier(.2,.8,.2,1); white-space: pre-line; overflow-wrap: anywhere; }
 .row .msg { max-width: none; animation: none; }
@@ -466,4 +466,4 @@ main { padding-top: 104px; }
   html.bot-open { overflow: hidden; } /* la página de fondo no se mueve con el chat abierto */
   .bot-open .bot-fab, .bot-open .actionbar { opacity: 0; pointer-events: none; }
 }
-@media (prefers-reduced-motion: reduce) { .bot-fab, .bot-fab:hover .nexi, .nexi .nexi__eye, .bot__t small::before { animation: none; } .msg, .row, .chips { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .bot-fab, .bot-fab:hover .nexo, .nexo .nexo__eye, .bot__t small::before { animation: none; } .msg, .row, .chips { animation: none; } }

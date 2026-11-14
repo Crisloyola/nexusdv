@@ -9,7 +9,7 @@ export const CHIP_TEMA: Record<string, Tema> = {
 };
 
 export const SALUDO =
-  "¡Hola! 👋 Soy <b>Nexi</b>, el asistente de <b>NEXUSDV</b>.\nHacemos páginas web, apps para Android y iPhone, sistemas a medida, dominios y correos corporativos.\n\n¿Qué te interesa?";
+  "¡Hola! 👋 Soy <b>Nexo</b>, el asistente de <b>NEXUSDV</b>.\nHacemos páginas web, apps para Android y iPhone, sistemas a medida, dominios y correos corporativos.\n\n¿Qué te interesa?";
 
 export const RESPUESTAS: Record<Tema, { tema: string; msg: string; chips: string[]; ir?: string }> = {
   web: { tema: "una página web", msg: "Hacemos <b>páginas web a medida</b> para tu negocio:\n• Diseño propio, sin plantillas\n• Adaptada al celular\n• Botón directo a tu WhatsApp\n• Lista para aparecer en Google\n\n💰 Una <b>landing page desde S/ 500</b>, lista en <b>7 días</b>. Si necesitas más secciones o funciones, te cotizamos sin costo.\nAntes de programar te mostramos el diseño para que lo apruebes.", chips: ["Precios", "Ver proyectos", "Dominio y correo"] },

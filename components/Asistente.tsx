@@ -11,16 +11,16 @@ const USAR_IA = process.env.NEXT_PUBLIC_CHAT_IA === "true";
 type Msg = { id: number; de: "bot" | "yo"; html?: string; texto?: string };
 let uid = 0;
 
-/** Nexi: el personaje del asistente. Los colores se controlan con --nx-head y --nx-eye en globals.css. */
-function Nexi({ className = "" }: { className?: string }) {
+/** Nexo: el personaje del asistente. Los colores se controlan con --nx-head y --nx-eye en globals.css. */
+function Nexo({ className = "" }: { className?: string }) {
   return (
-    <svg className={`nexi ${className}`} viewBox="0 0 32 32" aria-hidden="true">
-      <path className="nexi__ant" d="M16 8V4.5" />
-      <circle className="nexi__head" cx="16" cy="3.6" r="2.1" />
-      <rect className="nexi__head" x="4" y="8" width="24" height="20" rx="9" />
-      <rect className="nexi__eye" x="10.2" y="14.2" width="3.4" height="5.6" rx="1.7" />
-      <rect className="nexi__eye" x="18.4" y="14.2" width="3.4" height="5.6" rx="1.7" />
-      <path className="nexi__smile" d="M13.2 23.2q2.8 2 5.6 0" />
+    <svg className={`nexo ${className}`} viewBox="0 0 32 32" aria-hidden="true">
+      <path className="nexo__ant" d="M16 8V4.5" />
+      <circle className="nexo__head" cx="16" cy="3.6" r="2.1" />
+      <rect className="nexo__head" x="4" y="8" width="24" height="20" rx="9" />
+      <rect className="nexo__eye" x="10.2" y="14.2" width="3.4" height="5.6" rx="1.7" />
+      <rect className="nexo__eye" x="18.4" y="14.2" width="3.4" height="5.6" rx="1.7" />
+      <path className="nexo__smile" d="M13.2 23.2q2.8 2 5.6 0" />
     </svg>
   );
 }
@@ -109,27 +109,27 @@ export function Asistente() {
 
   return (
     <>
-      <div className={`bot-hint${aviso ? "" : " off"}`}>¡Hola! Soy <b>Nexi</b> 👋 ¿Te ayudo?</div>
+      <div className={`bot-hint${aviso ? "" : " off"}`}>¡Hola! Soy <b>Nexo</b> 👋 ¿Te ayudo?</div>
       <button ref={fab} className="bot-fab" type="button" onClick={() => (abierto ? cerrar() : abrir())}
-        aria-label={abierto ? "Cerrar chat con Nexi" : "Abrir chat con Nexi, el asistente de NEXUSDV"} aria-expanded={abierto} aria-controls="bot">
-        <Nexi className="face" />
+        aria-label={abierto ? "Cerrar chat con Nexo" : "Abrir chat con Nexo, el asistente de NEXUSDV"} aria-expanded={abierto} aria-controls="bot">
+        <Nexo className="face" />
         <svg className="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
       </button>
 
-      <section className="bot" id="bot" role="dialog" aria-label="Chat con Nexi" hidden={!abierto}>
+      <section className="bot" id="bot" role="dialog" aria-label="Chat con Nexo" hidden={!abierto}>
         <div className="bot__head">
-          <span className="bot__av"><Nexi /></span>
-          <span className="bot__t"><b>Nexi</b><small>Asistente de NEXUSDV · en línea</small></span>
+          <span className="bot__av"><Nexo /></span>
+          <span className="bot__t"><b>Nexo</b><small>Asistente de NEXUSDV · en línea</small></span>
           <button className="bot__close" type="button" onClick={cerrar} aria-label="Cerrar chat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
         </div>
 
         <div className="bot__log" ref={log} aria-live="polite">
           {msgs.map((m, k) => {
             if (m.de === "yo") return <div key={m.id} className="msg msg--me">{m.texto}</div>;
-            const primero = k === 0 || msgs[k - 1].de !== "bot"; // avatar solo en el primer mensaje seguido de Nexi
+            const primero = k === 0 || msgs[k - 1].de !== "bot"; // avatar solo en el primer mensaje seguido de Nexo
             return (
               <div key={m.id} className="row">
-                <span className={`row__av${primero ? "" : " row__av--off"}`}><Nexi /></span>
+                <span className={`row__av${primero ? "" : " row__av--off"}`}><Nexo /></span>
                 {m.html !== undefined
                   ? <div className="msg msg--bot" dangerouslySetInnerHTML={{ __html: m.html }} /> /* solo textos fijos de lib/bot.ts */
                   : <div className="msg msg--bot">{m.texto}</div>}
@@ -138,8 +138,8 @@ export function Asistente() {
           })}
           {escribiendo && (
             <div className="row">
-              <span className="row__av"><Nexi /></span>
-              <div className="msg msg--bot msg--typing" aria-label="Nexi está escribiendo"><i /><i /><i /></div>
+              <span className="row__av"><Nexo /></span>
+              <div className="msg msg--bot msg--typing" aria-label="Nexo está escribiendo"><i /><i /><i /></div>
             </div>
           )}
           {!escribiendo && msgs.length > 0 && (
@@ -153,7 +153,7 @@ export function Asistente() {
         </div>
 
         <form className="bot__form" onSubmit={enviar} autoComplete="off">
-          <input ref={input} value={entrada} onChange={(e) => setEntrada(e.target.value)} type="text" placeholder="Escríbele a Nexi…" aria-label="Escribe tu pregunta" maxLength={300} />
+          <input ref={input} value={entrada} onChange={(e) => setEntrada(e.target.value)} type="text" placeholder="Escríbele a Nexo…" aria-label="Escribe tu pregunta" maxLength={300} />
           <button type="submit" aria-label="Enviar" disabled={!entrada.trim()}><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg></button>
         </form>
         <p className="bot__note">Precios referenciales · el equipo confirma tu cotización</p>
