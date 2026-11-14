@@ -1,7 +1,7 @@
 // Respuestas del asistente (modo sin IA). Edita aquí los textos.
 // <b>...</b> pone negrita. \n es un salto de línea.
 
-export type Tema = "web" | "app" | "sys" | "mail" | "price" | "proj" | "time" | "hi" | "human" | "contact" | "thanks" | "none";
+export type Tema = "ia" | "web" | "app" | "sys" | "mail" | "price" | "proj" | "time" | "hi" | "human" | "contact" | "thanks" | "none";
 
 export const MENU = ["Páginas web", "Apps", "Sistemas", "Dominio y correo", "Precios", "Ver proyectos"] as const;
 export const CHIP_TEMA: Record<string, Tema> = {
@@ -12,6 +12,7 @@ export const SALUDO =
   "¡Hola! 👋 Soy <b>Nexo</b>, el asistente de <b>NEXUSDV</b>.\nHacemos páginas web, apps para Android y iPhone, sistemas a medida, dominios y correos corporativos.\n\n¿Qué te interesa?";
 
 export const RESPUESTAS: Record<Tema, { tema: string; msg: string; chips: string[]; ir?: string }> = {
+  ia: { tema: "un asistente con IA", msg: "¡Sí, hacemos asistentes con IA para tu web! 🤖 Yo soy un ejemplo: atiendo a cualquier hora y te paso con el equipo por WhatsApp.\nTu asistente puede:\n• Responder preguntas frecuentes 24/7\n• Orientar a tus clientes\n• Tomar reservas o pedidos\n• Pasar la conversación a tu WhatsApp\n\n💰 Es <b>a medida</b> y la cotización es <b>sin costo</b>.", chips: ["Páginas web", "Precios", "Ver proyectos"] },
   web: { tema: "una página web", msg: "Hacemos <b>páginas web a medida</b> para tu negocio:\n• Diseño propio, sin plantillas\n• Adaptada al celular\n• Botón directo a tu WhatsApp\n• Lista para aparecer en Google\n\n💰 El precio es <b>a medida</b> y la cotización es <b>sin costo</b>.\nAntes de programar te mostramos el diseño para que lo apruebes.", chips: ["Precios", "Ver proyectos", "Dominio y correo"] },
   app: { tema: "una app", msg: "Desarrollamos <b>apps para Android y iPhone</b>: para que tus clientes compren, reserven, sigan sus pedidos o acumulen puntos desde el celular.\n\nTambién te ayudamos a publicarla en <b>Google Play y App Store</b>.\n\nEl costo y el tiempo dependen de lo que necesites (funciones, usuarios, pagos, panel). Cuéntanos tu idea y te cotizamos sin costo.", chips: ["Sistemas", "Precios", "Ver proyectos"] },
   sys: { tema: "un sistema", msg: "Creamos <b>sistemas a medida</b>: ventas, inventario, reservas, fidelización de clientes y más, con un panel para administrar todo.\n\nUn ejemplo es <b>Creatrix</b>, un sistema de puntos y promociones que entregamos.\n\nEl costo y el tiempo dependen de lo que necesites. Te cotizamos sin costo.", chips: ["Apps", "Precios", "Ver proyectos"] },
@@ -29,6 +30,8 @@ export const RESPUESTAS: Record<Tema, { tema: string; msg: string; chips: string
 // El orden importa: gana la primera coincidencia.
 const CLAVES: [Tema, RegExp][] = [
   ["human", /(persona|humano|asesor|hablar con|llamar|llamada)/],
+  // \bia\b: que "familia" o "farmacia" no cuenten como "IA"
+  ["ia", /(chat ?bot|\bbots?\b|asistente|\bia\b|inteligencia artificial|como tu\b|como nexo)/],
   ["contact", /(contacto|correo de ustedes|telefono|numero|instagram|whats ?app|wsp|donde estan|ubicacion)/],
   ["mail", /(correo|email|e-mail|gmail|dominio|\.com|\.pe|hosting)/],
   // \bapps?\b: que "whatsapp" no cuente como "app"
