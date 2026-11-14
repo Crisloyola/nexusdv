@@ -130,11 +130,13 @@ export const preguntas = [
 export const infoNegocio = `
 NEXUSDV es una empresa de desarrollo en ${contacto.ciudad}.
 Servicios:
-- Páginas web a medida: diseño propio, adaptadas a celular, botón a WhatsApp, listas para Google. Cotización sin costo. El cliente aprueba el diseño antes de programar.
-- Apps para Android y iPhone, con ayuda para publicarlas en Google Play y App Store. Cotización sin costo.
-- Sistemas a medida: ventas, inventario, reservas, fidelización de clientes, con panel de administración. Cotización sin costo.
-- Dominio propio (tuempresa.com, .pe, .com.pe). También se vende solo el dominio, con cotización sin costo.
-- Correo corporativo — PROMOCIÓN DE FIN DE AÑO: dominio + 5 correos corporativos a S/ 550 el primer año (antes eran 4 correos por el mismo precio). Incluye configuración en celular y computadora y ayuda por WhatsApp para usarlo. El precio de renovación se informa antes de pagar.
+- Páginas web a medida: diseño propio, adaptadas a celular, botón a WhatsApp, listas para Google. El cliente aprueba el diseño antes de programar.
+  · Landing page (página de una sola sección/página): DESDE S/ 500. El precio sube según lo que se agregue (más secciones o páginas, galerías, formularios, catálogo, tienda, varios idiomas, integraciones). El precio final se confirma al cotizar, sin costo.
+  · Tiempo de entrega de una landing: 7 días. Webs más grandes toman más tiempo y la fecha exacta se da al cotizar.
+- Apps para Android y iPhone, con ayuda para publicarlas en Google Play y App Store. El costo y el tiempo dependen mucho de lo que necesite el cliente (funciones, pantallas, usuarios, pagos, panel). Se cotiza sin costo, sin precio fijo.
+- Apps web y sistemas a medida: ventas, inventario, reservas, fidelización de clientes, con panel de administración. Igual que las apps: costo y tiempo según lo que necesite el cliente. Se cotiza sin costo, sin precio fijo.
+- Dominio propio: .com, .pe o .com.pe. El dominio .pe (y .com.pe) también se cotiza; se puede comprar solo el dominio.
+- Correo corporativo — PROMOCIÓN DE FIN DE AÑO: dominio + 5 correos corporativos a S/ 550 el primer año (antes eran 4 correos por el mismo precio). Incluye configuración en celular y computadora y ayuda por WhatsApp para usarlo. La entrega del correo corporativo es INMEDIATA. El precio de renovación se informa antes de pagar.
 Proyectos entregados: LML Agency (web de productora audiovisual, lmlagencype.com), LML Agency Alquiler (página de alquiler de equipos de audio y video, lmlagencype.com/alquiler) y Creatrix (sistema de fidelización con puntos y promociones).
 Contacto: WhatsApp ${contacto.whatsapp}, correo ${contacto.correo}, Instagram ${contacto.instagram}.
 `.trim();
