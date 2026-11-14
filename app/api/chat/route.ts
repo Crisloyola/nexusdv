@@ -108,7 +108,7 @@ export async function POST(req: Request) {
       system: SISTEMA,
       messages,
       output_config: { effort: "low", format: FORMATO }, // "low": respuestas rápidas y cortas
-    });
+    }, { timeout: 15_000, maxRetries: 0 }); // si tarda más de 15 s, el chat muestra el mensaje de error
     const texto = res.content.map((b) => (b.type === "text" ? b.text : "")).join("").trim();
     return Response.json(limpiar(texto));
   } catch (e) {

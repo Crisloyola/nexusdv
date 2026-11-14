@@ -9,6 +9,7 @@ import { Icon, NexoCara } from "./Icons";
 // "Precios" y "Ver proyectos" siempre usan las respuestas fijas de lib/bot.ts. Sin IA, todo es fijo.
 const USAR_IA = process.env.NEXT_PUBLIC_CHAT_IA === "true";
 const SIEMPRE_FIJO = ["Precios", "Ver proyectos"];
+const ERROR_IA = "Se me complicó responder ahora. Escríbenos por WhatsApp y te atendemos.";
 
 /** Cualquier parte de la web puede abrir el chat de Nexo con abrirNexo() (por ejemplo, la demo de la sección #nexo). */
 export const EVENTO_ABRIR = "nexo:abrir";
@@ -83,10 +84,13 @@ export function Asistente() {
     }, 650 + Math.min(900, r.msg.length * 4));
   }
 
-  async function responderIA(pregunta: string) {
+  async function responderIA() {
     setChips([]); setEscribiendo(true);
+    // Si la IA falla o tarda más de ~15 s, cortamos y ofrecemos WhatsApp
+    const corte = new AbortController();
+    const reloj = setTimeout(() => corte.abort(), 16_000);
     try {
-      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: historial.current.slice(-10) }) });
+      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: historial.current.slice(-10) }), signal: corte.signal });
       if (!res.ok) throw new Error(String(res.status));
       const { reply, chips: opciones, whatsapp } = (await res.json()) as { reply: string; chips?: string[]; whatsapp?: string | null };
       setEscribiendo(false);
@@ -96,7 +100,11 @@ export function Asistente() {
       if (whatsapp) setWaMsg(whatsapp);
     } catch {
       setEscribiendo(false);
-      responderFijo(detectarTema(pregunta)); // si la IA falla, responde el modo fijo
+      agregar({ de: "bot", texto: ERROR_IA }); // debajo queda el botón "Hablar por WhatsApp"
+      historial.current.push({ role: "assistant", content: ERROR_IA });
+      setChips([]);
+    } finally {
+      clearTimeout(reloj);
     }
   }
 
@@ -105,7 +113,7 @@ export function Asistente() {
     historial.current.push({ role: "user", content: label });
     const t = CHIP_TEMA[label] as Tema | undefined;
     if (t && RESPUESTAS[t].tema !== "información") setTema(RESPUESTAS[t].tema);
-    if (USAR_IA && !SIEMPRE_FIJO.includes(label)) responderIA(label);
+    if (USAR_IA && !SIEMPRE_FIJO.includes(label)) responderIA();
     else responderFijo(t ?? "none");
   }
 
@@ -117,7 +125,7 @@ export function Asistente() {
     historial.current.push({ role: "user", content: q });
     const t = detectarTema(q);
     if (t !== "none" && RESPUESTAS[t].tema !== "información") setTema(RESPUESTAS[t].tema);
-    if (USAR_IA) responderIA(q); else responderFijo(t);
+    if (USAR_IA) responderIA(); else responderFijo(t);
   }
 
   const wa = waTexto(waMsg ?? `Hola NEXUSDV, vengo de su web y quiero ${tema === "información" ? "información" : `información sobre ${tema}`}.`);
