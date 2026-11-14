@@ -37,7 +37,7 @@ export function Contacto() {
             </div>
           </div>
           <div className="rows">
-            <div className="crow"><span className="mono">WhatsApp</span><b>{contacto.whatsapp}</b><a href={contacto.whatsappLink} target="_blank" rel="noopener">Abrir chat</a></div>
+            <div className="crow"><span className="mono">WhatsApp</span><b>Contáctanos ahora</b><a href={contacto.whatsappLink} target="_blank" rel="noopener">Abrir chat</a></div>
             <div className="crow"><span className="mono">Correo</span><b>{contacto.correo}</b><Copiar texto={contacto.correo} /></div>
             <div className="crow"><span className="mono">Instagram</span><b>{contacto.instagram}</b><a href={contacto.instagramLink} target="_blank" rel="noopener">Ver perfil</a></div>
           </div>

@@ -138,5 +138,5 @@ Servicios:
 - Dominio propio: .com, .pe o .com.pe. El dominio .pe (y .com.pe) también se cotiza; se puede comprar solo el dominio.
 - Correo corporativo: dominio + 4 correos corporativos a S/ 550 el primer año. Incluye configuración en celular y computadora y ayuda por WhatsApp para usarlo. La entrega del correo corporativo es INMEDIATA. El precio de renovación se informa antes de pagar.
 Proyectos entregados: LML Agency (web de productora audiovisual, lmlagencype.com), LML Agency Alquiler (página de alquiler de equipos de audio y video, lmlagencype.com/alquiler) y Creatrix (sistema de fidelización con puntos y promociones).
-Contacto: WhatsApp ${contacto.whatsapp}, correo ${contacto.correo}, Instagram ${contacto.instagram}.
+Contacto: WhatsApp (con el botón "Hablar por WhatsApp" del chat; no se muestra el número), correo ${contacto.correo}, Instagram ${contacto.instagram}.
 `.trim();

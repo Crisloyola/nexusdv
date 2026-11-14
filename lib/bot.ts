@@ -21,7 +21,7 @@ export const RESPUESTAS: Record<Tema, { tema: string; msg: string; chips: string
   time: { tema: "los tiempos de entrega", msg: "Estos son nuestros tiempos de entrega:\n• 💻 <b>Landing page:</b> 7 días\n• 📧 <b>Correo corporativo:</b> inmediato\n• 📱 <b>Apps y sistemas:</b> según lo que necesites; al cotizar te damos la fecha exacta", chips: ["Precios", "Páginas web"] },
   hi: { tema: "información", msg: "¡Hola! 😊 ¿En qué te puedo ayudar?", chips: [...MENU] },
   human: { tema: "información", msg: "Claro, te paso con una persona del equipo por WhatsApp. Te responden lo antes posible.\n\n👇 Toca el botón <b>Hablar por WhatsApp</b> aquí abajo y escríbenos directo.", chips: [] },
-  contact: { tema: "información", msg: "Puedes escribirnos por:\n• WhatsApp: <b>941 163 771</b>\n• Correo: <b>contacto@nexusdv.pe</b>\n• Instagram: <b>@nexusdv.pe</b>\n\n👇 También puedes tocar el botón <b>Hablar por WhatsApp</b> aquí abajo.", chips: ["Páginas web", "Apps", "Sistemas"] },
+  contact: { tema: "información", msg: "Puedes escribirnos por:\n• WhatsApp: <b>Contáctanos ahora</b>\n• Correo: <b>contacto@nexusdv.pe</b>\n• Instagram: <b>@nexusdv.pe</b>\n\n👇 También puedes tocar el botón <b>Hablar por WhatsApp</b> aquí abajo.", chips: ["Páginas web", "Apps", "Sistemas"] },
   thanks: { tema: "información", msg: "¡Con gusto! 🙌 Si quieres avanzar, escríbenos por WhatsApp o a <b>contacto@nexusdv.pe</b> y te enviamos tu cotización sin costo.\n\n👇 También puedes tocar el botón <b>Hablar por WhatsApp</b> aquí abajo.", chips: [] },
   none: { tema: "información", msg: "No estoy seguro de haberte entendido 🤔 Elige una opción o toca el botón <b>Hablar por WhatsApp</b> 👇 para escribirle directo a nuestro equipo.", chips: [...MENU] },
 };
