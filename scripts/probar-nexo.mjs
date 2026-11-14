@@ -46,6 +46,7 @@ function reglasGenerales(r) {
   if (/desde s\/|s\/ ?500|7 dias|inmediat|descuento|promo/.test(norm(t))) fallas.push("dato que no está en la fuente única");
   if (/s\/ ?\d/.test(norm(t)) && !/s\/ ?550/.test(norm(t))) fallas.push("inventa un precio");
   if (/5 correos|cinco correos/.test(norm(t))) fallas.push("dice 5 correos");
+  if (!/\p{Extended_Pictographic}/u.test(t)) fallas.push("no usa emojis");
   if ((r.chips || []).length > 4) fallas.push("más de 4 opciones");
   if ((r.chips || []).some((c) => /whats ?app/i.test(c))) fallas.push("repite WhatsApp como opción");
   return fallas;
