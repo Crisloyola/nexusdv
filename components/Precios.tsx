@@ -8,7 +8,7 @@ export function Precios() {
       <div className="wrap">
         <div className="sec__top rv">
           <div><p className="mono tag">Precios</p><h2 className="display h2">Claros desde el inicio</h2></div>
-          <p className="lead">Webs, apps y sistemas se cotizan según lo que necesitas. El dominio con correo tiene precio fijo.</p>
+          <p className="lead">Webs, apps, sistemas y asistentes con IA se cotizan según lo que necesitas. El dominio con correo tiene precio fijo.</p>
         </div>
         <div className="plans rv">
           {planes.map((p) => (

@@ -1,5 +1,7 @@
-// Todos los textos y datos del negocio en un solo lugar.
-// Para cambiar un precio, un teléfono o agregar un proyecto, edita solo este archivo.
+// Contacto y proyectos. Los servicios y precios están en lib/servicios.ts (fuente única).
+import { datosParaNexo } from "./servicios";
+
+export { planes, preguntas } from "./servicios";
 
 export const contacto = {
   whatsapp: "941 163 771",
@@ -85,58 +87,10 @@ export const proyectos: Proyecto[] = [
   },
 ];
 
-export const planes = [
-  {
-    nombre: "Página web",
-    precio: "A medida",
-    nota: "",
-    destacado: true,
-    etiqueta: "Más pedido",
-    texto: "Para mostrar lo que vendes y recibir mensajes. Cotización sin costo.",
-    incluye: ["Diseño a medida", "Adaptada a celular", "Botón directo a WhatsApp", "Lista para Google"],
-    boton: "Pedir cotización",
-  },
-  {
-    nombre: "Apps y sistemas",
-    precio: "A medida",
-    nota: "",
-    destacado: false,
-    texto: "Para vender, atender y ordenar tu negocio. Cotización sin costo.",
-    incluye: ["App Android y iPhone", "Publicación en las tiendas", "Sistemas de ventas, inventario o reservas", "Panel para administrar todo"],
-    boton: "Cotizar mi proyecto",
-  },
-  {
-    nombre: "Dominio y correo",
-    precio: "S/ 550",
-    nota: "el primer año",
-    destacado: false,
-    texto: "Para dejar el Gmail personal y escribir con tu propia marca.",
-    incluye: ["Tu dominio, como tuempresa.com", "4 correos con los nombres que elijas", "Configuración en celular y computadora", "Ayuda por WhatsApp para usarlo"],
-    boton: "Quiero mi correo",
-  },
-];
-
-export const preguntas = [
-  { q: "¿Cuánto cuesta una página web?", a: "Depende de las secciones y funciones que necesites. Te enviamos la cotización sin costo." },
-  { q: "¿Puedo ver el diseño antes de pagar todo?", a: "Sí. Te mostramos el diseño y lo apruebas antes de programar." },
-  { q: "¿Hacen apps para Android y iPhone?", a: "Sí. Desarrollamos tu app para los dos y te ayudamos a publicarla en Google Play y App Store." },
-  { q: "¿Qué tipo de sistemas hacen?", a: "Sistemas a medida: ventas, inventario, reservas, fidelización de clientes y más. Te cotizamos según lo que necesites." },
-  { q: "¿Puedo comprar solo el dominio?", a: "Sí. Te ayudamos a elegir y registrar tu dominio, como tuempresa.com o tuempresa.pe, y te enviamos la cotización sin costo." },
-  { q: "¿Puedo pedir varios servicios juntos?", a: "Sí. Web, app, sistema, dominio y correo: te cotizamos todo en una sola propuesta." },
-  { q: "¿Cuánto cuesta renovar el correo?", a: "Te decimos el precio de renovación antes de que pagues el primer año." },
-];
-
 // Información que usa el asistente con IA (app/api/chat/route.ts).
 export const infoNegocio = `
 NEXUSDV es una empresa de desarrollo en ${contacto.ciudad}.
-Servicios:
-- Páginas web a medida: diseño propio, adaptadas a celular, botón a WhatsApp, listas para Google. El cliente aprueba el diseño antes de programar.
-  · Landing page (página de una sola sección/página): DESDE S/ 500. El precio sube según lo que se agregue (más secciones o páginas, galerías, formularios, catálogo, tienda, varios idiomas, integraciones). El precio final se confirma al cotizar, sin costo.
-  · Tiempo de entrega de una landing: 7 días. Webs más grandes toman más tiempo y la fecha exacta se da al cotizar.
-- Apps para Android y iPhone, con ayuda para publicarlas en Google Play y App Store. El costo y el tiempo dependen mucho de lo que necesite el cliente (funciones, pantallas, usuarios, pagos, panel). Se cotiza sin costo, sin precio fijo.
-- Apps web y sistemas a medida: ventas, inventario, reservas, fidelización de clientes, con panel de administración. Igual que las apps: costo y tiempo según lo que necesite el cliente. Se cotiza sin costo, sin precio fijo.
-- Dominio propio: .com, .pe o .com.pe. El dominio .pe (y .com.pe) también se cotiza; se puede comprar solo el dominio.
-- Correo corporativo: dominio + 4 correos corporativos a S/ 550 el primer año. Incluye configuración en celular y computadora y ayuda por WhatsApp para usarlo. La entrega del correo corporativo es INMEDIATA. El precio de renovación se informa antes de pagar.
-Proyectos entregados: LML Agency (web de productora audiovisual, lmlagencype.com), LML Agency Alquiler (página de alquiler de equipos de audio y video, lmlagencype.com/alquiler) y Creatrix (sistema de fidelización con puntos y promociones).
-Contacto: WhatsApp (con el botón "Hablar por WhatsApp" del chat; no se muestra el número), correo ${contacto.correo}, Instagram ${contacto.instagram}.
+${datosParaNexo()}
+PROYECTOS ENTREGADOS (solo estos): ${proyectos.map((p) => `${p.nombre} (${p.etiqueta.toLowerCase()}, ${p.dominio})`).join("; ")}.
+CONTACTO: WhatsApp (botón "Hablar por WhatsApp" del chat; nunca escribas el número), correo ${contacto.correo}, Instagram ${contacto.instagram}.
 `.trim();

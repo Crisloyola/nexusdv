@@ -1,11 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-
-const PASOS = [
-  { t: "Diseñamos tu proyecto", p: "Conversamos, entendemos tu negocio y te mostramos el diseño. Lo apruebas antes de programar.", m: "diseño → tu aprobación" },
-  { t: "Lo programamos", p: "Construimos tu web, app o sistema para que funcione en Android, iPhone y computadora.", m: "código → pruebas" },
-  { t: "Lo publicamos", p: "Sale en línea con tu dominio o en las tiendas de apps, conectado a tu WhatsApp. Y te acompañamos después.", m: "tuempresa.pe → en línea" },
-];
+import { PASOS } from "@/lib/servicios";
 
 /** Proceso en 3 pasos. La línea que une los pasos se dibuja cuando la sección aparece en pantalla. */
 export function Pasos() {
