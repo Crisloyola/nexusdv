@@ -27,7 +27,7 @@ export function Hero() {
 
         <Tile className="stat c-3"><span className="tile__ico"><Icon id="web" /></span><div><div className="big"><CountUp to={24} />/7</div><p className="stat__lbl">Tu negocio visible aunque no estés conectado</p></div></Tile>
         <Tile className="stat c-3"><span className="tile__ico"><Icon id="phone" /></span><div><div className="big"><CountUp to={100} />%</div><p className="stat__lbl">A medida: webs, apps y sistemas sin plantillas</p></div></Tile>
-        <Tile className="stat c-3"><span className="tile__ico"><Icon id="mail" /></span><div><div className="big">S/ <CountUp to={550} /></div><p className="stat__lbl">Dominio + 5 correos corporativos el primer año</p></div></Tile>
+        <Tile className="stat c-3"><span className="tile__ico"><Icon id="mail" /></span><div><div className="big">S/ <CountUp to={550} /></div><p className="stat__lbl">Dominio + 4 correos corporativos el primer año</p></div></Tile>
         <Tile as="a" href={contacto.whatsappLink} className="tile--lime tile--link stat c-3">
           <span className="tile__ico"><Icon id="wa" /></span>
           <div className="tile__foot"><span style={{ fontSize: 22, letterSpacing: "-0.02em", lineHeight: 1.15 }}>Pide tu cotización gratis</span><span className="arrow"><Icon id="arr" /></span></div>

@@ -29,7 +29,7 @@ export function Contacto() {
           </Tile>
           <FlutedGlass seed={43} className="close c-12">
             <h2>Cuéntanos qué necesita tu negocio</h2>
-            <p>Webs, apps y sistemas a medida con cotización sin costo. Promo fin de año: dominio con 5 correos corporativos a S/ 550 el primer año.</p>
+            <p>Webs, apps y sistemas a medida con cotización sin costo. Dominio con 4 correos corporativos a S/ 550 el primer año.</p>
             <div className="btn-row">
               <a className="btn btn--lime" href={contacto.whatsappLink}><Icon id="wa" />Escríbenos por WhatsApp</a>
               <a className="btn btn--ghost" href={`mailto:${contacto.correo}`}>Enviar un correo</a>

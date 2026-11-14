@@ -6,8 +6,8 @@ export const contacto = {
   whatsappLink: "https://wa.link/7b0sdd",
   whatsappNumero: "51941163771", // con código de país, sin "+" ni espacios
   correo: "contacto@nexusdv.pe",
-  instagram: "@nexusdvpe",
-  instagramLink: "https://www.instagram.com/nexusdvpe/",
+  instagram: "@nexusdv.pe",
+  instagramLink: "https://www.instagram.com/nexusdv.pe/",
   ciudad: "Lima, Perú",
 };
 
@@ -110,8 +110,8 @@ export const planes = [
     precio: "S/ 550",
     nota: "el primer año",
     destacado: false,
-    texto: "Promo fin de año: deja el Gmail personal y escribe con tu propia marca.",
-    incluye: ["Tu dominio, como tuempresa.com", "5 correos con los nombres que elijas", "Configuración en celular y computadora", "Ayuda por WhatsApp para usarlo"],
+    texto: "Para dejar el Gmail personal y escribir con tu propia marca.",
+    incluye: ["Tu dominio, como tuempresa.com", "4 correos con los nombres que elijas", "Configuración en celular y computadora", "Ayuda por WhatsApp para usarlo"],
     boton: "Quiero mi correo",
   },
 ];
@@ -136,7 +136,7 @@ Servicios:
 - Apps para Android y iPhone, con ayuda para publicarlas en Google Play y App Store. El costo y el tiempo dependen mucho de lo que necesite el cliente (funciones, pantallas, usuarios, pagos, panel). Se cotiza sin costo, sin precio fijo.
 - Apps web y sistemas a medida: ventas, inventario, reservas, fidelización de clientes, con panel de administración. Igual que las apps: costo y tiempo según lo que necesite el cliente. Se cotiza sin costo, sin precio fijo.
 - Dominio propio: .com, .pe o .com.pe. El dominio .pe (y .com.pe) también se cotiza; se puede comprar solo el dominio.
-- Correo corporativo — PROMOCIÓN DE FIN DE AÑO: dominio + 5 correos corporativos a S/ 550 el primer año (antes eran 4 correos por el mismo precio). Incluye configuración en celular y computadora y ayuda por WhatsApp para usarlo. La entrega del correo corporativo es INMEDIATA. El precio de renovación se informa antes de pagar.
+- Correo corporativo: dominio + 4 correos corporativos a S/ 550 el primer año. Incluye configuración en celular y computadora y ayuda por WhatsApp para usarlo. La entrega del correo corporativo es INMEDIATA. El precio de renovación se informa antes de pagar.
 Proyectos entregados: LML Agency (web de productora audiovisual, lmlagencype.com), LML Agency Alquiler (página de alquiler de equipos de audio y video, lmlagencype.com/alquiler) y Creatrix (sistema de fidelización con puntos y promociones).
 Contacto: WhatsApp ${contacto.whatsapp}, correo ${contacto.correo}, Instagram ${contacto.instagram}.
 `.trim();
