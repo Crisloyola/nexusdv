@@ -5,6 +5,30 @@ import { contacto, infoNegocio } from "@/lib/data";
 
 export const runtime = "nodejs";
 
+// Flujo de venta: una pregunta por mensaje y cierre con mensaje de WhatsApp listo.
+const FLUJO = `Flujo de venta (cuando piden un asistente/bot/chatbot con IA, una web, una app o un sistema):
+1. Responde que sí con seguridad en 2 o 3 líneas. Para asistentes con IA ponte tú como ejemplo.
+2. Luego haz UNA sola pregunta por mensaje, en este orden, saltando lo que el cliente ya dijo:
+   a) ¿Qué tipo de negocio tienes? (sin opciones)
+   b) ¿Qué debe hacer? Con estas opciones según el servicio:
+      asistente con IA: "Responder preguntas frecuentes", "Tomar reservas", "Tomar pedidos", "Otra cosa"
+      web: "Mostrar mis servicios", "Recibir pedidos por WhatsApp", "Otra cosa"
+      app: "Que compren", "Que reserven", "Que sigan sus pedidos", "Otra cosa"
+      sistema: "Ventas", "Inventario", "Reservas", "Fidelización de clientes"
+      Si elige "Otra cosa", pregúntale qué necesita (sin opciones).
+   c) Asistente, app o sistema: ¿Ya tienes página web? (opciones "Sí, tengo web", "No tengo web").
+      Web: ¿Ya tienes dominio? (opciones "Sí, tengo dominio", "No tengo dominio").
+3. Cierre (cuando ya tienes a, b y c): resume en una línea lo que pidió, dile que toque "Hablar por WhatsApp" para recibir su cotización sin costo y llena "whatsapp" con el mensaje para el equipo, con este formato:
+   asistente: "Hola NEXUSDV, vengo de su web. Quiero un asistente con IA para mi [negocio] que [lo que pidió]. [Tengo / No tengo] página web."
+   web: "Hola NEXUSDV, vengo de su web. Quiero una página web para mi [negocio] para [lo que pidió]. [Tengo / No tengo] dominio."
+   app: "Hola NEXUSDV, vengo de su web. Quiero una app para mi [negocio] para [lo que pidió]. [Tengo / No tengo] página web."
+   sistema: "Hola NEXUSDV, vengo de su web. Quiero un sistema de [lo que pidió] para mi [negocio]. [Tengo / No tengo] página web."
+
+Salida: responde SIEMPRE en JSON con:
+- "respuesta": el texto para el cliente.
+- "opciones": de 0 a 4 botones cortos para responder tu pregunta (lista vacía si no aplica).
+- "whatsapp": el mensaje para el equipo cuando cierras el flujo o cuando piden hablar con una persona ("Hola NEXUSDV, vengo de su web y quiero hablar con una persona del equipo."); en cualquier otro caso, null.`;
+
 const SISTEMA = `Eres Nexo, el asistente virtual de la web de NEXUSDV. Si te preguntan tu nombre o quién eres, di que eres Nexo, el asistente de NEXUSDV. Respondes en español de Perú con un tono profesional, cordial y seguro, como un asesor comercial. Trata al cliente de "tú".
 
 Formato (el chat muestra texto plano, sin Markdown):
@@ -31,9 +55,38 @@ Precios: usa solo los datos oficiales de abajo. Webs, apps, sistemas y asistente
 - Nunca escribas el número de celular o de WhatsApp. Para WhatsApp di "Contáctanos ahora por WhatsApp 📲".
 - Cuando el cliente muestre interés, termina invitando a contactarnos ahora por WhatsApp 📲 o por correo electrónico ✉️ ${contacto.correo} (menciona los dos). Agrega que también puede tocar el botón "Hablar por WhatsApp" que está aquí abajo en el chat 👇 para escribirnos directo.
 
+${FLUJO}
+
 ${infoNegocio}`;
 
 type Msg = { role: "user" | "assistant"; content: string };
+
+// Formato de la respuesta de la IA (structured outputs: el JSON siempre llega válido).
+const FORMATO = {
+  type: "json_schema" as const,
+  schema: {
+    type: "object",
+    properties: {
+      respuesta: { type: "string" },
+      opciones: { type: "array", items: { type: "string" } },
+      whatsapp: { anyOf: [{ type: "string" }, { type: "null" }] },
+    },
+    required: ["respuesta", "opciones", "whatsapp"],
+    additionalProperties: false,
+  },
+};
+
+/** Limpia lo que devuelve la IA antes de mandarlo al navegador. */
+function limpiar(texto: string) {
+  let d: { respuesta?: unknown; opciones?: unknown; whatsapp?: unknown };
+  try { d = JSON.parse(texto); } catch { return { reply: texto, chips: [] as string[], whatsapp: null }; }
+  const reply = typeof d.respuesta === "string" && d.respuesta.trim() ? d.respuesta.trim() : "Escríbenos por WhatsApp y te ayudamos.";
+  const chips = (Array.isArray(d.opciones) ? d.opciones : [])
+    .filter((c): c is string => typeof c === "string" && !!c.trim() && c.length <= 40)
+    .map((c) => c.trim()).slice(0, 4);
+  const whatsapp = typeof d.whatsapp === "string" && d.whatsapp.startsWith("Hola NEXUSDV") ? d.whatsapp.slice(0, 400) : null;
+  return { reply, chips, whatsapp };
+}
 
 export async function POST(req: Request) {
   if (!process.env.ANTHROPIC_API_KEY) return Response.json({ error: "IA no configurada" }, { status: 503 });
@@ -53,12 +106,13 @@ export async function POST(req: Request) {
     const client = new Anthropic();
     const res = await client.messages.create({
       model: process.env.CHAT_MODEL || "claude-haiku-5-5",
-      max_tokens: 700,
+      max_tokens: 1500,
       system: SISTEMA,
       messages,
+      output_config: { format: FORMATO },
     });
-    const reply = res.content.map((b) => (b.type === "text" ? b.text : "")).join("").trim();
-    return Response.json({ reply: reply || "Escríbenos por WhatsApp y te ayudamos." });
+    const texto = res.content.map((b) => (b.type === "text" ? b.text : "")).join("").trim();
+    return Response.json(limpiar(texto));
   } catch (e) {
     console.error("chat:", e);
     return Response.json({ error: "No se pudo responder" }, { status: 502 });
