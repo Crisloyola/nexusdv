@@ -48,8 +48,24 @@ export const proyectos: Proyecto[] = [
     url: "https://lmlagencype.com",
     urlTexto: "Visitar lmlagencype.com",
     dominio: "lmlagencype.com",
-    imgDesktop: { src: "/img/lml-desktop.jpg", w: 1300, h: 860, alt: "Página de inicio de lmlagencype.com en computadora" },
-    imgMovil: { src: "/img/lml-movil.jpg", w: 739, h: 1464, alt: "lmlagencype.com en un celular" },
+    imgDesktop: { src: "/img/lml-landing-desktop.png", w: 1899, h: 941, alt: "Página de inicio de lmlagencype.com en computadora" },
+    imgMovil: { src: "/img/lml-landing-movil.png", w: 382, h: 846, alt: "lmlagencype.com en un celular" },
+  },
+  {
+    nombre: "LML Agency · Alquiler",
+    etiqueta: "Alquiler de equipos · Página web",
+    descripcion:
+      "Página de alquiler de equipos de audio y video en Lima. Muestra packs listos para usar y lleva cada consulta de disponibilidad directo a WhatsApp.",
+    datos: [
+      { t: "Catálogo", v: "Packs de equipos" },
+      { t: "Pedidos", v: "Directo a WhatsApp" },
+      { t: "Celular", v: "Cualquier pantalla" },
+    ],
+    url: "https://lmlagencype.com/alquiler",
+    urlTexto: "Visitar lmlagencype.com/alquiler",
+    dominio: "lmlagencype.com/alquiler",
+    imgDesktop: { src: "/img/lml-alquiler-desktop.png", w: 1897, h: 938, alt: "Página de alquiler de equipos de lmlagencype.com en computadora" },
+    imgMovil: { src: "/img/lml-alquiler-movil.png", w: 382, h: 842, alt: "Página de alquiler de lmlagencype.com en un celular" },
   },
   {
     nombre: "Creatrix",
@@ -94,8 +110,8 @@ export const planes = [
     precio: "S/ 550",
     nota: "el primer año",
     destacado: false,
-    texto: "Para dejar el Gmail personal y escribir con tu propia marca.",
-    incluye: ["Tu dominio, como tuempresa.com", "4 correos con los nombres que elijas", "Configuración en celular y computadora", "Ayuda por WhatsApp para usarlo"],
+    texto: "Promo fin de año: deja el Gmail personal y escribe con tu propia marca.",
+    incluye: ["Tu dominio, como tuempresa.com", "5 correos con los nombres que elijas", "Configuración en celular y computadora", "Ayuda por WhatsApp para usarlo"],
     boton: "Quiero mi correo",
   },
 ];
@@ -118,7 +134,7 @@ Servicios:
 - Apps para Android y iPhone, con ayuda para publicarlas en Google Play y App Store. Cotización sin costo.
 - Sistemas a medida: ventas, inventario, reservas, fidelización de clientes, con panel de administración. Cotización sin costo.
 - Dominio propio (tuempresa.com, .pe, .com.pe). También se vende solo el dominio, con cotización sin costo.
-- Correo corporativo: dominio + 4 correos a S/ 550 el primer año, configurados en celular y computadora.
-Proyectos entregados: LML Agency (web de productora audiovisual, lmlagencype.com) y Creatrix (sistema de fidelización con puntos y promociones).
+- Correo corporativo — PROMOCIÓN DE FIN DE AÑO: dominio + 5 correos corporativos a S/ 550 el primer año (antes eran 4 correos por el mismo precio). Incluye configuración en celular y computadora y ayuda por WhatsApp para usarlo. El precio de renovación se informa antes de pagar.
+Proyectos entregados: LML Agency (web de productora audiovisual, lmlagencype.com), LML Agency Alquiler (página de alquiler de equipos de audio y video, lmlagencype.com/alquiler) y Creatrix (sistema de fidelización con puntos y promociones).
 Contacto: WhatsApp ${contacto.whatsapp}, correo ${contacto.correo}, Instagram ${contacto.instagram}.
 `.trim();

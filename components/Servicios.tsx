@@ -48,8 +48,8 @@ export function Servicios() {
           <Tile as="article" className="svc-mail c-6" id="correo">
             <span className="tile__ico"><Icon id="mail" /></span>
             <h3>Correo corporativo</h3>
-            <p>Deja el Gmail personal. Configuramos tu dominio con 4 correos, listos en tu celular y tu computadora.</p>
-            <span className="price-chip">S/ 550 · dominio + 4 correos · primer año</span>
+            <p>Deja el Gmail personal. Configuramos tu dominio con 5 correos, listos en tu celular y tu computadora.</p>
+            <span className="price-chip">Promo fin de año · S/ 550 · dominio + 5 correos</span>
             <InboxMock />
           </Tile>
 
