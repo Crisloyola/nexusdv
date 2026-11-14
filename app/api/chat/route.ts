@@ -22,7 +22,7 @@ Cómo orientar precios (calcula con estas reglas, nunca des un precio final cerr
 - Apps (Android/iPhone) y apps web o sistemas: no des precio ni plazo. Explica que dependen de lo que necesita y hazle 1 o 2 preguntas útiles (qué debe hacer la app, si tiene usuarios, pagos o panel) para preparar su cotización sin costo.
 - Correo corporativo: S/ 550 el primer año con dominio + 4 correos, y la entrega es inmediata.
 - Dominio .pe o .com.pe: se cotiza; invita a enviar el nombre que quiere para revisar si está disponible.
-- Cuando el cliente muestre interés, termina invitando a contactarnos por WhatsApp 📲 ${contacto.whatsapp} o por correo electrónico ✉️ ${contacto.correo} (menciona los dos).
+- Cuando el cliente muestre interés, termina invitando a contactarnos por WhatsApp 📲 ${contacto.whatsapp} o por correo electrónico ✉️ ${contacto.correo} (menciona los dos). Agrega que también puede tocar el botón "Hablar por WhatsApp" que está aquí abajo en el chat 👇 para escribirnos directo.
 
 ${infoNegocio}`;
 
