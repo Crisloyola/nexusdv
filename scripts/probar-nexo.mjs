@@ -38,8 +38,13 @@ function reglasGenerales(r) {
   const fallas = [];
   const t = r.reply || "";
   if (r.ms > 15_000) fallas.push(`tardó ${r.ms} ms (>15 s)`);
-  if (t.split("\n").filter((l) => l.trim()).length > 5) fallas.push("más de 4 líneas de texto");
-  if (palabras(t) > 75) fallas.push(`${palabras(t)} palabras (máx ~60)`);
+  const lineas = t.split("\n").filter((l) => l.trim());
+  const vinetas = lineas.filter((l) => l.trim().startsWith("•"));
+  if (lineas.length - vinetas.length > 5) fallas.push("más de 4 líneas de texto");
+  if (vinetas.length > 5) fallas.push("lista de más de 5 elementos");
+  // varias opciones seguidas con comas en vez de una por línea (ej. "a.pe, b.pe o c.pe")
+  if ((t.match(/\b[\w-]+\.(pe|com|com\.pe)\b/g) || []).length >= 2 && vinetas.length < 2) fallas.push("lista escrita en una sola línea");
+  if (palabras(t) > 80) fallas.push(`${palabras(t)} palabras (máx ~60)`);
   if (preguntas(t) > 1) fallas.push("más de una pregunta");
   if (/\*\*|^#|`/m.test(t)) fallas.push("usa Markdown");
   if (/941|163 ?771/.test(t)) fallas.push("muestra el número de WhatsApp");
@@ -148,6 +153,13 @@ const CASOS = [
     check: (r) => [
       r.reply.split("\n").filter((l) => l.trim()).length > 3 && "se extiende con un tema ajeno",
       !algunaDe(r.reply, "nexusdv", "negocio", "web", "servicio") && "no vuelve al tema",
+    ],
+  },
+  {
+    q: "Tengo una veterinaria, dame nombres para mi dominio",
+    esperado: "Una lista con cada nombre en su propia línea (• ), no todo seguido.",
+    check: (r) => [
+      (r.reply.match(/^\s*•/gm) || []).length < 2 && "los nombres no salen en lista (uno por línea)",
     ],
   },
   {
