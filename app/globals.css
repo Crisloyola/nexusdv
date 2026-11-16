@@ -341,8 +341,6 @@ main { overflow-x: clip; }
 .fab__x { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; }
 .fab--hola i { animation: nxwave 1.2s ease-in-out 3; }
 @keyframes nxwave { 20% { transform: rotate(-14deg); } 40% { transform: rotate(10deg); } 60% { transform: rotate(-8deg); } 80% { transform: rotate(4deg); } }
-html.js:not(.tras-portada):not(.bot-open) .fab { opacity: 0; transform: translateY(20px); pointer-events: none; }
-html.cta-abajo:not(.bot-open) .fab { opacity: 0; transform: translateY(20px); pointer-events: none; }
 /* saludo de Nexo al entrar a la web */
 .nx-hola { position: fixed; z-index: 46; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(80px + env(safe-area-inset-bottom, 0px)); width: min(310px, calc(100vw - 32px)); display: flex; align-items: flex-start; gap: 6px; padding: 14px 10px 14px 16px; border-radius: 16px 16px 5px 16px; background: var(--s2); color: var(--tx); border: 1px solid var(--line-2); box-shadow: var(--hi), 0 24px 60px rgba(0,0,0,.55); transform-origin: bottom right; transition: opacity .35s, transform .45s var(--ease), visibility .35s; }
 .nx-hola--off { opacity: 0; transform: translateY(12px) scale(.94); visibility: hidden; pointer-events: none; }
@@ -354,7 +352,6 @@ html.cta-abajo:not(.bot-open) .fab { opacity: 0; transform: translateY(20px); po
 .nx-hola__x:hover { background: rgba(255,255,255,.06); color: var(--tx); }
 .nx-hola__x svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
 .bot-open .nx-hola, .menu-open .nx-hola { opacity: 0; visibility: hidden; pointer-events: none; }
-html.js:not(.tras-portada) .nx-hola { opacity: 0; visibility: hidden; pointer-events: none; }
 
 /* ventana de chat de Nexo (se abre con el botón flotante) */
 .bot { position: fixed; z-index: 60; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(80px + env(safe-area-inset-bottom, 0px)); width: min(400px, calc(100vw - 32px)); height: min(620px, calc(100dvh - 120px)); max-height: none; transform-origin: bottom right; transition: opacity .3s, transform .4s var(--ease), visibility .3s; }

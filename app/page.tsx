@@ -11,7 +11,6 @@ import { Confianza } from "@/components/Confianza";
 import { Contacto } from "@/components/Contacto";
 import { Asistente } from "@/components/Asistente";
 import { RevealInit } from "@/components/RevealInit";
-import { Brillo } from "@/components/Brillo";
 import { datosEstructurados } from "@/lib/seo";
 
 export default function Home() {
@@ -35,7 +34,6 @@ export default function Home() {
       <Contacto />
       <Asistente />
       <RevealInit />
-      <Brillo />
     </>
   );
 }
