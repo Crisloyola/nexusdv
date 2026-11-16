@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { testimonios } from "@/lib/data";
 
 /** Testimonios de clientes reales (lib/data.ts). Si la lista está vacía, la sección no se muestra. */
@@ -14,7 +15,11 @@ export function Testimonios() {
             <figure className="testi rv" key={t.negocio + t.texto.slice(0, 20)}>
               <blockquote>“{t.texto}”</blockquote>
               <figcaption>
-                <span className="testi__av" aria-hidden="true">{(t.nombre ?? t.negocio)[0]}</span>
+                {t.logo ? (
+                  <Image className="testi__av testi__av--logo" src={t.logo} width={44} height={44} alt={`Logo de ${t.negocio}`} />
+                ) : (
+                  <span className="testi__av" aria-hidden="true">{(t.nombre ?? t.negocio)[0]}</span>
+                )}
                 <span><b>{t.nombre ?? t.negocio}</b><small>{t.nombre ? t.negocio : "Cliente"}{t.proyecto ? ` · ${t.proyecto}` : ""}</small></span>
               </figcaption>
             </figure>

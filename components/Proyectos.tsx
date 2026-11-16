@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { proyectos } from "@/lib/data";
 import { Icon } from "./Icons";
+import { Carrusel } from "./Carrusel";
 
 /** Casos de éxito: cada proyecto entregado con su problema, solución y resultado. Datos en lib/data.ts. */
 export function Proyectos() {
@@ -11,13 +12,14 @@ export function Proyectos() {
           <h2 id="proyectos-t" className="tit tit--c"><b>Casos de éxito, en línea hoy.</b> <span>Puedes entrar y verlos tú mismo.</span></h2>
           <p className="sec__p">Qué necesitaba cada negocio, qué le hicimos y qué tiene hoy.</p>
         </div>
-        <div className="cases">
+        <div className="rv">
+        <Carrusel etiqueta="Casos de éxito">
           {proyectos.map((p) => (
-            <article className="case rv" key={p.nombre}>
+            <article className="case" key={p.nombre} aria-roledescription="caso" aria-label={p.nombre}>
               <a className="case__media" href={p.url} target="_blank" rel="noopener" tabIndex={-1} aria-hidden="true">
                 <span className="case__win">
                   <span className="case__bar"><i /><i /><i /><span>{p.dominio}</span></span>
-                  <Image src={p.imgDesktop.src} width={p.imgDesktop.w} height={p.imgDesktop.h} alt="" quality={85} sizes="(max-width: 960px) 90vw, 400px" />
+                  <Image src={p.imgDesktop.src} width={p.imgDesktop.w} height={p.imgDesktop.h} alt="" quality={85} sizes="(max-width: 640px) 86vw, (max-width: 960px) 46vw, 400px" />
                 </span>
               </a>
               <div className="case__head">
@@ -34,6 +36,7 @@ export function Proyectos() {
               </dl>
             </article>
           ))}
+        </Carrusel>
         </div>
       </div>
     </section>

@@ -21,17 +21,32 @@ export const waTexto = (texto: string, campana?: string) =>
   `https://wa.me/${contacto.whatsappNumero}?text=${encodeURIComponent(texto)}${campana ? `&utm_source=web&utm_campaign=${campana}` : ""}`;
 
 /** Testimonios REALES de clientes, con su permiso. La sección no aparece mientras la lista esté vacía. */
-export type Testimonio = { texto: string; negocio: string; nombre?: string; proyecto?: string };
+/** `logo`: ícono cuadrado del cliente (public/img/logos). Sin logo se muestra su inicial. */
+export type Testimonio = { texto: string; negocio: string; nombre?: string; proyecto?: string; logo?: string };
 export const testimonios: Testimonio[] = [
   {
     texto: "Quedamos muy satisfechos con el desarrollo de nuestra página web. Lograron plasmar nuestra idea en un sitio moderno, profesional y fácil de navegar. Muy buen trabajo y atención durante todo el proceso.",
     negocio: "LML Agency",
+    logo: "/img/logos/lml-agency.png",
     proyecto: "Página web",
   },
   {
     texto: "Excelente servicio de principio a fin. Destacamos la creatividad, el compromiso y la dedicación para conseguir una página web que cumpliera con nuestras expectativas.",
     negocio: "Creatrix",
+    logo: "/img/logos/creatrix.png",
     proyecto: "Sistema a medida",
+  },
+  {
+    texto: "Quedamos muy satisfechos con el desarrollo de nuestra página web. NexusDV logró plasmar nuestra idea en un sitio moderno, profesional y fácil de navegar. Excelente trabajo y atención durante todo el proceso.",
+    negocio: "Franyer Cargo",
+    logo: "/img/logos/franyer-cargo.png",
+    proyecto: "Página web",
+  },
+  {
+    texto: "Excelente servicio de principio a fin. Destacamos la creatividad, el compromiso y la dedicación para conseguir una página web que representara nuestra empresa y nuestros servicios.",
+    negocio: "Mara Capital",
+    logo: "/img/logos/mara-capital.png",
+    proyecto: "Página web",
   },
 ];
 
@@ -112,6 +127,48 @@ export const proyectos: Proyecto[] = [
     dominio: "creatrix-36752.web.app",
     imgDesktop: { src: "/img/creatrix-desktop.jpg", w: 1440, h: 900, alt: "Pantalla de inicio de Creatrix en computadora" },
     imgMovil: { src: "/img/creatrix-movil.jpg", w: 780, h: 1688, alt: "Creatrix en un celular" },
+  },
+  {
+    nombre: "Franyer Cargo",
+    etiqueta: "Agencia de carga y aduanas · Página web",
+    descripcion:
+      "Agencia de carga internacional y aduanas en el Callao. Diseñamos su web con sus servicios, rutas y tiempos de tránsito, y un cotizador que envía cada pedido directo a su WhatsApp.",
+    datos: [
+      { t: "Cotizador", v: "Directo a WhatsApp" },
+      { t: "Idiomas", v: "Español, inglés y chino" },
+      { t: "Celular", v: "Cualquier pantalla" },
+    ],
+    caso: {
+      problema: "Necesitaba presentar sus servicios de carga y aduanas a importadores y recibir pedidos de cotización.",
+      solucion: "Página web en tres idiomas con servicios, rutas desde China y un cotizador de envíos marítimos y aéreos.",
+      resultado: "Cada cotización llega a su WhatsApp con origen, destino, tipo de carga, peso y volumen ya completos.",
+    },
+    url: "https://franyercargo.com",
+    urlTexto: "Visitar franyercargo.com",
+    dominio: "franyercargo.com",
+    imgDesktop: { src: "/img/franyer-desktop.jpg", w: 1440, h: 900, alt: "Página de inicio de franyercargo.com en computadora" },
+    imgMovil: { src: "/img/franyer-movil.jpg", w: 780, h: 1688, alt: "franyercargo.com en un celular" },
+  },
+  {
+    nombre: "Mara Capital",
+    etiqueta: "Préstamos en línea · Página web",
+    descripcion:
+      "Financiera de préstamos rápidos. Diseñamos su web con un simulador de monto y forma de pago, sus requisitos y atención directa por WhatsApp.",
+    datos: [
+      { t: "Simulador", v: "Monto y forma de pago" },
+      { t: "Atención", v: "WhatsApp 24/7" },
+      { t: "Celular", v: "Cualquier pantalla" },
+    ],
+    caso: {
+      problema: "Necesitaba que sus clientes pudieran pedir un préstamo en línea sin ir a una oficina.",
+      solucion: "Página web con simulador de préstamo de S/ 200 a S/ 5,000, requisitos claros y solicitud en línea.",
+      resultado: "Sus clientes eligen monto y forma de pago, envían su solicitud y consultan por WhatsApp a cualquier hora.",
+    },
+    url: "https://www.marakpital.com",
+    urlTexto: "Visitar marakpital.com",
+    dominio: "marakpital.com",
+    imgDesktop: { src: "/img/marakpital-desktop.jpg", w: 1440, h: 900, alt: "Página de inicio de marakpital.com en computadora" },
+    imgMovil: { src: "/img/marakpital-movil.jpg", w: 780, h: 1688, alt: "marakpital.com en un celular" },
   },
 ];
 
