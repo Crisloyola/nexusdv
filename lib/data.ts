@@ -129,6 +129,27 @@ export const proyectos: Proyecto[] = [
     imgMovil: { src: "/img/creatrix-movil.jpg", w: 780, h: 1688, alt: "Creatrix en un celular" },
   },
   {
+    nombre: "Creatrix · Control de ventas",
+    etiqueta: "Sistema a medida · Control de ventas",
+    descripcion:
+      "Sistema de control de ventas para Creatrix Diseño & Publicidad. Su equipo entra con su cuenta y lleva el registro de sus ventas en un solo lugar.",
+    datos: [
+      { t: "Tipo", v: "Sistema con cuentas" },
+      { t: "Acceso", v: "Correo y contraseña" },
+      { t: "Pantalla", v: "Modo claro y oscuro" },
+    ],
+    caso: {
+      problema: "Necesitaba llevar el control de sus ventas de forma ordenada y en un solo lugar.",
+      solucion: "Sistema de control de ventas a medida, con acceso privado para su equipo.",
+      resultado: "Sus ventas registradas en un sistema propio, al que su equipo entra desde la computadora o el celular.",
+    },
+    url: "https://creatrix-one.vercel.app/",
+    urlTexto: "Ver Creatrix · Control de ventas",
+    dominio: "creatrix-one.vercel.app",
+    imgDesktop: { src: "/img/creatrix-ventas-desktop.jpg", w: 1440, h: 900, alt: "Pantalla de ingreso del sistema de control de ventas de Creatrix en computadora" },
+    imgMovil: { src: "/img/creatrix-ventas-movil.jpg", w: 780, h: 1688, alt: "Sistema de control de ventas de Creatrix en un celular" },
+  },
+  {
     nombre: "Franyer Cargo",
     etiqueta: "Agencia de carga y aduanas · Página web",
     descripcion:
