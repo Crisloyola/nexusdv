@@ -135,7 +135,7 @@ export function Asistente() {
       <div className={`nx-hola${hola && !abierto ? "" : " nx-hola--off"}`} role="status" aria-hidden={!hola || abierto}>
         <button className="nx-hola__txt" type="button" onClick={abrir} tabIndex={hola ? 0 : -1}>
           <b>¡Hola! 👋 Soy Nexo</b>
-          <span>¿Tienes alguna pregunta? Toca aquí y te ayudo con tu web, app, sistema, correo o asistente con IA.</span>
+          <span>¿Tienes alguna pregunta? Toca aquí y te ayudo con tu web, tienda virtual, app, sistema o asistente con IA.</span>
         </button>
         <button className="nx-hola__x" type="button" onClick={() => setHola(false)} aria-label="Cerrar saludo" tabIndex={hola ? 0 : -1}>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>

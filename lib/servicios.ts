@@ -13,13 +13,13 @@ export const PLANES_WEB: PlanWeb[] = [
     id: "landing", nombre: "Landing Page", desde: 300, plazo: "5 a 7 días hábiles", campana: "landing_page",
     mensaje: "Hola, NEXUS. Estoy interesado en contratar una Landing Page desde S/300. Quisiera conocer qué incluye y cómo puedo empezar.",
     texto: "Una página para presentar tu negocio o una campaña y recibir consultas por WhatsApp.",
-    incluye: ["Una página con las secciones clave de tu negocio", "Diseño a medida, adaptado a celular", "Botón directo a tu WhatsApp", "Lista para aparecer en Google", "Hosting el primer año"],
+    incluye: ["Una página con las secciones clave de tu negocio", "Diseño a medida, adaptado a celular", "Botón directo a tu WhatsApp", "Configuración SEO básica para facilitar la indexación en Google", "Hosting el primer año"],
   },
   {
     id: "empresarial", nombre: "Web empresarial", desde: 600, plazo: "unas 2 semanas", destacado: true, campana: "web_empresarial",
     mensaje: "Hola, NEXUS. Necesito una página web para mi empresa. ¿Podrían enviarme información sobre sus planes y servicios?",
     texto: "Varias páginas para mostrar tu empresa, tus servicios y tus trabajos.",
-    incluye: ["Inicio, nosotros, servicios y contacto", "Galería de trabajos o catálogo de servicios", "Botón directo a tu WhatsApp", "Lista para aparecer en Google", "Hosting el primer año"],
+    incluye: ["Inicio, nosotros, servicios y contacto", "Galería de trabajos o catálogo de servicios", "Botón directo a tu WhatsApp", "Configuración SEO básica para facilitar la indexación en Google", "Hosting el primer año"],
   },
   {
     id: "tienda", nombre: "Tienda virtual", desde: 1000, plazo: "3 a 4 semanas", campana: "tienda_virtual",
@@ -32,6 +32,14 @@ export const PLANES_WEB: PlanWeb[] = [
 /** Precio para mostrar: "S/ 1,000". */
 export const soles = (n: number) => `S/ ${n.toLocaleString("en-US")}`;
 
+/** Renovaciones y extras que se muestran en Precios (debajo de los planes). */
+export const RENOVACIONES = [
+  "Hosting incluido durante el primer año.",
+  "Renovación anual informada antes de contratar.",
+  "Dominio según extensión.",
+  "Mantenimiento opcional.",
+];
+
 /** Cómo trabajamos después de cotizar. La sección de confianza y Nexo leen de aquí. */
 export const POLITICAS = {
   cambios: "Incluye 1 ronda de cambios en el diseño antes de programar. Los cambios posteriores se cotizan.",
@@ -39,7 +47,7 @@ export const POLITICAS = {
   dominio: "El dominio se registra a nombre de NEXUSDV mientras dure el servicio. Si lo pides, te lo transferimos.",
   soporte: "30 días de soporte sin costo después de publicar, para errores y ajustes menores. Luego puedes tomar un plan de mantenimiento mensual, que se cotiza.",
   plazos: "Desde que apruebas el diseño: Landing Page de 5 a 7 días hábiles, Web empresarial unas 2 semanas y Tienda virtual de 3 a 4 semanas. Apps y sistemas según lo que necesites.",
-  hosting: "Las páginas web incluyen hosting el primer año. El dominio se cotiza aparte.",
+  hosting: "Las páginas web incluyen hosting el primer año. La renovación anual se informa antes de contratar, el dominio se cotiza según su extensión y el mantenimiento es opcional.",
 };
 
 export type Servicio = {
@@ -59,8 +67,8 @@ export const SERVICIOS: Servicio[] = [
     id: "web", ruta: "/web", titulo: "Páginas web a medida",
     texto: "Diseño propio, sin plantillas genéricas. Tu web muestra quién eres, qué vendes y lleva al cliente directo a tu chat.",
     precio: "Desde S/ 300 · landing, web empresarial o tienda",
-    puntos: ["Diseño hecho para tu marca", "Se ve perfecta en celular", "Botón directo a tu WhatsApp", "Lista para aparecer en Google"],
-    paraNexo: "Páginas web a medida: diseño propio, adaptadas a celular, botón a WhatsApp, listas para Google. Precios (siempre con \"desde\"): Landing Page desde S/ 300 (5 a 7 días hábiles), Web empresarial desde S/ 600 (unas 2 semanas), Tienda virtual desde S/ 1,000 (3 a 4 semanas; el pedido llega armado a WhatsApp y el pago se coordina por WhatsApp con Yape, Plin o transferencia). Incluyen hosting el primer año; el dominio va aparte. Los plazos cuentan desde que el cliente aprueba el diseño.",
+    puntos: ["Diseño hecho para tu marca", "Se ve perfecta en celular", "Botón directo a tu WhatsApp", "Configuración SEO básica para facilitar la indexación en Google"],
+    paraNexo: "Páginas web a medida: diseño propio, adaptadas a celular, botón a WhatsApp, con configuración SEO básica para facilitar la indexación en Google. Precios (siempre con \"desde\"): Landing Page desde S/ 300 (5 a 7 días hábiles), Web empresarial desde S/ 600 (unas 2 semanas), Tienda virtual desde S/ 1,000 (3 a 4 semanas; el pedido llega armado a WhatsApp y el pago se coordina por WhatsApp con Yape, Plin o transferencia). Incluyen hosting el primer año; el dominio va aparte. Los plazos cuentan desde que el cliente aprueba el diseño.",
   },
   {
     id: "app", ruta: "/apps", titulo: "Apps Android y iPhone",

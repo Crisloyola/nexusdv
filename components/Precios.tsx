@@ -1,5 +1,5 @@
 import { A_MEDIDA, planes, waTexto } from "@/lib/data";
-import { NOTA_PRECIOS, POLITICAS, soles } from "@/lib/servicios";
+import { NOTA_PRECIOS, POLITICAS, RENOVACIONES, soles } from "@/lib/servicios";
 import { Icon } from "./Icons";
 
 /** Precios: los 3 planes web con precio desde, una línea para lo que va a medida y qué incluye. Datos en lib/servicios.ts. */
@@ -30,6 +30,10 @@ export function Precios() {
           </div>
           <b className="plan-extra__precio">{A_MEDIDA.precio}</b>
           <a className="btn btn--ghost" href={waTexto("Hola NEXUSDV, vengo de su web y quiero cotizar una app, un sistema o un asistente con IA.")} target="_blank" rel="noopener">{A_MEDIDA.boton}<Icon id="right" /></a>
+        </div>
+        <div className="renov rv">
+          <h3>Renovaciones y extras</h3>
+          <ul className="ticks">{RENOVACIONES.map((x) => <li key={x}>{x}</li>)}</ul>
         </div>
         <p className="plans__note">{NOTA_PRECIOS}</p>
       </div>

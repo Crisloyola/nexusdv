@@ -9,7 +9,7 @@ export function NexoSeccion() {
         <div className="nexo rv">
           <span className="nexo__cara" aria-hidden="true"><NexoCara /></span>
           <h2 id="nexo-t" className="tit tit--c"><b>Pregúntale a Nexo ahora mismo.</b></h2>
-          <p className="sec__p">Nuestro asistente responde tus dudas sobre webs, apps, sistemas y correo a cualquier hora, y cuando quieras te pasa con una persona del equipo.</p>
+          <p className="sec__p">Nuestro asistente responde tus dudas sobre webs, tiendas virtuales, apps y sistemas a cualquier hora, y cuando quieras te pasa con una persona del equipo.</p>
           <ul className="nexo__puntos">
             <li>Responde al instante, de día o de noche</li>
             <li>Te orienta según lo que tu negocio necesita</li>
