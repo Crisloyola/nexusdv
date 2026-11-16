@@ -19,7 +19,7 @@ export function Precios() {
               <p className="plan__plazo"><Icon id="chk" />Lista en {p.plazo}</p>
               <p>{p.texto}</p>
               <ul className="ticks">{p.incluye.map((x) => <li key={x}>{x}</li>)}</ul>
-              <a className={`btn btn--lg ${p.destacado ? "btn--lime" : "btn--ghost"}`} href={waTexto(`Hola NEXUSDV, vengo de su web y quiero cotizar: ${p.nombre.toLowerCase()}.`)} target="_blank" rel="noopener">Cotizar {p.nombre.toLowerCase()}<Icon id="right" /></a>
+              <a className={`btn btn--lg ${p.destacado ? "btn--lime" : "btn--ghost"}`} href={waTexto(p.mensaje, p.campana)} target="_blank" rel="noopener">Cotizar {p.nombre.toLowerCase()}<Icon id="right" /></a>
             </article>
           ))}
         </div>

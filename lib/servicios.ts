@@ -5,20 +5,25 @@
 export const NOTA_PRECIOS = "Precios desde · el equipo confirma tu cotización según lo que necesitas";
 
 /** Planes de páginas web con precio desde. Los muestra Precios y los conoce Nexo. */
-export type PlanWeb = { id: string; nombre: string; desde: number; plazo: string; texto: string; incluye: string[]; destacado?: boolean };
+export type PlanWeb = { id: string; nombre: string; desde: number; plazo: string; texto: string; incluye: string[]; destacado?: boolean;
+  /** Mensaje que se escribe solo en WhatsApp al tocar el botón del plan. */ mensaje: string;
+  /** utm_campaign del botón. */ campana: string };
 export const PLANES_WEB: PlanWeb[] = [
   {
-    id: "landing", nombre: "Landing Page", desde: 300, plazo: "5 a 7 días hábiles",
+    id: "landing", nombre: "Landing Page", desde: 300, plazo: "5 a 7 días hábiles", campana: "landing_page",
+    mensaje: "Hola, NEXUS. Estoy interesado en contratar una Landing Page desde S/300. Quisiera conocer qué incluye y cómo puedo empezar.",
     texto: "Una página para presentar tu negocio o una campaña y recibir consultas por WhatsApp.",
     incluye: ["Una página con las secciones clave de tu negocio", "Diseño a medida, adaptado a celular", "Botón directo a tu WhatsApp", "Lista para aparecer en Google", "Hosting el primer año"],
   },
   {
-    id: "empresarial", nombre: "Web empresarial", desde: 600, plazo: "unas 2 semanas", destacado: true,
+    id: "empresarial", nombre: "Web empresarial", desde: 600, plazo: "unas 2 semanas", destacado: true, campana: "web_empresarial",
+    mensaje: "Hola, NEXUS. Necesito una página web para mi empresa. ¿Podrían enviarme información sobre sus planes y servicios?",
     texto: "Varias páginas para mostrar tu empresa, tus servicios y tus trabajos.",
     incluye: ["Inicio, nosotros, servicios y contacto", "Galería de trabajos o catálogo de servicios", "Botón directo a tu WhatsApp", "Lista para aparecer en Google", "Hosting el primer año"],
   },
   {
-    id: "tienda", nombre: "Tienda virtual", desde: 1000, plazo: "3 a 4 semanas",
+    id: "tienda", nombre: "Tienda virtual", desde: 1000, plazo: "3 a 4 semanas", campana: "tienda_virtual",
+    mensaje: "Hola, NEXUS. Quiero crear una tienda virtual para mi negocio. Me gustaría conocer sus funcionalidades y precio.",
     texto: "Tu catálogo en línea: tus clientes eligen y el pedido te llega armado a WhatsApp.",
     incluye: ["Catálogo de productos con fotos y precios", "Carrito de compras", "El pedido llega armado a tu WhatsApp", "Pago coordinado por WhatsApp: Yape, Plin o transferencia", "Hosting el primer año"],
   },

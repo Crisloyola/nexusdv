@@ -16,8 +16,9 @@ export const contacto = {
 /** Fundador que se muestra en la sección de confianza. Mientras el nombre esté vacío, la web habla del equipo. */
 export const fundador = { nombre: "Cristopher" };
 
-export const waTexto = (texto: string) =>
-  `https://wa.me/${contacto.whatsappNumero}?text=${encodeURIComponent(texto)}`;
+/** Enlace a WhatsApp con el mensaje ya escrito. Con `campana` agrega utm_source=web y utm_campaign (seguimiento). */
+export const waTexto = (texto: string, campana?: string) =>
+  `https://wa.me/${contacto.whatsappNumero}?text=${encodeURIComponent(texto)}${campana ? `&utm_source=web&utm_campaign=${campana}` : ""}`;
 
 /** Testimonios REALES de clientes, con su permiso. La sección no aparece mientras la lista esté vacía. */
 export type Testimonio = { texto: string; nombre: string; negocio: string; proyecto?: string };
