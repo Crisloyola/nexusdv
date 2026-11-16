@@ -4,9 +4,12 @@ import { CHIP_TEMA, MENU, RESPUESTAS, SALUDO, detectarTema, type Tema } from "@/
 import { waTexto } from "@/lib/data";
 import { Icon, NexoCara } from "./Icons";
 
-// Pon NEXT_PUBLIC_CHAT_IA=true en .env.local para que las preguntas escritas las responda la IA
-// (ruta app/api/chat). Los botones de opciones siempre usan las respuestas fijas de lib/bot.ts.
+// Pon NEXT_PUBLIC_CHAT_IA=true en .env.local para que la IA responda (ruta app/api/chat).
+// Con IA: lo escrito, los chips de servicios y los chips que propone la IA van a la IA (flujo de venta).
+// "Precios" y "Ver proyectos" siempre usan las respuestas fijas de lib/bot.ts. Sin IA, todo es fijo.
 const USAR_IA = process.env.NEXT_PUBLIC_CHAT_IA === "true";
+const SIEMPRE_FIJO = ["Precios", "Ver proyectos"];
+const ERROR_IA = "Se me complicó responder ahora. Escríbenos por WhatsApp y te atendemos.";
 
 /** Cualquier parte de la web puede abrir el chat de Nexo con abrirNexo() (por ejemplo, la demo de la sección #nexo). */
 export const EVENTO_ABRIR = "nexo:abrir";
@@ -24,6 +27,7 @@ export function Asistente() {
   const [escribiendo, setEscribiendo] = useState(false);
   const [tema, setTema] = useState("información");
   const [entrada, setEntrada] = useState("");
+  const [waMsg, setWaMsg] = useState<string | null>(null); // mensaje de WhatsApp que arma la IA al cerrar el flujo
   const log = useRef<HTMLDivElement>(null);
   const input = useRef<HTMLInputElement>(null);
   const boton = useRef<HTMLButtonElement>(null);
@@ -80,26 +84,37 @@ export function Asistente() {
     }, 650 + Math.min(900, r.msg.length * 4));
   }
 
-  async function responderIA(pregunta: string) {
+  async function responderIA() {
     setChips([]); setEscribiendo(true);
+    // Si la IA falla o tarda más de ~15 s, cortamos y ofrecemos WhatsApp
+    const corte = new AbortController();
+    const reloj = setTimeout(() => corte.abort(), 16_000);
     try {
-      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: historial.current.slice(-10) }) });
+      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: historial.current.slice(-10) }), signal: corte.signal });
       if (!res.ok) throw new Error(String(res.status));
-      const { reply } = await res.json();
+      const { reply, chips: opciones, whatsapp } = (await res.json()) as { reply: string; chips?: string[]; whatsapp?: string | null };
       setEscribiendo(false);
       agregar({ de: "bot", texto: reply }); // texto plano: lo que escribe la IA nunca se interpreta como HTML
       historial.current.push({ role: "assistant", content: reply });
-      setChips([...MENU].slice(0, 3));
+      setChips(Array.isArray(opciones) ? opciones : []);
+      if (whatsapp) setWaMsg(whatsapp);
     } catch {
       setEscribiendo(false);
-      responderFijo(detectarTema(pregunta)); // si la IA falla, responde el modo fijo
+      agregar({ de: "bot", texto: ERROR_IA }); // debajo queda el botón "Hablar por WhatsApp"
+      historial.current.push({ role: "assistant", content: ERROR_IA });
+      setChips([]);
+    } finally {
+      clearTimeout(reloj);
     }
   }
 
   function tocarChip(label: string) {
     agregar({ de: "yo", texto: label });
     historial.current.push({ role: "user", content: label });
-    responderFijo(CHIP_TEMA[label]);
+    const t = CHIP_TEMA[label] as Tema | undefined;
+    if (t && RESPUESTAS[t].tema !== "información") setTema(RESPUESTAS[t].tema);
+    if (USAR_IA && !SIEMPRE_FIJO.includes(label)) responderIA();
+    else responderFijo(t ?? "none");
   }
 
   function enviar(e: FormEvent) {
@@ -110,17 +125,17 @@ export function Asistente() {
     historial.current.push({ role: "user", content: q });
     const t = detectarTema(q);
     if (t !== "none" && RESPUESTAS[t].tema !== "información") setTema(RESPUESTAS[t].tema);
-    if (USAR_IA) responderIA(q); else responderFijo(t);
+    if (USAR_IA) responderIA(); else responderFijo(t);
   }
 
-  const wa = waTexto(`Hola NEXUSDV, vengo de su web y quiero ${tema === "información" ? "información" : `información sobre ${tema}`}.`);
+  const wa = waTexto(waMsg ?? `Hola NEXUSDV, vengo de su web y quiero ${tema === "información" ? "información" : `información sobre ${tema}`}.`);
 
   return (
     <>
       <div className={`nx-hola${hola && !abierto ? "" : " nx-hola--off"}`} role="status" aria-hidden={!hola || abierto}>
         <button className="nx-hola__txt" type="button" onClick={abrir} tabIndex={hola ? 0 : -1}>
           <b>¡Hola! 👋 Soy Nexo</b>
-          <span>¿Tienes alguna pregunta? Toca aquí y te ayudo con tu web, app, sistema o correo.</span>
+          <span>¿Tienes alguna pregunta? Toca aquí y te ayudo con tu web, app, sistema, correo o asistente con IA.</span>
         </button>
         <button className="nx-hola__x" type="button" onClick={() => setHola(false)} aria-label="Cerrar saludo" tabIndex={hola ? 0 : -1}>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>

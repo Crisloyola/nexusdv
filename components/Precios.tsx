@@ -1,34 +1,37 @@
-import { contacto, planes, preguntas } from "@/lib/data";
+import { A_MEDIDA, planes, waTexto } from "@/lib/data";
+import { NOTA_PRECIOS, POLITICAS, soles } from "@/lib/servicios";
 import { Icon } from "./Icons";
 
-/** Tabla de 3 planes y preguntas frecuentes. Los datos vienen de lib/data.ts. */
+/** Precios: los 3 planes web con precio desde, una línea para lo que va a medida y qué incluye. Datos en lib/servicios.ts. */
 export function Precios() {
   return (
-    <section className="sec" id="precios" style={{ paddingTop: 0 }}>
+    <section className="sec" id="precios" aria-labelledby="precios-t">
       <div className="wrap">
-        <div className="sec__top rv">
-          <div><p className="mono tag">Precios</p><h2 className="display h2">Claros desde el inicio</h2></div>
-          <p className="lead">Webs, apps y sistemas se cotizan según lo que necesitas. El dominio con correo tiene precio fijo.</p>
+        <div className="sec__head rv">
+          <h2 id="precios-t" className="tit tit--c"><b>Precios claros desde el inicio.</b> <span>Elige el tipo de web que necesitas.</span></h2>
+          <p className="sec__p">{POLITICAS.hosting}</p>
         </div>
-        <div className="plans rv">
+        <div className="plans">
           {planes.map((p) => (
-            <article key={p.nombre} className={`plan${p.destacado ? " plan--hl" : ""}`}>
-              <h3>{p.nombre}{p.etiqueta && <span>{p.etiqueta}</span>}</h3>
-              <div className="plan__price">{p.precio}<small>{p.nota || "cotización sin costo"}</small></div>
+            <article key={p.id} className={`plan rv${p.destacado ? " plan--hl" : ""}`}>
+              <h3>{p.nombre}</h3>
+              <div className="plan__price"><small className="plan__desde">Desde</small>{soles(p.desde)}</div>
+              <p className="plan__plazo"><Icon id="chk" />Lista en {p.plazo}</p>
               <p>{p.texto}</p>
-              <ul>{p.incluye.map((i) => <li key={i}>{i}</li>)}</ul>
-              <a className={`btn ${p.destacado ? "btn--lime" : "btn--line"}`} href={contacto.whatsappLink} target="_blank" rel="noopener">{p.boton}<Icon id="arr" /></a>
+              <ul className="ticks">{p.incluye.map((x) => <li key={x}>{x}</li>)}</ul>
+              <a className={`btn btn--lg ${p.destacado ? "btn--lime" : "btn--ghost"}`} href={waTexto(`Hola NEXUSDV, vengo de su web y quiero cotizar: ${p.nombre.toLowerCase()}.`)} target="_blank" rel="noopener">Cotizar {p.nombre.toLowerCase()}<Icon id="right" /></a>
             </article>
           ))}
         </div>
-        <div className="faq rv">
-          <div><p className="mono tag">Dudas</p><h3>Preguntas frecuentes</h3></div>
+        <div className="plan-extra rv">
           <div>
-            {preguntas.map((f, i) => (
-              <details key={f.q} open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>
-            ))}
+            <h3>{A_MEDIDA.nombre}</h3>
+            <p>{A_MEDIDA.texto}</p>
           </div>
+          <b className="plan-extra__precio">{A_MEDIDA.precio}</b>
+          <a className="btn btn--ghost" href={waTexto("Hola NEXUSDV, vengo de su web y quiero cotizar una app, un sistema o un asistente con IA.")} target="_blank" rel="noopener">{A_MEDIDA.boton}<Icon id="right" /></a>
         </div>
+        <p className="plans__note">{NOTA_PRECIOS}</p>
       </div>
     </section>
   );

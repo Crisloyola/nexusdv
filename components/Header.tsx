@@ -9,14 +9,14 @@ const NAV = [
   { href: "#nexo", label: "Nexo" },
   { href: "#proceso", label: "Proceso" },
   { href: "#precios", label: "Precios" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "#confianza", label: "Confianza" },
+  { href: "#preguntas", label: "Preguntas" },
 ];
 
+/** Barra flotante redondeada. En celular el menú se abre debajo. */
 export function Header() {
   const [abierto, setAbierto] = useState(false);
 
-  // Menú de celular: bloquea el scroll de la página mientras está abierto y se cierra con Escape
-  // o si la pantalla se agranda a tamaño computadora.
   useEffect(() => {
     document.documentElement.classList.toggle("menu-open", abierto);
     if (!abierto) return;
@@ -31,12 +31,12 @@ export function Header() {
 
   return (
     <header className={`top${abierto ? " top--open" : ""}`}>
-      <div className="wrap top__in">
+      <div className="top__bar">
         <a className="logo" href="#inicio" aria-label="NEXUSDV, inicio" onClick={cerrar}><i><Logo /></i>NEXUSDV</a>
         <nav aria-label="Principal">
           {NAV.map((n) => <a key={n.href} href={n.href}>{n.label}</a>)}
         </nav>
-        <a className="btn btn--lime" href={contacto.whatsappLink} target="_blank" rel="noopener"><Icon id="wa" /><span>Cotizar por WhatsApp</span></a>
+        <a className="btn btn--lime top__cta" href={contacto.whatsappLink} target="_blank" rel="noopener"><Icon id="wa" /><span>Cotizar gratis</span></a>
         <button className="burger" type="button" onClick={() => setAbierto((v) => !v)}
           aria-label={abierto ? "Cerrar menú" : "Abrir menú"} aria-expanded={abierto} aria-controls="menu">
           <i /><i /><i />
@@ -44,9 +44,8 @@ export function Header() {
       </div>
 
       <nav id="menu" className="menu" aria-label="Menú" hidden={!abierto}>
-        <div className="wrap">
-          {NAV.map((n) => <a key={n.href} href={n.href} onClick={cerrar}>{n.label}<Icon id="right" /></a>)}
-        </div>
+        {NAV.map((n) => <a key={n.href} href={n.href} onClick={cerrar}>{n.label}<Icon id="right" /></a>)}
+        <a className="btn btn--lime btn--lg menu__cta" href={contacto.whatsappLink} target="_blank" rel="noopener" onClick={cerrar}><Icon id="wa" />Cotizar por WhatsApp</a>
       </nav>
     </header>
   );

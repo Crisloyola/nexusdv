@@ -1,7 +1,7 @@
 // Íconos como un "sprite" SVG: se dibujan una vez y se reutilizan con <Icon id="wa" />.
 export type IconId =
   | "wa" | "arr" | "right" | "chk" | "mail" | "ig" | "web" | "search" | "phone"
-  | "lock" | "sys" | "globe" | "android" | "apple";
+  | "lock" | "sys" | "globe" | "android" | "apple" | "bot";
 
 export function Icon({ id, className }: { id: IconId; className?: string }) {
   // WhatsApp usa la imagen public/img/whatsapp.png como máscara: toma el color del texto del botón.
@@ -43,6 +43,7 @@ export function IconSprite() {
       <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5 21 21" /></symbol>
       <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3" /><path d="M11 18.5h2" /></symbol>
       <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></symbol>
+      <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="5" /><path d="M12 7V3.5M9.5 13v1.5M14.5 13v1.5" /></symbol>
       <symbol id="i-sys" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 16v-3M12 16V8M16 16v-5" /></symbol>
       <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z" /></symbol>
       <symbol id="i-android" viewBox="0 0 24 24"><path d="M5 10a7 7 0 0 1 14 0v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z" /><path d="M8 4.5 6.8 2.8M16 4.5l1.2-1.7M9 10h.01M15 10h.01" /></symbol>

@@ -1,24 +1,25 @@
 // Respuestas del asistente (modo sin IA). Edita aquí los textos.
 // <b>...</b> pone negrita. \n es un salto de línea.
 
-export type Tema = "web" | "app" | "sys" | "mail" | "price" | "proj" | "time" | "hi" | "human" | "contact" | "thanks" | "none";
+export type Tema = "ia" | "web" | "app" | "sys" | "mail" | "price" | "proj" | "time" | "hi" | "human" | "contact" | "thanks" | "none";
 
-export const MENU = ["Páginas web", "Apps", "Sistemas", "Dominio y correo", "Precios", "Ver proyectos"] as const;
+export const MENU = ["Páginas web", "Apps", "Sistemas", "Dominio y correo", "Asistentes con IA", "Precios", "Ver proyectos"] as const;
 export const CHIP_TEMA: Record<string, Tema> = {
-  "Páginas web": "web", Apps: "app", Sistemas: "sys", "Dominio y correo": "mail", Precios: "price", "Ver proyectos": "proj",
+  "Páginas web": "web", Apps: "app", Sistemas: "sys", "Dominio y correo": "mail", "Asistentes con IA": "ia", Precios: "price", "Ver proyectos": "proj",
 };
 
 export const SALUDO =
-  "¡Hola! 👋 Soy <b>Nexo</b>, el asistente de <b>NEXUSDV</b>.\nHacemos páginas web, apps para Android y iPhone, sistemas a medida, dominios y correos corporativos.\n\n¿Qué te interesa?";
+  "¡Hola! Soy <b>Nexo</b>, el asistente de <b>NEXUSDV</b>. Hacemos páginas web, apps, sistemas a medida, dominios con correo y asistentes con IA como yo.\n\n¿Qué te interesa?";
 
 export const RESPUESTAS: Record<Tema, { tema: string; msg: string; chips: string[]; ir?: string }> = {
-  web: { tema: "una página web", msg: "Hacemos <b>páginas web a medida</b> para tu negocio:\n• Diseño propio, sin plantillas\n• Adaptada al celular\n• Botón directo a tu WhatsApp\n• Lista para aparecer en Google\n\n💰 Una <b>landing page desde S/ 500</b>, lista en <b>7 días</b>. Si necesitas más secciones o funciones, te cotizamos sin costo.\nAntes de programar te mostramos el diseño para que lo apruebes.", chips: ["Precios", "Ver proyectos", "Dominio y correo"] },
+  ia: { tema: "un asistente con IA", msg: "¡Sí, hacemos asistentes con IA para tu web! 🤖 Yo soy un ejemplo: atiendo a cualquier hora y te paso con el equipo por WhatsApp.\nTu asistente puede:\n• Responder preguntas frecuentes 24/7\n• Orientar a tus clientes\n• Tomar reservas o pedidos\n• Pasar la conversación a tu WhatsApp\n\n💰 Es <b>a medida</b> y la cotización es <b>sin costo</b>.", chips: ["Páginas web", "Precios", "Ver proyectos"] },
+  web: { tema: "una página web", msg: "Hacemos <b>páginas web a medida</b> para tu negocio:\n• Diseño propio, sin plantillas\n• Adaptada al celular\n• Botón directo a tu WhatsApp\n• Lista para aparecer en Google\n\n💰 <b>Landing</b> desde S/ 300, <b>Web empresarial</b> desde S/ 600 y <b>Tienda virtual</b> desde S/ 1,000, con hosting el primer año.\nAntes de programar te mostramos el diseño para que lo apruebes.", chips: ["Precios", "Ver proyectos", "Dominio y correo"] },
   app: { tema: "una app", msg: "Desarrollamos <b>apps para Android y iPhone</b>: para que tus clientes compren, reserven, sigan sus pedidos o acumulen puntos desde el celular.\n\nTambién te ayudamos a publicarla en <b>Google Play y App Store</b>.\n\nEl costo y el tiempo dependen de lo que necesites (funciones, usuarios, pagos, panel). Cuéntanos tu idea y te cotizamos sin costo.", chips: ["Sistemas", "Precios", "Ver proyectos"] },
   sys: { tema: "un sistema", msg: "Creamos <b>sistemas a medida</b>: ventas, inventario, reservas, fidelización de clientes y más, con un panel para administrar todo.\n\nUn ejemplo es <b>Creatrix</b>, un sistema de puntos y promociones que entregamos.\n\nEl costo y el tiempo dependen de lo que necesites. Te cotizamos sin costo.", chips: ["Apps", "Precios", "Ver proyectos"] },
-  mail: { tema: "dominio y correo corporativo", msg: "Con el <b>correo corporativo</b> dejas el Gmail personal y escribes con tu marca:\n🌐 Tu dominio (tuempresa.com)\n📧 <b>4 correos</b> con los nombres que elijas\n✅ Configurado en celular y computadora\n\n💰 Todo a <b>S/ 550 el primer año</b> y la entrega es <b>inmediata</b> ⚡\n\n¿Necesitas un dominio <b>.pe</b> o solo el dominio? También te lo cotizamos.", chips: ["Páginas web", "Precios"] },
-  price: { tema: "una cotización", msg: "Así trabajamos los precios:\n• 💻 <b>Landing page:</b> desde S/ 500, lista en 7 días\n• 📱 <b>Apps, apps web y sistemas:</b> según lo que necesites, cotización sin costo\n• 📧 <b>Dominio + 4 correos:</b> S/ 550 el primer año, entrega inmediata\n\nCuéntanos qué necesitas por WhatsApp o al correo <b>contacto@nexusdv.pe</b> y te enviamos la propuesta.\n\n👇 También puedes tocar el botón <b>Hablar por WhatsApp</b> aquí abajo.", chips: ["Páginas web", "Apps", "Sistemas"] },
+  mail: { tema: "dominio y correo corporativo", msg: "Con el <b>correo corporativo</b> dejas el Gmail personal y escribes con tu marca:\n🌐 Tu dominio (tuempresa.com)\n📧 <b>4 correos</b> con los nombres que elijas\n✅ Configurado en celular y computadora\n\n💰 Todo a <b>S/ 550 el primer año</b>. La renovación te la informamos antes de pagar.\n\n¿Necesitas un dominio <b>.pe</b> o solo el dominio? También te lo cotizamos.", chips: ["Páginas web", "Precios"] },
+  price: { tema: "una cotización", msg: "Así son nuestros precios:\n• 💻 <b>Landing Page:</b> desde S/ 300\n• 🏢 <b>Web empresarial:</b> desde S/ 600\n• 🛒 <b>Tienda virtual:</b> desde S/ 1,000\n• ⚙️ <b>Apps, sistemas e IA:</b> a medida, cotización sin costo\n• 📧 <b>Dominio + 4 correos:</b> S/ 550 el primer año\n\nCuéntanos qué necesitas por WhatsApp o al correo <b>contacto@nexusdv.pe</b> y te enviamos la propuesta.\n\n👇 También puedes tocar el botón <b>Hablar por WhatsApp</b> aquí abajo.", chips: ["Páginas web", "Apps", "Sistemas"] },
   proj: { tema: "sus proyectos", msg: "Algunos proyectos entregados:\n• <b>LML Agency</b>: página web de una productora audiovisual\n• <b>LML Agency · Alquiler</b>: página de alquiler de equipos de audio y video\n• <b>Creatrix</b>: sistema de fidelización con puntos y promociones\n\nTe llevo a la sección de proyectos 👇", chips: ["Páginas web", "Sistemas"], ir: "#proyectos" },
-  time: { tema: "los tiempos de entrega", msg: "Estos son nuestros tiempos de entrega:\n• 💻 <b>Landing page:</b> 7 días\n• 📧 <b>Correo corporativo:</b> inmediato\n• 📱 <b>Apps y sistemas:</b> según lo que necesites; al cotizar te damos la fecha exacta", chips: ["Precios", "Páginas web"] },
+  time: { tema: "los tiempos de entrega", msg: "El tiempo depende de lo que necesites ⏱️\nAl cotizar sin costo te confirmamos la <b>fecha exacta</b> de entrega.\n\nAntes de programar te mostramos el diseño para que lo apruebes.", chips: ["Precios", "Páginas web"] },
   hi: { tema: "información", msg: "¡Hola! 😊 ¿En qué te puedo ayudar?", chips: [...MENU] },
   human: { tema: "información", msg: "Claro, te paso con una persona del equipo por WhatsApp. Te responden lo antes posible.\n\n👇 Toca el botón <b>Hablar por WhatsApp</b> aquí abajo y escríbenos directo.", chips: [] },
   contact: { tema: "información", msg: "Puedes escribirnos por:\n• WhatsApp: <b>Contáctanos ahora</b>\n• Correo: <b>contacto@nexusdv.pe</b>\n• Instagram: <b>@nexusdv.pe</b>\n\n👇 También puedes tocar el botón <b>Hablar por WhatsApp</b> aquí abajo.", chips: ["Páginas web", "Apps", "Sistemas"] },
@@ -29,6 +30,8 @@ export const RESPUESTAS: Record<Tema, { tema: string; msg: string; chips: string
 // El orden importa: gana la primera coincidencia.
 const CLAVES: [Tema, RegExp][] = [
   ["human", /(persona|humano|asesor|hablar con|llamar|llamada)/],
+  // \bia\b: que "familia" o "farmacia" no cuenten como "IA"
+  ["ia", /(chat ?bot|\bbots?\b|asistente|\bia\b|inteligencia artificial|como tu\b|como nexo)/],
   ["contact", /(contacto|correo de ustedes|telefono|numero|instagram|whats ?app|wsp|donde estan|ubicacion)/],
   ["mail", /(correo|email|e-mail|gmail|dominio|\.com|\.pe|hosting)/],
   // \bapps?\b: que "whatsapp" no cuente como "app"

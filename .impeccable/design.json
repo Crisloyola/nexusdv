@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-15T18:00:00Z",
+  "title": "Design System: NEXUSDV",
+  "extensions": {
+    "colorMeta": {
+      "stage": { "role": "neutral", "displayName": "Stage Black", "canonical": "#08090B", "tonalRamp": ["#08090B", "#111215", "#1F2227", "#343941", "#4F555D", "#7D858D", "#A3AAB1", "#E2E4DD"] },
+      "stage-2": { "role": "neutral", "displayName": "Screen Black", "canonical": "#0C0D10", "tonalRamp": ["#08090B", "#0C0D10", "#17191D", "#2A2E34", "#454A52", "#6B727A", "#9AA1A8", "#DADDD6"] },
+      "graphite-1": { "role": "neutral", "displayName": "Graphite 1", "canonical": "#111215", "tonalRamp": ["#08090B", "#111215", "#17191D", "#1F2227", "#2C3036", "#40454C", "#5C626A", "#80878F"] },
+      "graphite-2": { "role": "neutral", "displayName": "Graphite 2", "canonical": "#17191D", "tonalRamp": ["#0C0D10", "#111215", "#17191D", "#1F2227", "#2C3036", "#40454C", "#5C626A", "#80878F"] },
+      "graphite-3": { "role": "neutral", "displayName": "Graphite 3", "canonical": "#1F2227", "tonalRamp": ["#111215", "#17191D", "#1F2227", "#2C3036", "#343941", "#4F555D", "#6B727A", "#9AA1A8"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#F2F3EE", "tonalRamp": ["#2A2B27", "#4A4C45", "#6C6E66", "#90928A", "#B5B7AF", "#D4D6CF", "#E2E4DD", "#F2F3EE"] },
+      "paper-2": { "role": "neutral", "displayName": "Paper 2", "canonical": "#E2E4DD", "tonalRamp": ["#2A2B27", "#4A4C45", "#6C6E66", "#90928A", "#B5B7AF", "#D4D6CF", "#E2E4DD", "#F2F3EE"] },
+      "lime": { "role": "primary", "displayName": "Signal Lime", "canonical": "#C8F135", "tonalRamp": ["#1F2A05", "#36470C", "#506814", "#6D8C1C", "#8FB625", "#C8F135", "#D6F85A", "#EEFCC0"] },
+      "lime-hover": { "role": "primary", "displayName": "Lit Lime", "canonical": "#D6F85A", "tonalRamp": ["#1F2A05", "#36470C", "#506814", "#6D8C1C", "#8FB625", "#C8F135", "#D6F85A", "#EEFCC0"] },
+      "lime-soft": { "role": "primary", "displayName": "Lime Wash", "canonical": "rgba(200,241,53,.12)" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0B0F14", "tonalRamp": ["#0B0F14", "#1A1F26", "#2C323B", "#464C54", "#646A72", "#878D94", "#B0B5BA", "#DCDFE2"] },
+      "text": { "role": "neutral", "displayName": "Bright Text", "canonical": "#F2F4EE" },
+      "text-2": { "role": "neutral", "displayName": "Mist", "canonical": "#A3AAB1" },
+      "text-3": { "role": "neutral", "displayName": "Fog", "canonical": "#7D858D" },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(255,255,255,.08)" },
+      "line-2": { "role": "neutral", "displayName": "Bright Hairline", "canonical": "rgba(255,255,255,.14)" },
+      "status-online": { "role": "neutral", "displayName": "Online Green", "canonical": "#2FBF6B" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only; clamp(40px, 11.6vw, 56px) under 640px." },
+      "display-close": { "displayName": "Display Close", "purpose": "Closing CTA headline." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles: white sentence plus optional grey sentence on its own line, centered." },
+      "figure": { "displayName": "Figure", "purpose": "Plan prices." },
+      "title": { "displayName": "Title", "purpose": "Project and process step names." },
+      "lead": { "displayName": "Lead", "purpose": "The single .sec__p line under each section title, in Mist." },
+      "body": { "displayName": "Body", "purpose": "Running copy; 16px under 640px." },
+      "body-sm": { "displayName": "Body Small", "purpose": "Card, step and check-list copy." },
+      "label": { "displayName": "Label", "purpose": "Captions, screen notes, meta lines, tooltips, the Ejemplo tag. Sentence case." },
+      "button": { "displayName": "Button", "purpose": "Button labels; 16px on large buttons." }
+    },
+    "shadows": [
+      { "name": "hi", "value": "inset 0 1px 0 rgba(255,255,255,.07)", "purpose": "Inner top highlight on every raised graphite surface." },
+      { "name": "floating-bar", "value": "inset 0 1px 0 rgba(255,255,255,.07), 0 20px 40px rgba(0,0,0,.35)", "purpose": "Header bar; the dock uses .45 alpha." },
+      { "name": "window", "value": "0 30px 80px rgba(0,0,0,.6)", "purpose": "Browser windows, chats and phones inside the showcase." },
+      { "name": "showcase-frame", "value": "inset 0 1px 0 rgba(255,255,255,.07), 0 -30px 120px -40px rgba(200,241,53,.22), 0 40px 100px rgba(0,0,0,.5)", "purpose": "Lime spill from the streaks onto the showcase frame." },
+      { "name": "lime-lift", "value": "inset 0 1px 0 rgba(255,255,255,.45), 0 8px 24px rgba(200,241,53,.16)", "purpose": "Lime button at rest; hover 0 10px 32px rgba(200,241,53,.26)." },
+      { "name": "keycap", "value": "inset 0 1px 0 rgba(255,255,255,.12), inset 0 -6px 0 rgba(0,0,0,.4), 0 14px 30px rgba(0,0,0,.5)", "purpose": "Process keycap at rest; lip shortens to 3px when pressed." },
+      { "name": "dock-key", "value": "inset 0 1px 0 rgba(255,255,255,.07), inset 0 -3px 0 rgba(0,0,0,.35)", "purpose": "Inactive showcase dock key." },
+      { "name": "dock-key-active", "value": "inset 0 1px 0 rgba(255,255,255,.5), inset 0 -3px 0 rgba(0,0,0,.18), 0 10px 26px rgba(200,241,53,.28)", "purpose": "Active lime dock key." },
+      { "name": "focus-ring-input", "value": "0 0 0 4px rgba(200,241,53,.14)", "purpose": "Chat input focus." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Single easing for reveals, crossfades, key presses and arrivals." },
+      { "name": "reveal", "value": "opacity/transform/filter .9s; from translateY(28px) scale(.985) blur(10px)", "purpose": "Blur-to-sharp rise of .rv on scroll." },
+      { "name": "streak-drift", "value": "16s ease-in-out infinite alternate; rotate(-42deg) translateX(6vw)", "purpose": "Hero light streaks." },
+      { "name": "showcase-crossfade", "value": ".6s; from opacity 0 translateY(14px) scale(.985) blur(6px)", "purpose": "Switching showcase views; auto-advance every 7000ms while visible, stops once a key is chosen." },
+      { "name": "key-press", "value": "transform .2s–.25s", "purpose": "Dock key lift and keycap press." },
+      { "name": "wa-row-arrival", "value": ".7s; from height 0, translateY(-10px)", "purpose": "New WhatsApp inbox row; unread counter pops .45s after .35s." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "Disables streak drift, crossfades, chat and WhatsApp arrivals, blink, typing dots, FAB wave and auto-advance; reveals render in place." }
+    ],
+    "breakpoints": [
+      { "name": "lg", "value": "1100px" },
+      { "name": "md", "value": "960px" },
+      { "name": "sm", "value": "640px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Lime WhatsApp action with ink label.",
+      "html": "<a class=\"ds-btn ds-btn-lime\" href=\"#\">Cotizar mi proyecto <svg viewBox=\"0 0 24 24\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 9px; height: 44px; padding: 0 18px; border-radius: 12px; border: 1px solid transparent; font-family: var(--font, 'Familjen Grotesk', sans-serif); font-size: 15px; font-weight: 600; letter-spacing: -0.005em; text-decoration: none; cursor: pointer; transition: background .2s, border-color .2s, transform .2s, box-shadow .2s; } .ds-btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s cubic-bezier(.16,1,.3,1); } .ds-btn:hover svg { transform: translateX(2px); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid #C8F135; outline-offset: 4px; } .ds-btn-lime { background: #C8F135; color: #0B0F14; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 8px 24px rgba(200,241,53,.16); } .ds-btn-lime:hover { background: #D6F85A; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 10px 32px rgba(200,241,53,.26); }"
+    },
+    {
+      "name": "Light Button",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "Paper secondary action with ink label.",
+      "html": "<button class=\"ds-btn-light\" type=\"button\">Hablar con Nexo</button>",
+      "css": ".ds-btn-light { display: inline-flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 14px; border: 1px solid transparent; background: #F2F3EE; color: #0B0F14; box-shadow: inset 0 1px 0 #fff; font-family: var(--font, 'Familjen Grotesk', sans-serif); font-size: 16px; font-weight: 600; cursor: pointer; transition: background .2s, transform .2s; } .ds-btn-light:hover { background: #fff; } .ds-btn-light:active { transform: translateY(1px); } .ds-btn-light:focus-visible { outline: 2px solid #C8F135; outline-offset: 4px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Hairline tertiary action.",
+      "html": "<button class=\"ds-btn-ghost\" type=\"button\">Pregúntale a Nexo</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03); color: #F2F4EE; box-shadow: inset 0 1px 0 rgba(255,255,255,.07); font-family: var(--font, 'Familjen Grotesk', sans-serif); font-size: 15px; font-weight: 600; cursor: pointer; transition: background .2s, border-color .2s, transform .2s; } .ds-btn-ghost:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.22); } .ds-btn-ghost:active { transform: translateY(1px); } .ds-btn-ghost:focus-visible { outline: 2px solid #C8F135; outline-offset: 3px; }"
+    },
+    {
+      "name": "Floating Nav Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Sticky rounded translucent bar with logo, links and lime CTA.",
+      "html": "<div class=\"ds-nav\"><a class=\"ds-nav-logo\" href=\"#\"><i></i>NEXUSDV</a><nav><a href=\"#\">Servicios</a><a href=\"#\">Proyectos</a><a href=\"#\">Precios</a></nav><a class=\"ds-nav-cta\" href=\"#\">Cotizar gratis</a></div>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 24px; height: 64px; padding: 0 10px 0 18px; border-radius: 18px; border: 1px solid rgba(255,255,255,.08); background: rgba(14,15,18,.78); backdrop-filter: blur(18px); box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 20px 40px rgba(0,0,0,.35); font-family: var(--font, 'Familjen Grotesk', sans-serif); } .ds-nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: #F2F4EE; text-decoration: none; } .ds-nav-logo i { width: 30px; height: 30px; border-radius: 9px; background: #C8F135; } .ds-nav nav { display: flex; gap: 4px; margin-inline: auto; font-size: 15px; } .ds-nav nav a { padding: 8px 12px; border-radius: 10px; color: #A3AAB1; text-decoration: none; transition: color .2s, background .2s; } .ds-nav nav a:hover { color: #F2F4EE; background: rgba(255,255,255,.05); } .ds-nav nav a:focus-visible { outline: 2px solid #C8F135; outline-offset: 3px; } .ds-nav-cta { height: 40px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 11px; background: #C8F135; color: #0B0F14; font-weight: 600; font-size: 14.5px; text-decoration: none; } .ds-nav-cta:hover { background: #D6F85A; }"
+    },
+    {
+      "name": "Showcase Dock",
+      "kind": "custom",
+      "refersTo": "dock-key",
+      "description": "Blurred tray of keycaps that switch the showcase; the active key is lime with a tooltip.",
+      "html": "<div class=\"ds-dock\"><button class=\"ds-dock-k\" type=\"button\"><svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 9h18\"/></svg><span class=\"ds-dock-tip\">Página web</span></button><button class=\"ds-dock-k is-on\" type=\"button\"><svg viewBox=\"0 0 24 24\"><rect x=\"7\" y=\"3\" width=\"10\" height=\"18\" rx=\"2\"/></svg><span class=\"ds-dock-tip\">App</span></button><button class=\"ds-dock-k\" type=\"button\"><svg viewBox=\"0 0 24 24\"><path d=\"M4 19V9M10 19V5M16 19v-7M22 19H2\"/></svg><span class=\"ds-dock-tip\">Sistema</span></button></div>",
+      "css": ".ds-dock { display: inline-flex; gap: 8px; padding: 8px; margin-top: 44px; border-radius: 20px; border: 1px solid rgba(255,255,255,.08); background: rgba(16,17,20,.82); backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 20px 40px rgba(0,0,0,.45); } .ds-dock-k { position: relative; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; border: 1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, #1F2227, #111215); color: #A3AAB1; cursor: pointer; box-shadow: inset 0 1px 0 rgba(255,255,255,.07), inset 0 -3px 0 rgba(0,0,0,.35); transition: transform .25s cubic-bezier(.16,1,.3,1), color .2s, background .2s; } .ds-dock-k svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; } .ds-dock-k:hover { color: #F2F4EE; transform: translateY(-3px); } .ds-dock-k:focus-visible { outline: 2px solid #C8F135; outline-offset: 3px; } .ds-dock-k.is-on { color: #0B0F14; background: linear-gradient(180deg, #D6F85A, #C8F135); border-color: #C8F135; transform: translateY(-4px) scale(1.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -3px 0 rgba(0,0,0,.18), 0 10px 26px rgba(200,241,53,.28); } .ds-dock-tip { position: absolute; bottom: calc(100% + 12px); left: 50%; padding: 6px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,.14); background: #17191D; color: #F2F4EE; font-family: var(--font, 'Familjen Grotesk', sans-serif); font-size: 13px; font-weight: 600; white-space: nowrap; opacity: 0; transform: translate(-50%, 4px); pointer-events: none; transition: opacity .2s, transform .25s; } .ds-dock-k.is-on .ds-dock-tip, .ds-dock-k:hover .ds-dock-tip { opacity: 1; transform: translate(-50%, 0); }"
+    },
+    {
+      "name": "Process Keycap",
+      "kind": "custom",
+      "refersTo": "keycap",
+      "description": "Physical key tile with a numeral; the first step is lime. Presses down on hover.",
+      "html": "<div class=\"ds-keys\"><span class=\"ds-key ds-key-lime\"><span>1</span></span><span class=\"ds-key\"><span>2</span></span></div>",
+      "css": ".ds-keys { display: flex; gap: 32px; } .ds-key { display: grid; place-items: center; width: 120px; height: 120px; border-radius: 28px; border: 1px solid rgba(255,255,255,.14); background: linear-gradient(180deg, #1F2227, #111215); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -6px 0 rgba(0,0,0,.4), 0 14px 30px rgba(0,0,0,.5); transition: transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s; } .ds-key span { font-family: var(--font, 'Familjen Grotesk', sans-serif); font-size: 52px; font-weight: 600; letter-spacing: -0.03em; color: #F2F4EE; } .ds-key:hover { transform: translateY(3px); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -3px 0 rgba(0,0,0,.4), 0 8px 18px rgba(0,0,0,.5); } .ds-key-lime { border-color: #C8F135; background: linear-gradient(180deg, #D6F85A, #C8F135); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -6px 0 rgba(0,0,0,.18), 0 14px 34px rgba(200,241,53,.25); } .ds-key-lime span { color: #0B0F14; } .ds-key-lime:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -3px 0 rgba(0,0,0,.18), 0 8px 20px rgba(200,241,53,.25); }"
+    },
+    {
+      "name": "Highlighted Plan Card",
+      "kind": "card",
+      "refersTo": "card-plan",
+      "description": "Graphite plan card; the highlighted plan has a lime border and top glow, no badge.",
+      "html": "<article class=\"ds-plan ds-plan-hl\"><h3>Dominio + correo</h3><div class=\"ds-plan-price\">S/ 550<small>el primer año</small></div><p>Tu dominio y 4 correos corporativos.</p><a class=\"ds-plan-btn\" href=\"#\">Cotizar por WhatsApp</a></article>",
+      "css": ".ds-plan { position: relative; display: flex; flex-direction: column; gap: 16px; width: 320px; padding: 28px; border-radius: 22px; border: 1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, #17191D, #111215); box-shadow: inset 0 1px 0 rgba(255,255,255,.07); overflow: hidden; color: #F2F4EE; font-family: var(--font, 'Familjen Grotesk', sans-serif); } .ds-plan h3 { margin: 0; font-size: 16px; font-weight: 600; color: #A3AAB1; } .ds-plan-price { font-size: 52px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; } .ds-plan-price small { display: block; margin-top: 10px; font-size: 14.5px; font-weight: 400; letter-spacing: 0; color: #7D858D; } .ds-plan p { margin: 0; font-size: 15px; color: #A3AAB1; } .ds-plan-hl { border-color: rgba(200,241,53,.4); } .ds-plan-hl::before { content: ''; position: absolute; inset: -40% -20% auto; height: 70%; pointer-events: none; background: radial-gradient(closest-side, rgba(200,241,53,.2), transparent); } .ds-plan-btn { position: relative; display: flex; justify-content: center; align-items: center; height: 52px; border-radius: 14px; background: #C8F135; color: #0B0F14; font-weight: 600; font-size: 16px; text-decoration: none; transition: background .2s; } .ds-plan-btn:hover { background: #D6F85A; } .ds-plan-btn:focus-visible { outline: 2px solid #C8F135; outline-offset: 4px; }"
+    },
+    {
+      "name": "FAQ Item",
+      "kind": "custom",
+      "refersTo": "faq-item",
+      "description": "Accordion row with a plus tile that swaps to a lime minus when open; no rotation.",
+      "html": "<details class=\"ds-faq\" open><summary>¿Cuánto cuesta una página web?</summary><p>Se cotiza sin costo según lo que necesitas.</p></details>",
+      "css": ".ds-faq { width: 520px; border-radius: 16px; border: 1px solid rgba(255,255,255,.08); background: #111215; box-shadow: inset 0 1px 0 rgba(255,255,255,.07); color: #F2F4EE; font-family: var(--font, 'Familjen Grotesk', sans-serif); transition: border-color .25s, background .25s; } .ds-faq[open] { border-color: rgba(255,255,255,.14); background: #17191D; } .ds-faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 20px; font-size: 16.5px; font-weight: 600; } .ds-faq summary::-webkit-details-marker { display: none; } .ds-faq summary:focus-visible { outline: 2px solid #C8F135; outline-offset: 3px; border-radius: 16px; } .ds-faq summary::after { content: ''; width: 28px; height: 28px; flex: none; border-radius: 8px; border: 1px solid rgba(255,255,255,.14); background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 6v12M6 12h12' fill='none' stroke='%23F2F4EE' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E\") center/16px no-repeat; } .ds-faq[open] summary::after { background-color: rgba(200,241,53,.12); border-color: rgba(200,241,53,.4); background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12h12' fill='none' stroke='%23C8F135' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E\"); } .ds-faq p { margin: 0; padding: 0 64px 20px 20px; color: #A3AAB1; }"
+    },
+    {
+      "name": "Chat Input",
+      "kind": "input",
+      "refersTo": "input-chat",
+      "description": "Nexo chat field with lime focus ring and lime send key.",
+      "html": "<form class=\"ds-chatform\" onsubmit=\"return false\"><input placeholder=\"Escribe tu pregunta…\" /><button type=\"submit\" aria-label=\"Enviar\"><svg viewBox=\"0 0 24 24\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button></form>",
+      "css": ".ds-chatform { display: flex; gap: 8px; width: 380px; padding: 10px; border-radius: 18px; background: #111215; border: 1px solid rgba(255,255,255,.14); } .ds-chatform input { flex: 1; min-width: 0; height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); background: #0C0D10; color: #F2F4EE; caret-color: #C8F135; font-family: var(--font, 'Familjen Grotesk', sans-serif); font-size: 16px; outline: none; transition: border-color .2s, box-shadow .2s; } .ds-chatform input::placeholder { color: #7D858D; } .ds-chatform input:focus { border-color: #C8F135; box-shadow: 0 0 0 4px rgba(200,241,53,.14); } .ds-chatform button { width: 44px; height: 44px; border-radius: 12px; border: 0; background: #C8F135; color: #0B0F14; display: grid; place-items: center; cursor: pointer; transition: transform .2s; } .ds-chatform button:hover { transform: scale(1.05); } .ds-chatform button:focus-visible { outline: 2px solid #C8F135; outline-offset: 3px; } .ds-chatform svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Outlined quick-reply chip; the WhatsApp chip is filled lime.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" type=\"button\">Quiero una web</button><a class=\"ds-chip ds-chip-wa\" href=\"#\">Seguir por WhatsApp</a></div>",
+      "css": ".ds-chips { display: flex; gap: 7px; } .ds-chip { padding: 7px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.14); background: transparent; color: #F2F4EE; font-family: var(--font, 'Familjen Grotesk', sans-serif); font-size: 13.5px; cursor: pointer; text-decoration: none; transition: border-color .2s, color .2s, background .2s; } .ds-chip:hover { border-color: #C8F135; color: #C8F135; } .ds-chip:focus-visible { outline: 2px solid #C8F135; outline-offset: 3px; } .ds-chip-wa { background: #C8F135; border-color: #C8F135; color: #0B0F14; font-weight: 600; } .ds-chip-wa:hover { background: #D6F85A; color: #0B0F14; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Launch Stage",
+    "overview": "The site is a product launch for a studio. One near-black stage, wide black silences between sections, a centered promise in sentence case, and a single large framed screen where each service is shown working. Everything is staged in front of the visitor rather than described to them: the showcase plays the real projects, Nexo answering, and a WhatsApp inbox filling up, then the page lets real projects, three keys, clear prices and answers carry the rest. The style reference is raycast.com, used for its stagecraft only; the palette and the blur-to-sharp scroll reveal were pinned by the user from the previous build.\n\nDensity is low and centered. Section heads sit on the center axis, content groups in a 1200px column, and every surface is graphite with a 1px white hairline and a soft inner top highlight, so depth reads as machined panels catching overhead light. Lime is the one voice: it is the primary button, the active key, the visitor's chat bubbles, and the light streaks that rake diagonally across the hero, the showcase and the closing CTA. Paper appears only as a light button and as a contact avatar.\n\nThe page rejects the agency default of stacked marketing cards, stock imagery and invented proof. Illustrative screens say \"Ejemplo\"; real ones say \"Proyecto entregado\".",
+    "keyCharacteristics": [
+      "Dark stage (#08090B) with graphite surfaces s1 to s3 and white hairlines at 8% and 14%.",
+      "Lime as the only accent hue; ink text on every lime fill.",
+      "Familjen Grotesk only, weight 600 for every heading, sentence case, tight negative tracking.",
+      "Section heads: a white sentence, optionally a grey sentence on its own line, then one body line.",
+      "Diagonal blurred lime light streaks with a film-grain overlay as the world's only atmosphere.",
+      "Tactile keys: the showcase dock and the process keycaps press down on hover.",
+      "Motion is a blur-to-sharp rise on scroll, a crossfade between showcase views, and small arrivals in the chat demos."
+    ],
+    "rules": [
+      { "name": "The One Hue Rule", "body": "Lime is the only accent hue. Online Green is the sole exception and is confined to presence status; no other hue enters the page.", "section": "colors" },
+      { "name": "The Ink On Lime Rule", "body": "Anything filled with lime carries Ink (#0B0F14) text or glyphs, never white.", "section": "colors" },
+      { "name": "The Sentence Case Rule", "body": "Every line is sentence case. No uppercase display, no letter-spaced labels, no eyebrows or kickers above titles.", "section": "typography" },
+      { "name": "The Two Sentence Head Rule", "body": "A section head is one white sentence plus at most one short grey sentence; anything longer goes into the single `.sec__p` line beneath.", "section": "typography" },
+      { "name": "The Lit From Above Rule", "body": "Every raised surface has a 1px inner top highlight and a darker floor; light comes from above, never from the side.", "section": "elevation" },
+      { "name": "The Lime Glow Belongs To Lime Rule", "body": "Lime-tinted shadows and radial glows sit only under lime elements, inside the highlighted plan, at the foot of project cards, and on the showcase frame facing the streaks.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** put Ink (#0B0F14) on every lime fill.",
+      "**Do** keep lime the only accent hue; use Online Green (#2FBF6B) for presence status only.",
+      "**Do** write every heading in sentence case: a white sentence, at most one short grey sentence on its own line, and longer copy in the `.sec__p` line.",
+      "**Do** label any illustrative screen, chat or inbox with an \"Ejemplo\" tag, and label real work as delivered.",
+      "**Do** demonstrate services in the showcase only; other sections point to it or to real projects.",
+      "**Do** give every raised graphite surface a hairline and the inner top highlight (`--hi`).",
+      "**Do** keep light streaks at -42deg with 9px blur and the grain overlay, and only behind the hero, the showcase and the closing CTA.",
+      "**Do** honor reduced motion: no streak drift, no crossfade, no auto-advance, reveals in place."
+    ],
+    "donts": [
+      "**Don't** invent ratings, reviews, popularity badges, client counts, logos or capabilities.",
+      "**Don't** mark the highlighted plan with a badge; the lime border, glow and button are enough.",
+      "**Don't** add eyebrows, kickers, uppercase labels or letter-spaced display.",
+      "**Don't** introduce a second accent hue, or put white text on lime.",
+      "**Don't** use paper as a section background; it is a button and avatar color.",
+      "**Don't** add a second services grid or feature cards that re-explain what the showcase plays.",
+      "**Don't** use hard offset shadows or side-lit shadows; light comes from above.",
+      "**Don't** rotate the FAQ plus; it swaps to a minus."
+    ]
+  }
+}

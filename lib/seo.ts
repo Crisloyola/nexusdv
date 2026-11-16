@@ -1,17 +1,18 @@
 // SEO: dirección oficial de la web y datos estructurados que lee Google.
-import { contacto, preguntas, proyectos } from "./data";
+import { contacto, proyectos } from "./data";
+import { PLANES_WEB, SERVICIOS, preguntas } from "./servicios";
 
 /** Dirección principal de la web (nexusdv.pe sin "www" redirige aquí). */
 export const SITIO_URL = "https://www.nexusdv.pe";
 
 export const SEO = {
-  titulo: "Páginas web en Lima desde S/ 500 | Apps y sistemas · NEXUSDV",
+  titulo: "Páginas web en Lima desde S/ 300 | Tiendas virtuales, apps y sistemas · NEXUSDV",
   descripcion:
-    "Diseño de páginas web en Lima desde S/ 500, listas en 7 días. Apps para Android y iPhone, sistemas a medida, dominio .pe y correo corporativo. Cotiza sin costo.",
+    "Páginas web en Lima desde S/ 300: landing, web empresarial y tienda virtual con pedidos por WhatsApp. Apps, sistemas y asistentes con IA a medida. Ves el diseño antes de programar. Cotiza sin costo.",
   palabras: [
     "páginas web Lima", "diseño web Lima", "diseño de páginas web Perú", "landing page Lima", "crear página web para mi negocio",
     "desarrollo de apps Perú", "apps Android y iPhone", "sistemas a medida Lima", "correo corporativo Perú", "dominio .pe",
-    "agencia de desarrollo web Lima", "NEXUSDV",
+    "agencia de desarrollo web Lima", "chatbot con IA para negocios", "asistente virtual para web", "NEXUSDV",
   ],
 };
 
@@ -31,26 +32,24 @@ export function datosEstructurados() {
     email: contacto.correo,
     address: { "@type": "PostalAddress", addressLocality: "Lima", addressRegion: "Lima", addressCountry: "PE" },
     areaServed: [{ "@type": "City", name: "Lima" }, { "@type": "Country", name: "Perú" }],
-    priceRange: "Desde S/ 500",
     currenciesAccepted: "PEN",
     sameAs: [contacto.instagramLink],
     knowsLanguage: "es",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Servicios de NEXUSDV",
+      // Sale de lib/servicios.ts: los 3 planes web (precio desde) y los servicios. El correo tiene precio fijo.
       itemListElement: [
-        {
+        ...PLANES_WEB.map((p) => ({
           "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Landing page / página web a medida", description: "Diseño propio, adaptada a celular, botón a WhatsApp y lista para Google. Entrega en 7 días." },
-          priceSpecification: { "@type": "PriceSpecification", minPrice: 500, priceCurrency: "PEN" },
-        },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Apps para Android y iPhone", description: "Apps a medida con publicación en Google Play y App Store. Cotización sin costo." } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Sistemas a medida", description: "Ventas, inventario, reservas y fidelización de clientes, con panel de administración." } },
-        {
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Dominio y correo corporativo", description: "Dominio propio (.com, .pe o .com.pe) y 4 correos corporativos el primer año. Entrega inmediata." },
-          price: 550, priceCurrency: "PEN",
-        },
+          itemOffered: { "@type": "Service", name: p.nombre, description: p.texto },
+          priceSpecification: { "@type": "PriceSpecification", minPrice: p.desde, priceCurrency: "PEN" },
+        })),
+        ...SERVICIOS.filter((sv) => sv.id !== "web").map((sv) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: sv.titulo, description: sv.texto },
+        ...(sv.id === "mail" ? { price: 550, priceCurrency: "PEN" } : {}),
+        })),
       ],
     },
   };
