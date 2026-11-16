@@ -11,7 +11,7 @@ export const SEO = {
     "Páginas web en Lima desde S/ 300: landing, web empresarial y tienda virtual con pedidos por WhatsApp. Apps, sistemas y asistentes con IA a medida. Ves el diseño antes de programar. Cotiza sin costo.",
   palabras: [
     "páginas web Lima", "diseño web Lima", "diseño de páginas web Perú", "landing page Lima", "crear página web para mi negocio",
-    "desarrollo de apps Perú", "apps Android y iPhone", "sistemas a medida Lima", "correo corporativo Perú", "dominio .pe",
+    "desarrollo de apps Perú", "apps Android y iPhone", "sistemas a medida Lima", "tienda virtual Lima", "landing page Perú",
     "agencia de desarrollo web Lima", "chatbot con IA para negocios", "asistente virtual para web", "NEXUSDV",
   ],
 };
@@ -38,7 +38,7 @@ export function datosEstructurados() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Servicios de NEXUSDV",
-      // Sale de lib/servicios.ts: los 3 planes web (precio desde) y los servicios. El correo tiene precio fijo.
+      // Sale de lib/servicios.ts: los 3 planes web (precio desde) y los demás servicios (a medida).
       itemListElement: [
         ...PLANES_WEB.map((p) => ({
           "@type": "Offer",
@@ -48,7 +48,6 @@ export function datosEstructurados() {
         ...SERVICIOS.filter((sv) => sv.id !== "web").map((sv) => ({
         "@type": "Offer",
         itemOffered: { "@type": "Service", name: sv.titulo, description: sv.texto },
-        ...(sv.id === "mail" ? { price: 550, priceCurrency: "PEN" } : {}),
         })),
       ],
     },

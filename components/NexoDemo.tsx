@@ -5,7 +5,7 @@ import { abrirNexo } from "./Asistente";
 import { NexoCara } from "./Icons";
 
 // Conversación de ejemplo (respuestas fijas de lib/bot.ts). Es solo visual: no se puede escribir aquí.
-const DEMO = ["¿Hacen apps para iPhone?", "¿Cuánto cuesta el correo corporativo?", "¿Y una página web?"];
+const DEMO = ["¿Hacen apps para iPhone?", "¿Cuánto cuesta una tienda virtual?", "¿Y una página web?"];
 
 type Msg = { id: number; de: "bot" | "yo"; html: string };
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));

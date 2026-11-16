@@ -34,11 +34,11 @@ export const POLITICAS = {
   dominio: "El dominio se registra a nombre de NEXUSDV mientras dure el servicio. Si lo pides, te lo transferimos.",
   soporte: "30 días de soporte sin costo después de publicar, para errores y ajustes menores. Luego puedes tomar un plan de mantenimiento mensual, que se cotiza.",
   plazos: "Desde que apruebas el diseño: Landing Page de 5 a 7 días hábiles, Web empresarial unas 2 semanas y Tienda virtual de 3 a 4 semanas. Apps y sistemas según lo que necesites.",
-  hosting: "Las páginas web incluyen hosting el primer año. El dominio va aparte: dominio + 4 correos a S/ 550 el primer año, o solo el dominio.",
+  hosting: "Las páginas web incluyen hosting el primer año. El dominio se cotiza aparte.",
 };
 
 export type Servicio = {
-  id: "web" | "app" | "sys" | "mail" | "ia";
+  id: "web" | "app" | "sys" | "ia";
   ruta: string;
   titulo: string;
   texto: string;
@@ -70,13 +70,6 @@ export const SERVICIOS: Servicio[] = [
     precio: "A medida · cotización sin costo",
     puntos: ["Ventas, inventario y reservas", "Cuentas para tu equipo", "Reportes claros de tu negocio", "Funciona en celular y computadora"],
     paraNexo: "Sistemas a medida: ventas, inventario, reservas o fidelización de clientes, con panel para administrar. Precio: a medida, cotización sin costo. Plazo: depende de lo que necesite, se confirma en la cotización.",
-  },
-  {
-    id: "mail", ruta: "/correo", titulo: "Dominio y correo corporativo",
-    texto: "Deja el Gmail personal. Registramos tu dominio y configuramos correos con el nombre de tu empresa.",
-    precio: "S/ 550 · dominio + 4 correos · primer año",
-    puntos: ["Tu dominio, como tuempresa.com o .pe", "4 correos con los nombres que elijas", "Configurados en celular y computadora", "También vendemos solo el dominio"],
-    paraNexo: "Dominio y correo corporativo: S/ 550 el primer año, incluye el dominio + 4 correos. La renovación se informa antes de pagar. También se vende solo el dominio (se cotiza).",
   },
   {
     id: "ia", ruta: "/ia", titulo: "Asistentes con IA",
@@ -113,9 +106,7 @@ export const preguntas = [
   { q: "¿Hacen apps para Android y iPhone?", a: "Sí. Desarrollamos tu app para los dos y te ayudamos a publicarla en Google Play y App Store." },
   { q: "¿Qué tipo de sistemas hacen?", a: "Sistemas a medida: ventas, inventario, reservas, fidelización de clientes y más. Te cotizamos según lo que necesites." },
   { q: "¿Pueden hacer un asistente con IA para mi web?", a: "Sí. Responde preguntas frecuentes 24/7, orienta a tus clientes, toma reservas o pedidos y los pasa a tu WhatsApp. Se cotiza sin costo." },
-  { q: "¿Puedo comprar solo el dominio?", a: "Sí. Te ayudamos a elegir y registrar tu dominio, como tuempresa.com o tuempresa.pe, y te enviamos la cotización sin costo." },
-  { q: "¿Puedo pedir varios servicios juntos?", a: "Sí. Web, app, sistema, asistente con IA, dominio y correo: te cotizamos todo en una sola propuesta." },
-  { q: "¿Cuánto cuesta renovar el correo?", a: "Te decimos el precio de renovación antes de que pagues el primer año." },
+  { q: "¿Puedo pedir varios servicios juntos?", a: "Sí. Web, app, sistema y asistente con IA: te cotizamos todo en una sola propuesta." },
 ];
 
 /** Preguntas de confianza (sección "Trabajar con nosotros"). La primera depende de si hay fundador en lib/data.ts. */

@@ -49,7 +49,7 @@ function reglasGenerales(r) {
   if (/\*\*|^#|`/m.test(t)) fallas.push("usa Markdown");
   if (/941|163 ?771/.test(t)) fallas.push("muestra el número de WhatsApp");
   if (/s\/ ?500\b|inmediat|descuento|promo/.test(norm(t))) fallas.push("dato que no está en la fuente única");
-  if ((norm(t).match(/s\/ ?[\d,]+/g) || []).some((p) => !/^s\/ ?(300|600|1,?000|550)$/.test(p))) fallas.push("inventa un precio");
+  if ((norm(t).match(/s\/ ?[\d,]+/g) || []).some((p) => !/^s\/ ?(300|600|1,?000)$/.test(p))) fallas.push("inventa un precio");
   if (/5 correos|cinco correos/.test(norm(t))) fallas.push("dice 5 correos");
   if (!/\p{Extended_Pictographic}/u.test(t)) fallas.push("no usa emojis");
   if ((r.chips || []).length > 4) fallas.push("más de 4 opciones");
@@ -96,12 +96,11 @@ const CASOS = [
     check: (r) => [!/s\/ ?300/.test(norm(r.reply)) && "no dice desde S/ 300", !tiene(r.reply, "desde") && "no dice 'desde'"],
   },
   {
-    q: "¿Cuánto cuesta el dominio con correo y cuántos correos incluye?",
-    esperado: "S/ 550 el primer año, dominio + 4 correos; renovación informada antes de pagar.",
+    q: "¿Cuánto cuesta el dominio?",
+    esperado: "Se cotiza aparte, sin montos; ofrece cotizarlo por WhatsApp.",
     check: (r) => [
-      !/s\/ ?550/.test(norm(r.reply)) && "no dice S/ 550",
-      !algunaDe(r.reply, "4 correos", "cuatro correos") && "no dice 4 correos",
-      !tiene(r.reply, "primer ano") && "no dice 'el primer año'",
+      /s\/ ?\d/.test(norm(r.reply)) && "da un monto para el dominio",
+      !algunaDe(r.reply, "cotiz") && "no dice que se cotiza",
     ],
   },
   {
@@ -115,7 +114,7 @@ const CASOS = [
     check: (r) => [!algunaDe(r.reply, /\bsi\b/, "claro") && "no dice que sí", !algunaDe(r.reply, "aprueb") && "no menciona la aprobación"],
   },
   {
-    q: "Quiero una web, correo corporativo y un asistente con IA, ¿pueden hacer todo junto?",
+    q: "Quiero una web, una app y un asistente con IA, ¿pueden hacer todo junto?",
     esperado: "Sí, se cotizan juntos en una sola propuesta.",
     check: (r) => [
       !algunaDe(r.reply, /\bsi\b/, "claro", "podemos") && "no dice que sí",

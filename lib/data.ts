@@ -19,6 +19,10 @@ export const fundador = { nombre: "Cristopher" };
 export const waTexto = (texto: string) =>
   `https://wa.me/${contacto.whatsappNumero}?text=${encodeURIComponent(texto)}`;
 
+/** Testimonios REALES de clientes, con su permiso. La sección no aparece mientras la lista esté vacía. */
+export type Testimonio = { texto: string; nombre: string; negocio: string; proyecto?: string };
+export const testimonios: Testimonio[] = [];
+
 export type Proyecto = {
   nombre: string;
   etiqueta: string;

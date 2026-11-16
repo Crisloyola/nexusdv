@@ -6,6 +6,7 @@ import { Proyectos } from "@/components/Proyectos";
 import { NexoSeccion } from "@/components/NexoSeccion";
 import { Pasos } from "@/components/Pasos";
 import { Precios } from "@/components/Precios";
+import { Testimonios } from "@/components/Testimonios";
 import { Preguntas } from "@/components/Preguntas";
 import { Confianza } from "@/components/Confianza";
 import { Contacto } from "@/components/Contacto";
@@ -25,6 +26,7 @@ export default function Home() {
         <Hero />
         <Servicios />
         <Proyectos />
+        <Testimonios />
         <NexoSeccion />
         <Pasos />
         <Precios />
