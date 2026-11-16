@@ -1,5 +1,5 @@
 import { A_MEDIDA, planes, waTexto } from "@/lib/data";
-import { NOTA_PRECIOS, POLITICAS, RENOVACIONES, soles } from "@/lib/servicios";
+import { NOTA_PRECIOS, RENOVACIONES, soles } from "@/lib/servicios";
 import { Icon } from "./Icons";
 
 /** Precios: los 3 planes web con precio desde, una línea para lo que va a medida y qué incluye. Datos en lib/servicios.ts. */
@@ -9,7 +9,7 @@ export function Precios() {
       <div className="wrap">
         <div className="sec__head rv">
           <h2 id="precios-t" className="tit tit--c"><b>Precios claros desde el inicio.</b> <span>Elige el tipo de web que necesitas.</span></h2>
-          <p className="sec__p">{POLITICAS.hosting}</p>
+          <p className="sec__p">Te enviamos la cotización exacta sin costo, según lo que necesitas.</p>
         </div>
         <div className="plans">
           {planes.map((p) => (

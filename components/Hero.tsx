@@ -15,7 +15,7 @@ export function Hero() {
           <a className="btn btn--lime btn--lg" href={waTexto(landing.mensaje, landing.campana)} target="_blank" rel="noopener"><Icon id="wa" />Quiero mi página web desde S/ 300</a>
           <a className="btn btn--ghost btn--lg" href="#precios">Ver precios<Icon id="right" /></a>
         </div>
-        <p className="hero__meta">Hosting el primer año · Ves el diseño antes de programar · Landing lista en 5 a 7 días hábiles · 30 días de soporte</p>
+        <p className="hero__meta">Ves el diseño antes de programar · Landing lista en 5 a 7 días hábiles · 30 días de soporte</p>
         <AbrirNexo className="hero__nexo">¿Dudas? Pregúntale a Nexo</AbrirNexo>
       </div>
     </section>

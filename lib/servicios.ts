@@ -13,13 +13,13 @@ export const PLANES_WEB: PlanWeb[] = [
     id: "landing", nombre: "Landing Page", desde: 300, plazo: "5 a 7 días hábiles", campana: "landing_page",
     mensaje: "Hola, NEXUS. Estoy interesado en contratar una Landing Page desde S/300. Quisiera conocer qué incluye y cómo puedo empezar.",
     texto: "Una página para presentar tu negocio o una campaña y recibir consultas por WhatsApp.",
-    incluye: ["Una página con las secciones clave de tu negocio", "Diseño a medida, adaptado a celular", "Botón directo a tu WhatsApp", "Configuración SEO básica para facilitar la indexación en Google", "Hosting el primer año"],
+    incluye: ["Una página con las secciones clave de tu negocio", "Diseño a medida, adaptado a celular", "Botón directo a tu WhatsApp", "Configuración SEO básica para facilitar la indexación en Google"],
   },
   {
     id: "empresarial", nombre: "Web empresarial", desde: 600, plazo: "unas 2 semanas", destacado: true, campana: "web_empresarial",
     mensaje: "Hola, NEXUS. Necesito una página web para mi empresa. ¿Podrían enviarme información sobre sus planes y servicios?",
     texto: "Varias páginas para mostrar tu empresa, tus servicios y tus trabajos.",
-    incluye: ["Inicio, nosotros, servicios y contacto", "Galería de trabajos o catálogo de servicios", "Botón directo a tu WhatsApp", "Configuración SEO básica para facilitar la indexación en Google", "Hosting el primer año"],
+    incluye: ["Inicio, nosotros, servicios y contacto", "Galería de trabajos o catálogo de servicios", "Botón directo a tu WhatsApp", "Configuración SEO básica para facilitar la indexación en Google"],
   },
   {
     id: "tienda", nombre: "Tienda virtual", desde: 1000, plazo: "3 a 4 semanas", campana: "tienda_virtual",
@@ -34,7 +34,7 @@ export const soles = (n: number) => `S/ ${n.toLocaleString("en-US")}`;
 
 /** Renovaciones y extras que se muestran en Precios (debajo de los planes). */
 export const RENOVACIONES = [
-  "Hosting incluido durante el primer año.",
+  "Hosting: incluido el primer año en la Tienda virtual; en Landing Page y Web empresarial se cotiza aparte.",
   "Renovación anual informada antes de contratar.",
   "Dominio según extensión.",
   "Mantenimiento opcional.",
@@ -44,10 +44,10 @@ export const RENOVACIONES = [
 export const POLITICAS = {
   cambios: "Incluye 1 ronda de cambios en el diseño antes de programar. Los cambios posteriores se cotizan.",
   administra: "NEXUSDV administra tu web y la mantiene en línea. Tú nos escribes por WhatsApp cuando necesites algo.",
-  dominio: "El dominio se registra a nombre de NEXUSDV mientras dure el servicio. Si lo pides, te lo transferimos.",
+  dominio: "Sí. Siempre que sea posible, el dominio se registra a tu nombre y es tuyo. NEXUSDV se encarga de toda la configuración técnica.",
   soporte: "30 días de soporte sin costo después de publicar, para errores y ajustes menores. Luego puedes tomar un plan de mantenimiento mensual, que se cotiza.",
   plazos: "Desde que apruebas el diseño: Landing Page de 5 a 7 días hábiles, Web empresarial unas 2 semanas y Tienda virtual de 3 a 4 semanas. Apps y sistemas según lo que necesites.",
-  hosting: "Las páginas web incluyen hosting el primer año. La renovación anual se informa antes de contratar, el dominio se cotiza según su extensión y el mantenimiento es opcional.",
+  hosting: "La Tienda virtual incluye hosting el primer año; en la Landing Page y la Web empresarial el hosting se cotiza aparte. La renovación anual se informa antes de contratar, el dominio se cotiza según su extensión y el mantenimiento es opcional.",
 };
 
 export type Servicio = {
@@ -68,7 +68,7 @@ export const SERVICIOS: Servicio[] = [
     texto: "Diseño propio, sin plantillas genéricas. Tu web muestra quién eres, qué vendes y lleva al cliente directo a tu chat.",
     precio: "Desde S/ 300 · landing, web empresarial o tienda",
     puntos: ["Diseño hecho para tu marca", "Se ve perfecta en celular", "Botón directo a tu WhatsApp", "Configuración SEO básica para facilitar la indexación en Google"],
-    paraNexo: "Páginas web a medida: diseño propio, adaptadas a celular, botón a WhatsApp, con configuración SEO básica para facilitar la indexación en Google. Precios (siempre con \"desde\"): Landing Page desde S/ 300 (5 a 7 días hábiles), Web empresarial desde S/ 600 (unas 2 semanas), Tienda virtual desde S/ 1,000 (3 a 4 semanas; el pedido llega armado a WhatsApp y el pago se coordina por WhatsApp con Yape, Plin o transferencia). Incluyen hosting el primer año; el dominio va aparte. Los plazos cuentan desde que el cliente aprueba el diseño.",
+    paraNexo: "Páginas web a medida: diseño propio, adaptadas a celular, botón a WhatsApp, con configuración SEO básica para facilitar la indexación en Google. Precios (siempre con \"desde\"): Landing Page desde S/ 300 (5 a 7 días hábiles), Web empresarial desde S/ 600 (unas 2 semanas), Tienda virtual desde S/ 1,000 (3 a 4 semanas; el pedido llega armado a WhatsApp y el pago se coordina por WhatsApp con Yape, Plin o transferencia). Solo la Tienda virtual incluye hosting el primer año; en Landing Page y Web empresarial el hosting se cotiza aparte. El dominio va aparte. Los plazos cuentan desde que el cliente aprueba el diseño.",
   },
   {
     id: "app", ruta: "/apps", titulo: "Apps Android y iPhone",
@@ -114,7 +114,7 @@ export const planes = PLANES_WEB;
 export const A_MEDIDA = { nombre: "Apps, sistemas y asistentes con IA", texto: "Para vender, atender y ordenar tu negocio. Se cotizan según lo que necesitas.", precio: "A medida", boton: "Cotizar mi proyecto" };
 
 export const preguntas = [
-  { q: "¿Cuánto cuesta una página web?", a: "Landing Page desde S/ 300, Web empresarial desde S/ 600 y Tienda virtual desde S/ 1,000, con hosting el primer año. Te enviamos la cotización exacta sin costo." },
+  { q: "¿Cuánto cuesta una página web?", a: "Landing Page desde S/ 300, Web empresarial desde S/ 600 y Tienda virtual desde S/ 1,000 (esta incluye hosting el primer año). Te enviamos la cotización exacta sin costo." },
   { q: "¿Puedo ver el diseño antes de pagar todo?", a: "Sí. Te mostramos el diseño y lo apruebas antes de programar." },
   { q: "¿Hacen apps para Android y iPhone?", a: "Sí. Desarrollamos tu app para los dos y te ayudamos a publicarla en Google Play y App Store." },
   { q: "¿Qué tipo de sistemas hacen?", a: "Sistemas a medida: ventas, inventario, reservas, fidelización de clientes y más. Te cotizamos según lo que necesites." },
