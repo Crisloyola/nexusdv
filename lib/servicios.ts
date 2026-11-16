@@ -5,12 +5,14 @@
 export const NOTA_PRECIOS = "El equipo confirma tu cotización según lo que necesitas";
 
 /** Planes de páginas web. Los muestra Precios y los conoce Nexo. */
-export type PlanWeb = { id: string; nombre: string; precio: number;
+export type PlanWeb = {
+  id: string; nombre: string; precio: number;
   /** true = el precio se muestra como "Desde S/ …". */ esDesde?: boolean;
   plazo: string; texto: string; incluye: string[]; destacado?: boolean;
   /** Etiqueta sobre el plan destacado. */ etiqueta?: string;
   /** Mensaje que se escribe solo en WhatsApp al tocar el botón del plan. */ mensaje: string;
-  /** utm_campaign del botón. */ campana: string };
+  /** utm_campaign del botón. */ campana: string
+};
 export const PLANES_WEB: PlanWeb[] = [
   {
     id: "landing", nombre: "Landing Page", precio: 450, plazo: "5 a 7 días hábiles", campana: "landing_page",
@@ -22,7 +24,7 @@ export const PLANES_WEB: PlanWeb[] = [
     id: "empresarial", nombre: "Web Empresarial", precio: 990, plazo: "unas 2 semanas", destacado: true, etiqueta: "Más recomendado", campana: "web_empresarial",
     mensaje: "Hola, NEXUS. Necesito una Web Empresarial de S/ 990 para mi empresa. ¿Podrían enviarme más información?",
     texto: "Para empresas que quieren mostrar sus servicios y recibir clientes.",
-    incluye: ["Hasta 5 páginas", "Diseño personalizado", "WhatsApp y formularios", "SEO básico", "SSL", "Dominio .com por 1 año", "Configuración DNS"],
+    incluye: ["Hasta 5 páginas", "Diseño personalizado", "WhatsApp y formularios", "SEO básico", "Dominio .com por 1 año"],
   },
   {
     id: "corporativa", nombre: "Web Corporativa", precio: 1490, plazo: "unas 3 semanas", campana: "web_corporativa",
