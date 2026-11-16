@@ -282,10 +282,11 @@ main { overflow-x: clip; }
 .step__m { margin-top: 4px; padding: 5px 10px; border-radius: 8px; border: 1px solid var(--line); font-size: 12.5px; color: var(--tx-3); }
 
 /* precios */
-.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.plans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.plan__tag { position: relative; align-self: flex-start; padding: 5px 10px; border-radius: 999px; background: var(--lime); color: #0b0c0e; font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em; }
 .plan { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 28px; border-radius: 22px; border: 1px solid var(--line); background: linear-gradient(180deg, var(--s2), var(--s1)); box-shadow: var(--hi); overflow: hidden; }
 .plan h3 { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; color: var(--tx-2); }
-.plan__price { font-size: clamp(40px, 4vw, 56px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; margin-top: 10px; }
+.plan__price { font-size: clamp(36px, 3.4vw, 46px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; margin-top: 10px; }
 .plan__price .plan__desde { display: block; margin: 0 0 6px; font-size: 13.5px; font-weight: 500; letter-spacing: 0; color: var(--tx-3); }
 .plan__plazo { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 6px 10px; border-radius: 8px; background: var(--lime-soft); color: var(--lime); font-size: 13.5px; font-weight: 600; }
 .plan__plazo svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -428,6 +429,7 @@ main { overflow-x: clip; }
 
 @media (max-width: 1100px) {
   .top__bar nav a { padding: 8px 8px; font-size: 14px; }
+  .plans { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 @media (max-width: 960px) {
   .top__bar { gap: 10px; height: 60px; }
@@ -439,8 +441,6 @@ main { overflow-x: clip; }
   .menu a svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; color: var(--tx-3); }
   .menu__cta { margin-top: 18px; }
   html.menu-open body { overflow: hidden; }
-  .plans { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .plans .plan:last-child { grid-column: 1 / -1; }
   .carr__track > .case { flex-basis: calc((100% - 16px) / 2); }
   .trust { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .renov { grid-template-columns: minmax(0, 1fr); } .renov .ticks { grid-template-columns: repeat(2, auto); }

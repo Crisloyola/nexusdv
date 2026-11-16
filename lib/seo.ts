@@ -6,9 +6,9 @@ import { PLANES_WEB, SERVICIOS, preguntas } from "./servicios";
 export const SITIO_URL = "https://www.nexusdv.pe";
 
 export const SEO = {
-  titulo: "Páginas web en Lima desde S/ 300 | Tiendas virtuales, apps y sistemas · NEXUSDV",
+  titulo: "Páginas web en Lima desde S/ 450 | Tiendas virtuales, apps y sistemas · NEXUSDV",
   descripcion:
-    "Páginas web en Lima desde S/ 300: landing, web empresarial y tienda virtual con pedidos por WhatsApp. Apps, sistemas y asistentes con IA a medida. Ves el diseño antes de programar. Cotiza sin costo.",
+    "Páginas web en Lima desde S/ 450: landing, web empresarial, web corporativa y tienda virtual con pedidos online. Apps, sistemas y asistentes con IA a medida. Ves el diseño antes de programar. Cotiza sin costo.",
   palabras: [
     "páginas web Lima", "diseño web Lima", "diseño de páginas web Perú", "landing page Lima", "crear página web para mi negocio",
     "desarrollo de apps Perú", "apps Android y iPhone", "sistemas a medida Lima", "tienda virtual Lima", "landing page Perú",
@@ -38,12 +38,14 @@ export function datosEstructurados() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Servicios de NEXUSDV",
-      // Sale de lib/servicios.ts: los 3 planes web (precio desde) y los demás servicios (a medida).
+      // Sale de lib/servicios.ts: los 4 planes web y los demás servicios (a medida).
       itemListElement: [
         ...PLANES_WEB.map((p) => ({
           "@type": "Offer",
           itemOffered: { "@type": "Service", name: p.nombre, description: p.texto },
-          priceSpecification: { "@type": "PriceSpecification", minPrice: p.desde, priceCurrency: "PEN" },
+          priceSpecification: p.esDesde
+            ? { "@type": "PriceSpecification", minPrice: p.precio, priceCurrency: "PEN" }
+            : { "@type": "PriceSpecification", price: p.precio, priceCurrency: "PEN" },
         })),
         ...SERVICIOS.filter((sv) => sv.id !== "web").map((sv) => ({
         "@type": "Offer",

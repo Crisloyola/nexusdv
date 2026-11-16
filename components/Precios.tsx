@@ -2,7 +2,7 @@ import { A_MEDIDA, planes, waTexto } from "@/lib/data";
 import { NOTA_PRECIOS, RENOVACIONES, soles } from "@/lib/servicios";
 import { Icon } from "./Icons";
 
-/** Precios: los 3 planes web con precio desde, una línea para lo que va a medida y qué incluye. Datos en lib/servicios.ts. */
+/** Precios: los 4 planes web, una línea para lo que va a medida y qué incluye. Datos en lib/servicios.ts. */
 export function Precios() {
   return (
     <section className="sec" id="precios" aria-labelledby="precios-t">
@@ -14,8 +14,9 @@ export function Precios() {
         <div className="plans">
           {planes.map((p) => (
             <article key={p.id} className={`plan rv${p.destacado ? " plan--hl" : ""}`}>
+              {p.etiqueta && <span className="plan__tag">{p.etiqueta}</span>}
               <h3>{p.nombre}</h3>
-              <div className="plan__price"><small className="plan__desde">Desde</small>{soles(p.desde)}</div>
+              <div className="plan__price">{p.esDesde && <small className="plan__desde">Desde</small>}{soles(p.precio)}</div>
               <p className="plan__plazo"><Icon id="chk" />Lista en {p.plazo}</p>
               <p>{p.texto}</p>
               <ul className="ticks">{p.incluye.map((x) => <li key={x}>{x}</li>)}</ul>
