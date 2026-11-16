@@ -32,6 +32,7 @@ Confirmed differentiators (use only these as arguments):
 - Working process, in order: design → client approves the design → programming → publish connected to WhatsApp → ongoing support. Source of truth: `FORMA_DE_TRABAJO` and `PASOS` in `lib/servicios.ts`.
 - Quotes are free; the team confirms every quote.
 - Policies (confirmed by the owner 2026-11-15, source of truth `POLITICAS` in `lib/servicios.ts`): 1 round of design changes included before programming, later changes are quoted; NEXUSDV administers the site; the domain is registered in the client's name whenever possible and NEXUSDV handles the technical configuration (changed 2026-11-15 to build trust); 30 days of free support after launch (bugs and minor tweaks), then an optional monthly maintenance plan (quoted); timelines from design approval: Landing 5–7 business days, Web empresarial about 2 weeks, Tienda virtual 3–4 weeks.
+- Analytics and consent (2026-11-15): Google Tag Manager GTM-M8V6J96W loads with Google Consent Mode v2, everything denied until the visitor accepts the cookie notice (`components/AvisoCookies.tsx`, choice in localStorage `nx-cookies`). Vercel Analytics is cookieless. Privacy policy at `/privacidad` (Ley 29733) describes only what the site does; update it if new tools are added in GTM. Nexo chat messages go to the AI provider and are not stored by the site.
 - Contact channels: WhatsApp (primary), email `contacto@nexusdv.pe`, Instagram `@nexusdv.pe`. All in `lib/data.ts` → `contacto`.
 
 ## Capabilities and Constraints

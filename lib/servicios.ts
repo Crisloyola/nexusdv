@@ -115,7 +115,6 @@ export const A_MEDIDA = { nombre: "Apps, sistemas y asistentes con IA", texto: "
 
 export const preguntas = [
   { q: "¿Cuánto cuesta una página web?", a: "Landing Page desde S/ 300, Web empresarial desde S/ 600 y Tienda virtual desde S/ 1,000 (esta incluye hosting el primer año). Te enviamos la cotización exacta sin costo." },
-  { q: "¿Puedo ver el diseño antes de pagar todo?", a: "Sí. Te mostramos el diseño y lo apruebas antes de programar." },
   { q: "¿Hacen apps para Android y iPhone?", a: "Sí. Desarrollamos tu app para los dos y te ayudamos a publicarla en Google Play y App Store." },
   { q: "¿Qué tipo de sistemas hacen?", a: "Sistemas a medida: ventas, inventario, reservas, fidelización de clientes y más. Te cotizamos según lo que necesites." },
   { q: "¿Pueden hacer un asistente con IA para mi web?", a: "Sí. Responde preguntas frecuentes 24/7, orienta a tus clientes, toma reservas o pedidos y los pasa a tu WhatsApp. Se cotiza sin costo." },

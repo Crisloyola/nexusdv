@@ -4,6 +4,7 @@ import { contacto } from "@/lib/data";
 import { abrirNexo } from "./Asistente";
 import { Icon, Logo } from "./Icons";
 import { WaChat } from "./WaDemo";
+import { abrirCookies } from "./AvisoCookies";
 
 /** Botón que copia el correo. Si el navegador no deja copiar, selecciona el texto para copiarlo a mano. */
 function Copiar({ texto }: { texto: string }) {
@@ -48,6 +49,7 @@ export function Contacto() {
         <div className="foot">
           <a className="logo" href="#inicio" aria-label="NEXUSDV, volver al inicio"><i><Logo /></i>NEXUSDV</a>
           <span>Webs · apps · sistemas · dominios · correo · IA</span>
+          <span className="foot__legal"><a href="/privacidad">Privacidad</a><button type="button" onClick={abrirCookies}>Cookies</button></span>
           <span>© {new Date().getFullYear()} NEXUSDV · {contacto.ciudad}</span>
         </div>
       </div>
