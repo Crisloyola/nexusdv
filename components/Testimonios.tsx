@@ -11,11 +11,11 @@ export function Testimonios() {
         </div>
         <div className="testis">
           {testimonios.map((t) => (
-            <figure className="testi rv" key={t.nombre + t.negocio}>
+            <figure className="testi rv" key={t.negocio + t.texto.slice(0, 20)}>
               <blockquote>“{t.texto}”</blockquote>
               <figcaption>
-                <span className="testi__av" aria-hidden="true">{t.nombre[0]}</span>
-                <span><b>{t.nombre}</b><small>{t.negocio}{t.proyecto ? ` · ${t.proyecto}` : ""}</small></span>
+                <span className="testi__av" aria-hidden="true">{(t.nombre ?? t.negocio)[0]}</span>
+                <span><b>{t.nombre ?? t.negocio}</b><small>{t.nombre ? t.negocio : "Cliente"}{t.proyecto ? ` · ${t.proyecto}` : ""}</small></span>
               </figcaption>
             </figure>
           ))}

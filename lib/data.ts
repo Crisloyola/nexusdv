@@ -21,8 +21,19 @@ export const waTexto = (texto: string, campana?: string) =>
   `https://wa.me/${contacto.whatsappNumero}?text=${encodeURIComponent(texto)}${campana ? `&utm_source=web&utm_campaign=${campana}` : ""}`;
 
 /** Testimonios REALES de clientes, con su permiso. La sección no aparece mientras la lista esté vacía. */
-export type Testimonio = { texto: string; nombre: string; negocio: string; proyecto?: string };
-export const testimonios: Testimonio[] = [];
+export type Testimonio = { texto: string; negocio: string; nombre?: string; proyecto?: string };
+export const testimonios: Testimonio[] = [
+  {
+    texto: "Quedamos muy satisfechos con el desarrollo de nuestra página web. Lograron plasmar nuestra idea en un sitio moderno, profesional y fácil de navegar. Muy buen trabajo y atención durante todo el proceso.",
+    negocio: "LML Agency",
+    proyecto: "Página web",
+  },
+  {
+    texto: "Excelente servicio de principio a fin. Destacamos la creatividad, el compromiso y la dedicación para conseguir una página web que cumpliera con nuestras expectativas.",
+    negocio: "Creatrix",
+    proyecto: "Sistema a medida",
+  },
+];
 
 export type Proyecto = {
   nombre: string;
