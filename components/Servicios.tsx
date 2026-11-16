@@ -1,36 +1,15 @@
-"use client";
-import { useState } from "react";
-import { SERVICIOS } from "@/lib/servicios";
+import { Vitrina } from "./Vitrina";
 
-/** Lista de servicios tipo acordeón: solo un ítem abierto a la vez. */
+/** Servicios: título y la vitrina con cada servicio funcionando. */
 export function Servicios() {
-  const [abierto, setAbierto] = useState<number | null>(0);
-
   return (
-    <section className="sec" id="servicios">
+    <section className="sec" id="servicios" aria-labelledby="servicios-t">
       <div className="wrap">
-        <div className="sec__top rv">
-          <div><p className="mono tag">Servicios</p><h2 className="display h2">Un solo equipo para <span className="mark">todo</span> lo digital</h2></div>
-          <p className="lead">Elige lo que tu negocio necesita hoy. Todo se cotiza sin costo y puedes pedir varios servicios en una sola propuesta.</p>
+        <div className="sec__head rv">
+          <h2 id="servicios-t" className="tit tit--c"><b>Un solo equipo para todo lo digital.</b> <span>Todo se cotiza sin costo.</span></h2>
+          <p className="sec__p">Elige lo que tu negocio necesita hoy.</p>
         </div>
-        <div className="idx rv">
-          {SERVICIOS.map((s, i) => {
-            const open = abierto === i;
-            return (
-              <div key={s.ruta} className={`idx__item${open ? " open" : ""}`}>
-                <button className="idx__btn" type="button" aria-expanded={open} aria-controls={`srv-${i}`} onClick={() => setAbierto(open ? null : i)}>
-                  <span className="mono">{s.ruta}</span><h3>{s.titulo}</h3><span className="idx__plus" aria-hidden="true">+</span>
-                </button>
-                <div className="idx__panel" id={`srv-${i}`} inert={!open}>
-                  <div><div className="idx__body"><span />
-                    <div><p>{s.texto}</p><span className="idx__price">{s.precio}</span></div>
-                    <ul>{s.puntos.map((p) => <li key={p}>{p}</li>)}</ul>
-                  </div></div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <div className="rv"><Vitrina /></div>
       </div>
     </section>
   );

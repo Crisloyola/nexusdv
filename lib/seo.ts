@@ -1,14 +1,14 @@
 // SEO: dirección oficial de la web y datos estructurados que lee Google.
 import { contacto, proyectos } from "./data";
-import { SERVICIOS, preguntas } from "./servicios";
+import { PLANES_WEB, SERVICIOS, preguntas } from "./servicios";
 
 /** Dirección principal de la web (nexusdv.pe sin "www" redirige aquí). */
 export const SITIO_URL = "https://www.nexusdv.pe";
 
 export const SEO = {
-  titulo: "Páginas web en Lima | Apps, sistemas y asistentes con IA · NEXUSDV",
+  titulo: "Páginas web en Lima desde S/ 300 | Tiendas virtuales, apps y sistemas · NEXUSDV",
   descripcion:
-    "Diseño de páginas web a medida en Lima. Apps para Android y iPhone, sistemas, asistentes con IA, dominio .pe y correo corporativo. Ves el diseño antes de pagar. Cotiza sin costo.",
+    "Páginas web en Lima desde S/ 300: landing, web empresarial y tienda virtual con pedidos por WhatsApp. Apps, sistemas y asistentes con IA a medida. Ves el diseño antes de programar. Cotiza sin costo.",
   palabras: [
     "páginas web Lima", "diseño web Lima", "diseño de páginas web Perú", "landing page Lima", "crear página web para mi negocio",
     "desarrollo de apps Perú", "apps Android y iPhone", "sistemas a medida Lima", "correo corporativo Perú", "dominio .pe",
@@ -38,12 +38,19 @@ export function datosEstructurados() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Servicios de NEXUSDV",
-      // Sale de lib/servicios.ts. Solo el correo tiene precio fijo.
-      itemListElement: SERVICIOS.map((sv) => ({
+      // Sale de lib/servicios.ts: los 3 planes web (precio desde) y los servicios. El correo tiene precio fijo.
+      itemListElement: [
+        ...PLANES_WEB.map((p) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: p.nombre, description: p.texto },
+          priceSpecification: { "@type": "PriceSpecification", minPrice: p.desde, priceCurrency: "PEN" },
+        })),
+        ...SERVICIOS.filter((sv) => sv.id !== "web").map((sv) => ({
         "@type": "Offer",
         itemOffered: { "@type": "Service", name: sv.titulo, description: sv.texto },
         ...(sv.id === "mail" ? { price: 550, priceCurrency: "PEN" } : {}),
-      })),
+        })),
+      ],
     },
   };
 

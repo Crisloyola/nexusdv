@@ -48,8 +48,8 @@ function reglasGenerales(r) {
   if (preguntas(t) > 1) fallas.push("más de una pregunta");
   if (/\*\*|^#|`/m.test(t)) fallas.push("usa Markdown");
   if (/941|163 ?771/.test(t)) fallas.push("muestra el número de WhatsApp");
-  if (/desde s\/|s\/ ?500|7 dias|inmediat|descuento|promo/.test(norm(t))) fallas.push("dato que no está en la fuente única");
-  if (/s\/ ?\d/.test(norm(t)) && !/s\/ ?550/.test(norm(t))) fallas.push("inventa un precio");
+  if (/s\/ ?500\b|inmediat|descuento|promo/.test(norm(t))) fallas.push("dato que no está en la fuente única");
+  if ((norm(t).match(/s\/ ?[\d,]+/g) || []).some((p) => !/^s\/ ?(300|600|1,?000|550)$/.test(p))) fallas.push("inventa un precio");
   if (/5 correos|cinco correos/.test(norm(t))) fallas.push("dice 5 correos");
   if (!/\p{Extended_Pictographic}/u.test(t)) fallas.push("no usa emojis");
   if ((r.chips || []).length > 4) fallas.push("más de 4 opciones");
@@ -85,17 +85,15 @@ const CASOS = [
   },
   {
     q: "¿En cuánto tiempo lo tienen listo?",
-    esperado: "Depende de lo que necesite; se confirma en la cotización. Sin plazos inventados.",
+    esperado: "Plazos oficiales de las webs (Landing 5 a 7 días hábiles, empresarial unas 2 semanas, tienda 3 a 4 semanas) o pregunta qué necesita. Sin plazos inventados.",
     check: (r) => [
-      !algunaDe(r.reply, "depende") && "no dice que depende",
-      !algunaDe(r.reply, "cotiza") && "no dice que se confirma en la cotización",
-      /\d+ ?(dias|semanas|meses)/.test(norm(r.reply)) && "inventa un plazo",
+      (norm(r.reply).match(/\d+ ?(a \d+ )?(dias|semanas|meses)/g) || []).some((p) => !/^(5 a 7 dias|2 semanas|3 a 4 semanas)$/.test(p)) && "inventa un plazo",
     ],
   },
   {
     q: "¿Cuánto cuesta una página web?",
-    esperado: "A medida, cotización sin costo. Sin montos.",
-    check: (r) => [!tiene(r.reply, "a medida") && "no dice 'a medida'", !tiene(r.reply, "sin costo") && "no dice 'sin costo'"],
+    esperado: "Landing desde S/ 300, Web empresarial desde S/ 600, Tienda virtual desde S/ 1,000; cotización exacta sin costo.",
+    check: (r) => [!/s\/ ?300/.test(norm(r.reply)) && "no dice desde S/ 300", !tiene(r.reply, "desde") && "no dice 'desde'"],
   },
   {
     q: "¿Cuánto cuesta el dominio con correo y cuántos correos incluye?",
@@ -227,7 +225,7 @@ const md = [
   `- Endpoint: \`${URL_CHAT}\``,
   `- Resultado: **${pasan}/${total} pasan**`,
   "",
-  "Reglas que se revisan en todas las respuestas: menos de 15 s, máximo 4 líneas y ~60 palabras, una sola pregunta, sin Markdown, sin número de WhatsApp, sin precios/plazos/descuentos fuera de la fuente única (`lib/servicios.ts`) y nunca \"5 correos\".",
+  "Reglas que se revisan en todas las respuestas: menos de 15 s, máximo 4 líneas y ~60 palabras, una sola pregunta, sin Markdown, sin número de WhatsApp, sin precios, plazos ni descuentos fuera de la fuente única (`lib/servicios.ts`) y nunca \"5 correos\".",
   "",
   "| # | Pregunta | Esperado | Respuesta de Nexo | Chips | Tiempo | Resultado |",
   "|---|---|---|---|---|---|---|",

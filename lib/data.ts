@@ -1,7 +1,7 @@
 // Contacto y proyectos. Los servicios y precios están en lib/servicios.ts (fuente única).
 import { datosParaNexo } from "./servicios";
 
-export { planes, preguntas } from "./servicios";
+export { planes, preguntas, A_MEDIDA } from "./servicios";
 
 export const contacto = {
   whatsapp: "941 163 771",
@@ -13,22 +13,19 @@ export const contacto = {
   ciudad: "Lima, Perú",
 };
 
+/** Fundador que se muestra en la sección de confianza. Mientras el nombre esté vacío, la web habla del equipo. */
+export const fundador = { nombre: "Cristopher" };
+
 export const waTexto = (texto: string) =>
   `https://wa.me/${contacto.whatsappNumero}?text=${encodeURIComponent(texto)}`;
-
-export const nav = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#pasos", label: "Cómo trabajamos" },
-  { href: "#precios", label: "Precios" },
-  { href: "#contacto", label: "Contacto" },
-];
 
 export type Proyecto = {
   nombre: string;
   etiqueta: string;
   descripcion: string;
   datos: { t: string; v: string }[];
+  /** Caso de éxito: solo hechos de lo entregado, sin cifras inventadas. */
+  caso: { problema: string; solucion: string; resultado: string };
   url: string;
   urlTexto: string;
   dominio: string;
@@ -47,6 +44,11 @@ export const proyectos: Proyecto[] = [
       { t: "Contacto", v: "Botón a WhatsApp" },
       { t: "Celular", v: "Cualquier pantalla" },
     ],
+    caso: {
+      problema: "Necesitaba un lugar propio para mostrar sus producciones y recibir pedidos de cotización.",
+      solucion: "Página web a medida con sus trabajos y un botón directo a WhatsApp.",
+      resultado: "Una presentación profesional de la productora y consultas que llegan directo a su WhatsApp.",
+    },
     url: "https://lmlagencype.com",
     urlTexto: "Visitar lmlagencype.com",
     dominio: "lmlagencype.com",
@@ -63,6 +65,11 @@ export const proyectos: Proyecto[] = [
       { t: "Pedidos", v: "Directo a WhatsApp" },
       { t: "Celular", v: "Cualquier pantalla" },
     ],
+    caso: {
+      problema: "Necesitaba mostrar sus equipos de audio y video disponibles para alquilar.",
+      solucion: "Página de alquiler con packs de equipos listos para usar.",
+      resultado: "Cada consulta de disponibilidad llega directo a su WhatsApp.",
+    },
     url: "https://lmlagencype.com/alquiler",
     urlTexto: "Visitar lmlagencype.com/alquiler",
     dominio: "lmlagencype.com/alquiler",
@@ -79,6 +86,11 @@ export const proyectos: Proyecto[] = [
       { t: "Acceso", v: "Correo o Google" },
       { t: "Celular", v: "Se instala como app" },
     ],
+    caso: {
+      problema: "Los negocios locales no tenían una forma simple de premiar a sus clientes frecuentes.",
+      solucion: "Sistema de fidelización con puntos, cashback, promociones y tarjeta de fidelidad en QR.",
+      resultado: "Clientes que acumulan beneficios en cada compra y usan su tarjeta desde el celular, como una app.",
+    },
     url: "https://creatrix-36752.web.app/",
     urlTexto: "Ver Creatrix",
     dominio: "creatrix-36752.web.app",
@@ -89,7 +101,7 @@ export const proyectos: Proyecto[] = [
 
 // Información que usa el asistente con IA (app/api/chat/route.ts).
 export const infoNegocio = `
-NEXUSDV es una empresa de desarrollo en ${contacto.ciudad}.
+NEXUSDV es una empresa de desarrollo en ${contacto.ciudad}, fundada por ${fundador.nombre}.
 ${datosParaNexo()}
 PROYECTOS ENTREGADOS (solo estos): ${proyectos.map((p) => `${p.nombre} (${p.etiqueta.toLowerCase()}, ${p.dominio})`).join("; ")}.
 CONTACTO: WhatsApp (botón "Hablar por WhatsApp" del chat; nunca escribas el número), correo ${contacto.correo}, Instagram ${contacto.instagram}.

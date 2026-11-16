@@ -1,34 +1,24 @@
-"use client";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { PASOS } from "@/lib/servicios";
 
-/** Proceso en 3 pasos. La línea que une los pasos se dibuja cuando la sección aparece en pantalla. */
+/** Proceso en 3 pasos: tres teclas grandes sobre el escenario, con el texto debajo. */
 export function Pasos() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [p, setP] = useState(1);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
-    setP(0);
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setP(1); io.disconnect(); } }, { rootMargin: "0px 0px -8% 0px" });
-    io.observe(el);
-    const t = setTimeout(() => setP(1), 3500);
-    return () => { io.disconnect(); clearTimeout(t); };
-  }, []);
-
   return (
-    <section className="sec" id="proceso">
+    <section className="sec" id="proceso" aria-labelledby="proceso-t">
       <div className="wrap">
-        <div className="sec__top rv">
-          <div><p className="mono tag">Cómo trabajamos</p><h2 className="display h2">De la idea a <span className="mark">publicado</span> en 3 pasos</h2></div>
-          <p className="lead">Tú nos cuentas de tu negocio y nosotros nos encargamos de todo lo técnico.</p>
+        <div className="sec__head rv">
+          <h2 id="proceso-t" className="tit tit--c"><b>De la idea a publicado, en 3 pasos.</b> <span>Ves y apruebas el diseño antes de programar.</span></h2>
+          <p className="sec__p">Tú nos cuentas de tu negocio y nosotros nos encargamos de todo lo técnico.</p>
         </div>
-        <div className="steps rv" ref={ref} style={{ "--p": p } as CSSProperties}>
-          {PASOS.map((s) => (
-            <div className="step" key={s.t}><h3>{s.t}</h3><p>{s.p}</p><span className="mono">{s.m}</span></div>
+        <ol className="steps">
+          {PASOS.map((s, i) => (
+            <li className="step rv" key={s.t}>
+              <span className={`key${i === 0 ? " key--lime" : ""}`} aria-hidden="true"><span>{i + 1}</span></span>
+              <h3>{s.t}</h3>
+              <p>{s.p}</p>
+              <span className="step__m">{s.m}</span>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );
