@@ -24,13 +24,13 @@ export const PLANES_WEB: PlanWeb[] = [
     id: "empresarial", nombre: "Web Empresarial", precio: 820, plazo: "unas 2 semanas", destacado: true, etiqueta: "Más recomendado", campana: "web_empresarial",
     mensaje: "Hola, NEXUS. Necesito una Web Empresarial de S/ 820 para mi empresa. ¿Podrían enviarme más información?",
     texto: "Para empresas que quieren mostrar sus servicios y recibir clientes.",
-    incluye: ["Hasta 5 páginas", "Diseño personalizado", "WhatsApp y formularios", "SEO básico", "Dominio .com por 1 año"],
+    incluye: ["Hasta 3 páginas", "Diseño personalizado", "WhatsApp y formularios", "SEO básico", "Dominio .com por 1 año"],
   },
   {
     id: "corporativa", nombre: "Web Corporativa", precio: 1200, plazo: "unas 3 semanas", campana: "web_corporativa",
     mensaje: "Hola, NEXUS. Me interesa la Web Corporativa de S/ 1200. ¿Podrían enviarme más información?",
     texto: "Para marcas que necesitan más páginas, animaciones y portafolio.",
-    incluye: ["Hasta 8 páginas", "Diseño avanzado", "Animaciones", "Portafolio y galerías", "Formularios avanzados", "SEO básico", "Dominio .com por 1 año"],
+    incluye: ["Hasta 5 páginas", "Diseño avanzado", "Animaciones", "Portafolio y galerías", "Formularios avanzados", "SEO básico", "Dominio .com por 1 año"],
   },
   {
     id: "tienda", nombre: "Tienda Virtual", precio: 1990, esDesde: true, plazo: "3 a 4 semanas", campana: "tienda_virtual",
