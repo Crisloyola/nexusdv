@@ -1,5 +1,5 @@
 import { A_MEDIDA, planes, waTexto } from "@/lib/data";
-import { NOTA_PRECIOS, RENOVACIONES, soles } from "@/lib/servicios";
+import { CORREO, NOTA_PRECIOS, RENOVACIONES, soles } from "@/lib/servicios";
 import { Icon } from "./Icons";
 
 /** Precios: los 4 planes web, una línea para lo que va a medida y qué incluye. Datos en lib/servicios.ts. */
@@ -31,6 +31,27 @@ export function Precios() {
           </div>
           <b className="plan-extra__precio">{A_MEDIDA.precio}</b>
           <a className="btn btn--ghost" href={waTexto("Hola NEXUSDV, vengo de su web y quiero cotizar una app, un sistema o un asistente con IA.")} target="_blank" rel="noopener">{A_MEDIDA.boton}<Icon id="right" /></a>
+        </div>
+        <div className="mail rv">
+          <div className="mail__head">
+            <span className="mail__ico"><Icon id="mail" /></span>
+            <h3>{CORREO.titulo}</h3>
+            <p>{CORREO.texto}</p>
+            <code className="mail__ej">{CORREO.ejemplo}</code>
+            <ul className="ticks mail__puntos">{CORREO.puntos.map((x) => <li key={x}>{x}</li>)}</ul>
+            <small className="mail__nota">{CORREO.nota}</small>
+          </div>
+          <div className="mail__opts">
+            {CORREO.planes.map((c) => (
+              <a key={c.id} className={`mail__opt${c.destacado ? " mail__opt--hl" : ""}`} href={waTexto(c.mensaje, c.campana)} target="_blank" rel="noopener">
+                {c.etiqueta && <span className="plan__tag mail__tag">{c.etiqueta}</span>}
+                <span className="mail__name">{c.nombre}</span>
+                <b className="mail__price">{soles(c.precio)}</b>
+                <small>{c.detalle}</small>
+                <span className="mail__cta">Cotizar<Icon id="right" /></span>
+              </a>
+            ))}
+          </div>
         </div>
         <div className="renov rv">
           <h3>Renovaciones y extras</h3>

@@ -43,6 +43,31 @@ export const PLANES_WEB: PlanWeb[] = [
 /** Precio para mostrar: "S/ 1,000". */
 export const soles = (n: number) => `S/ ${n.toLocaleString("en-US")}`;
 
+/** Correo corporativo (con tu dominio). Lo muestra Precios debajo de los planes y lo conoce Nexo. */
+export type PlanCorreo = { id: string; nombre: string; precio: number; detalle: string; destacado?: boolean; etiqueta?: string; mensaje: string; campana: string };
+export const CORREO = {
+  titulo: "Correo corporativo",
+  texto: "Da una imagen seria desde el primer mensaje con correos a nombre de tu empresa.",
+  ejemplo: "ventas@tuempresa.com",
+  puntos: ["Con tu propio dominio", "Lo configuramos por ti", "En tu celular y computadora"],
+  nota: "Precios por 1 año · el dominio .pe se cotiza aparte",
+  planes: [
+    {
+      id: "correo1", nombre: "1 correo + dominio .com", precio: 250, detalle: "Ideal para empezar", campana: "correo_1",
+      mensaje: "Hola, NEXUS. Me interesa la promoción de 1 correo corporativo + dominio .com por S/ 250. ¿Podrían darme más información?",
+    },
+    {
+      id: "correo4", nombre: "4 correos + dominio .com", precio: 550, detalle: "Para tu equipo", destacado: true, etiqueta: "Más recomendado", campana: "correo_4",
+      mensaje: "Hola, NEXUS. Me interesa el plan de 4 correos corporativos + dominio .com por S/ 550. ¿Podrían darme más información?",
+    },
+    {
+      id: "correo3web", nombre: "3 correos para tu web", precio: 350, detalle: "Si ya tienes tu web con nosotros", campana: "correo_3_web",
+      mensaje: "Hola, NEXUS. Ya tengo (o voy a contratar) mi web con ustedes y quiero agregar 3 correos corporativos por S/ 350.",
+    },
+  ] as PlanCorreo[],
+  paraNexo: "Correo corporativo con el dominio del cliente (por ejemplo ventas@tuempresa.com). Precios por 1 año: 1 correo + dominio .com S/ 250 (promoción); 4 correos + dominio .com S/ 550; 3 correos para clientes que ya tienen o contratan su web con NEXUSDV (el dominio .com ya viene en la web) S/ 350. Si quieren dominio .pe, se cotiza aparte, sin montos. La renovación anual se informa antes de contratar.",
+};
+
 /** Renovaciones y extras que se muestran en Precios (debajo de los planes). */
 export const RENOVACIONES = [
   "Hosting: incluido el primer año en la Tienda Virtual; en los demás planes se cotiza aparte.",
@@ -129,6 +154,7 @@ export const preguntas = [
   { q: "¿Hacen apps para Android y iPhone?", a: "Sí. Desarrollamos tu app para los dos y te ayudamos a publicarla en Google Play y App Store." },
   { q: "¿Qué tipo de sistemas hacen?", a: "Sistemas a medida: ventas, inventario, reservas, fidelización de clientes y más. Te cotizamos según lo que necesites." },
   { q: "¿Pueden hacer un asistente con IA para mi web?", a: "Sí. Responde preguntas frecuentes 24/7, orienta a tus clientes, toma reservas o pedidos y los pasa a tu WhatsApp. Se cotiza sin costo." },
+  { q: "¿Venden correos corporativos?", a: "Sí, con tu dominio (como ventas@tuempresa.com). 1 correo + dominio .com S/ 250, 4 correos + dominio .com S/ 550, y si ya tienes tu web con nosotros, 3 correos por S/ 350. Precios por 1 año; el dominio .pe se cotiza aparte." },
   { q: "¿Puedo pedir varios servicios juntos?", a: "Sí. Web, app, sistema y asistente con IA: te cotizamos todo en una sola propuesta." },
 ];
 
@@ -156,5 +182,6 @@ export function datosParaNexo(): string {
     `SOPORTE: ${POLITICAS.soporte}`,
     `PLAZOS: ${POLITICAS.plazos}`,
     `HOSTING: ${POLITICAS.hosting}`,
+    `CORREO CORPORATIVO: ${CORREO.paraNexo}`,
   ].join("\n");
 }
