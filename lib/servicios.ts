@@ -15,14 +15,14 @@ export type PlanWeb = {
 };
 export const PLANES_WEB: PlanWeb[] = [
   {
-    id: "landing", nombre: "Landing Page", precio: 450, plazo: "5 a 7 días hábiles", campana: "landing_page",
-    mensaje: "Hola, NEXUS. Estoy interesado en contratar una Landing Page de S/ 450. Quisiera conocer qué incluye y cómo puedo empezar.",
+    id: "landing", nombre: "Landing Page", precio: 540, plazo: "5 a 7 días hábiles", campana: "landing_page",
+    mensaje: "Hola, NEXUS. Estoy interesado en contratar una Landing Page de S/ 540. Quisiera conocer qué incluye y cómo puedo empezar.",
     texto: "Para emprendedores y profesionales.",
-    incluye: ["Una página personalizada", "Diseño responsive", "WhatsApp y formulario", "Dominio .com opcional"],
+    incluye: ["Una página personalizada", "Diseño responsive", "WhatsApp y formulario"],
   },
   {
-    id: "empresarial", nombre: "Web Empresarial", precio: 780, plazo: "unas 2 semanas", destacado: true, etiqueta: "Más recomendado", campana: "web_empresarial",
-    mensaje: "Hola, NEXUS. Necesito una Web Empresarial de S/ 780 para mi empresa. ¿Podrían enviarme más información?",
+    id: "empresarial", nombre: "Web Empresarial", precio: 820, plazo: "unas 2 semanas", destacado: true, etiqueta: "Más recomendado", campana: "web_empresarial",
+    mensaje: "Hola, NEXUS. Necesito una Web Empresarial de S/ 820 para mi empresa. ¿Podrían enviarme más información?",
     texto: "Para empresas que quieren mostrar sus servicios y recibir clientes.",
     incluye: ["Hasta 5 páginas", "Diseño personalizado", "WhatsApp y formularios", "SEO básico", "Dominio .com por 1 año"],
   },
