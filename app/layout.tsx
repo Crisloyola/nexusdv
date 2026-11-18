@@ -1,16 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Familjen_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SEO, SITIO_URL } from "@/lib/seo";
 import { AvisoCookies } from "@/components/AvisoCookies";
 import "./globals.css";
 
-// Tipografía del diseño: Familjen Grotesk para todo (titulares en mayúsculas y texto). globals.css la usa como --font-main.
+// Tipografía del diseño: Proxima Nova (Adobe Fonts, kit eus5hqq) para todo. Se carga con el <link> del <head>; globals.css la usa en --font.
 /** Google Tag Manager del proyecto. Las etiquetas (Analytics, Ads, clics a WhatsApp) se configuran en tagmanager.google.com. */
 const GTM_ID = "GTM-M8V6J96W";
-
-const main = Familjen_Grotesk({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-main", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITIO_URL),
@@ -42,8 +39,11 @@ export const viewport: Viewport = { themeColor: "#08090B", width: "device-width"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-PE" className={main.variable} suppressHydrationWarning>
+    <html lang="es-PE" suppressHydrationWarning>
       <head>
+        {/* Fuente: Proxima Nova desde Adobe Fonts */}
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://use.typekit.net/eus5hqq.css" />
         {/* Marca que hay JavaScript para activar las animaciones de entrada sin parpadeo */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         {/* Modo de consentimiento de Google: todo denegado hasta que la persona acepte (components/AvisoCookies.tsx).

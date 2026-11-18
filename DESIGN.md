@@ -21,57 +21,57 @@ colors:
   status-online: "#2FBF6B"
 typography:
   display:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(42px, 5.4vw, 76px)"
     fontWeight: 600
     lineHeight: 1
     letterSpacing: "-0.04em"
   display-close:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(36px, 5vw, 68px)"
     fontWeight: 600
     lineHeight: 1.02
     letterSpacing: "-0.04em"
   headline:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(24px, 2.5vw, 34px)"
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "-0.035em"
   figure:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(40px, 4vw, 56px)"
     fontWeight: 600
     lineHeight: 1
     letterSpacing: "-0.04em"
   title:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "22px"
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "-0.02em"
   lead:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(16px, 1.25vw, 18px)"
     fontWeight: 400
     lineHeight: 1.55
   body:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "17px"
     fontWeight: 400
     lineHeight: 1.55
   body-sm:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "15px"
     fontWeight: 400
     lineHeight: 1.45
   label:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "13.5px"
     fontWeight: 400
     lineHeight: 1.4
   button:
-    fontFamily: "Familjen Grotesk, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Proxima Nova, Helvetica Neue, Arial, sans-serif"
     fontSize: "15px"
     fontWeight: 600
     letterSpacing: "-0.005em"
@@ -195,7 +195,7 @@ The page rejects the agency default of stacked marketing cards, stock imagery an
 **Key Characteristics:**
 - Dark stage (#08090B) with graphite surfaces s1 to s3 and white hairlines at 8% and 14%.
 - Lime as the only accent hue; ink text on every lime fill.
-- Familjen Grotesk only, weight 600 for every heading, sentence case, tight negative tracking.
+- Proxima Nova only, weight 600 for every heading, sentence case, tight negative tracking.
 - Section heads: a white sentence, optionally a grey sentence on its own line, then one body line.
 - Diagonal blurred lime light streaks with a film-grain overlay as the world's only atmosphere.
 - Tactile keys: the showcase dock and the process keycaps press down on hover.
@@ -229,8 +229,8 @@ A near-black, graphite and lime palette: one cold dark stage, three steps of mac
 
 ## Typography
 
-**Display Font:** Familjen Grotesk (with Helvetica Neue, Arial, sans-serif)
-**Body Font:** Familjen Grotesk (same stack)
+**Display Font:** Proxima Nova (with Helvetica Neue, Arial, sans-serif)
+**Body Font:** Proxima Nova (same stack)
 
 **Character:** One grotesk carries everything, loaded through next/font at 400 to 700. Headings at 600 with tight negative tracking read like a product keynote; body stays at 400 with generous 1.55 leading.
 
