@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } fr
 
 const EVENTO = "nx:suscripcion";
 const CLAVE = "nx-lead";
-const DIAS = 7;
+const CLAVE_CERRADA = "nx-lead-cerrada";
 
 /** Abre la pantalla de suscripción desde cualquier botón de la página. */
 export const abrirSuscripcion = () => window.dispatchEvent(new Event(EVENTO));
@@ -15,18 +15,18 @@ export function AbrirSuscripcion({ className, children }: { className?: string; 
 
 function puedeAuto() {
   try {
-    const v = localStorage.getItem(CLAVE);
-    if (!v || v === "enviado") return v !== "enviado";
-    const t = Number(v);
-    if (!Number.isFinite(t)) return true;
-    return Date.now() - t > DIAS * 24 * 60 * 60 * 1000;
+    return localStorage.getItem(CLAVE) !== "enviado" && sessionStorage.getItem(CLAVE_CERRADA) !== "si";
   } catch {
     return true;
   }
 }
 
-function marcar(valor: string) {
-  try { localStorage.setItem(CLAVE, valor); } catch { /* sin almacenamiento */ }
+function marcarCerrada() {
+  try { sessionStorage.setItem(CLAVE_CERRADA, "si"); } catch { /* sin almacenamiento */ }
+}
+
+function marcarSuscripcion() {
+  try { localStorage.setItem(CLAVE, "enviado"); } catch { /* sin almacenamiento */ }
 }
 
 /** Formulario breve para recibir novedades por correo. */
@@ -52,7 +52,7 @@ export function Suscripcion() {
 
   const cerrar = () => {
     setAbierto(false);
-    if (!enviadoRef.current) marcar(String(Date.now()));
+    if (!enviadoRef.current) marcarCerrada();
     volver.current?.focus({ preventScroll: true });
   };
   cerrarRef.current = cerrar;
@@ -74,19 +74,7 @@ export function Suscripcion() {
   }, []);
 
   useEffect(() => {
-    let reloj = 0;
-    const intentar = () => {
-      const html = document.documentElement;
-      if (abiertoRef.current) return;
-      if (html.classList.contains("cookies-abierto") || html.classList.contains("bot-open") || html.classList.contains("menu-open")) {
-        reloj = window.setTimeout(intentar, 1500);
-        return;
-      }
-      if (!puedeAuto()) return;
-      mostrar(false);
-    };
-    reloj = window.setTimeout(intentar, 4000);
-    return () => window.clearTimeout(reloj);
+    if (puedeAuto()) mostrar(false);
   }, []);
 
   useEffect(() => {
@@ -140,7 +128,7 @@ export function Suscripcion() {
       }
       setSuscrito(true);
       enviadoRef.current = true;
-      marcar("enviado");
+      marcarSuscripcion();
     } catch {
       setErrorEnvio("No pudimos conectar. Revisa tu conexión e inténtalo de nuevo.");
     } finally {
