@@ -8,12 +8,7 @@ export const SITIO_URL = "https://www.nexusdv.pe";
 export const SEO = {
   titulo: "Páginas web en Lima para negocios | NEXUSDV",
   descripcion:
-    "Diseñamos páginas web a medida en Lima para que tu negocio reciba consultas por WhatsApp. Tiendas virtuales, apps, sistemas y asistentes con IA. Mira proyectos reales y pide una cotización sin costo.",
-  palabras: [
-    "páginas web Lima", "diseño web Lima", "diseño de páginas web Perú", "landing page Lima", "crear página web para mi negocio",
-    "desarrollo de apps Perú", "apps Android y iPhone", "sistemas a medida Lima", "tienda virtual Lima", "landing page Perú",
-    "agencia de desarrollo web Lima", "chatbot con IA para negocios", "asistente virtual para web", "NEXUSDV",
-  ],
+    "Creamos páginas web a medida para negocios en Lima, con contacto por WhatsApp. También desarrollamos tiendas virtuales, apps y sistemas. Cotiza sin costo.",
 };
 
 /**

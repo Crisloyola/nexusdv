@@ -200,6 +200,13 @@ The page rejects the agency default of stacked marketing cards, stock imagery an
 - Diagonal blurred lime light streaks with a film-grain overlay as the world's only atmosphere.
 - Tactile keys: the showcase dock and the process keycaps press down on hover.
 - Motion is a blur-to-sharp rise on scroll, a crossfade between showcase views, and small arrivals in the chat demos.
+- Design read: homepage for Lima businesses in the dark launch-stage language; ENERGY 2 / RHYTHM 2 / MOTION 2.
+- The project carousel advances only on visitor input; the showcase stops cycling when a tab is chosen; testimonials stay still so real proof is easy to read.
+- The primary navigation points to services, projects, pricing and FAQs; the WhatsApp CTA stays visible for the main conversion.
+
+## Email messages
+
+The subscriber welcome email follows the supplied editorial layout: a light neutral canvas, white content card, graphite brand bar, lime action, and the existing NEXUSDV preview image. Table layout and inline styles keep it compatible with email clients.
 
 ## Colors
 

@@ -6,10 +6,7 @@ import { Icon, Logo } from "./Icons";
 const NAV = [
   { href: "#servicios", label: "Servicios" },
   { href: "#proyectos", label: "Proyectos" },
-  { href: "#nexo", label: "Nexo" },
-  { href: "#proceso", label: "Proceso" },
   { href: "#precios", label: "Precios" },
-  { href: "#confianza", label: "Confianza" },
   { href: "#preguntas", label: "Preguntas" },
 ];
 

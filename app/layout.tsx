@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITIO_URL),
   title: SEO.titulo,
   description: SEO.descripcion,
-  keywords: SEO.palabras,
   applicationName: "NEXUSDV",
   authors: [{ name: "NEXUSDV", url: SITIO_URL }],
   creator: "NEXUSDV",

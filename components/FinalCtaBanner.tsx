@@ -707,15 +707,16 @@ export function LimeGradientBlinds({
       shine={0.12}
       relief={0.2}
       glow={0.16}
-      sway={0.15}
+      sway={0}
+      speed={0}
       hoverTilt={0.2}
       clickEffect="none"
-      noise={0.06}
+      noise={0}
       lightColor="#C8F135"
-      idle="drift"
+      idle="stay"
       mixBlendMode="normal"
       lightMode={false}
-      intro
+      intro={false}
     />
   );
 }

@@ -44,30 +44,54 @@ function correoBienvenida(email: string) {
   const correoSeguro = escaparHtml(email);
   const html = `
     <!doctype html>
-    <html>
-      <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /></head>
-      <body bgcolor="#111215" style="margin:0;padding:0;background-color:#111215;color:#f2f4ee">
-        <table role="presentation" width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#111215" style="width:100%;height:100%;min-height:100vh;border-collapse:collapse;background-color:#111215;font-family:Arial,Helvetica,sans-serif;color:#f2f4ee">
-          <tr><td align="center" valign="top" bgcolor="#111215" style="padding:32px 16px;background-color:#111215">
-            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#111215" style="max-width:560px;margin:0 auto;border:1px solid #2b2d31;border-radius:18px;background-color:#111215">
-              <tr><td style="padding:28px 28px 8px">
-                <a href="${SITIO_URL}" style="color:#f2f4ee;text-decoration:none;font-size:18px;font-weight:700">
-                  <img src="${SITIO_URL}/favicon.svg" alt="" width="24" height="24" style="vertical-align:middle;margin-right:8px;border:0" />
-                  NEXUSDV
+    <html lang="es">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Gracias por suscribirte a NEXUSDV</title>
+      </head>
+      <body bgcolor="#F2F3EE" style="margin:0;padding:0;background-color:#F2F3EE;font-family:Arial,Helvetica,sans-serif;color:#111215">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#F2F3EE" style="width:100%;border-collapse:collapse;background-color:#F2F3EE">
+          <tr><td align="center" style="padding:24px 12px 40px">
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" style="width:100%;max-width:600px;border:1px solid #E1E4DE;border-radius:16px;border-collapse:separate;border-spacing:0;background-color:#FFFFFF;overflow:hidden">
+              <tr><td bgcolor="#111215" style="padding:18px 28px;background-color:#111215">
+                <a href="${SITIO_URL}" style="display:inline-block;color:#F2F4EE;text-decoration:none;font-size:18px;font-weight:700;letter-spacing:1px;line-height:32px">
+                  <img src="${SITIO_URL}/favicon.svg" alt="" width="32" height="32" style="display:inline-block;vertical-align:middle;margin-right:10px;border:0" />
+                  <span style="display:inline-block;vertical-align:middle">NEXUSDV</span>
                 </a>
               </td></tr>
-              <tr><td style="padding:20px 28px 28px">
-                <h1 style="margin:0 0 12px;font-size:28px;line-height:1.2;color:#f2f4ee">¡Gracias por suscribirte!</h1>
-                <p style="margin:0 0 22px;font-size:16px;line-height:1.6;color:#c3c7c0">Recibimos tu correo y ya formas parte de la comunidad de NEXUSDV. Te enviaremos novedades por aquí.</p>
-                <a href="${SITIO_URL}" style="display:inline-block;padding:13px 20px;border-radius:10px;background:#c8f135;color:#0b0f14;text-decoration:none;font-size:15px;font-weight:700">Conocer NEXUSDV</a>
-                <p style="margin:26px 0 0;font-size:13px;line-height:1.6;color:#a3aab1">¿No te suscribiste con ${correoSeguro}? Escríbenos a <a href="mailto:${contacto.correo}" style="color:#c8f135">${contacto.correo}</a>.</p>
+              <tr><td height="4" bgcolor="#C8F135" style="height:4px;line-height:4px;font-size:0">&nbsp;</td></tr>
+              <tr><td bgcolor="#FFFFFF" style="padding:36px 32px 18px;background-color:#FFFFFF">
+                <h1 style="margin:0 0 14px;font-size:28px;line-height:1.2;font-weight:700;color:#111215">¡Gracias por suscribirte!</h1>
+                <p style="margin:0;font-size:16px;line-height:1.65;color:#454B45">Recibimos tu correo y ya formas parte de la comunidad de NEXUSDV. Te enviaremos novedades por aquí.</p>
+              </td></tr>
+              <tr><td bgcolor="#FFFFFF" style="padding:0 32px 24px;background-color:#FFFFFF">
+                <a href="${SITIO_URL}" style="display:block;text-decoration:none">
+                  <img src="${SITIO_URL}/share.jpg" alt="Vista previa de la web de NEXUSDV" width="536" height="335" style="display:block;width:100%;max-width:536px;height:auto;border:0;border-radius:12px" />
+                </a>
+              </td></tr>
+              <tr><td bgcolor="#FFFFFF" style="padding:0 32px 36px;background-color:#FFFFFF">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#F4F6EE" style="width:100%;border:1px solid #E6E9DF;border-radius:10px;border-collapse:separate;border-spacing:0;background-color:#F4F6EE">
+                  <tr><td style="padding:14px 16px">
+                    <p style="margin:0 0 5px;font-size:13px;line-height:1.4;color:#596252">Enviaremos novedades a</p>
+                    <p style="margin:0;font-size:15px;line-height:1.5;font-weight:700;color:#111215">${correoSeguro}</p>
+                  </td></tr>
+                </table>
+                <p style="margin:24px 0 0">
+                  <a href="${SITIO_URL}" style="display:inline-block;padding:14px 22px;border-radius:10px;background-color:#C8F135;color:#0B0F14;text-decoration:none;font-size:15px;line-height:1.3;font-weight:700">Visitar NEXUSDV</a>
+                </p>
+                <p style="margin:22px 0 0;font-size:13px;line-height:1.6;color:#697069">¿No te suscribiste o quieres solicitar la baja? <a href="mailto:${contacto.correo}" style="color:#3E5210;text-decoration:underline">${contacto.correo}</a></p>
+              </td></tr>
+              <tr><td bgcolor="#F7F8F5" style="padding:20px 28px;border-top:1px solid #E7E9E4;background-color:#F7F8F5">
+                <p style="margin:0 0 8px;font-size:12px;line-height:1.5;color:#697069">Recibiste este correo porque te suscribiste a las novedades de NEXUSDV.</p>
+                <p style="margin:0;font-size:12px;line-height:1.5;color:#697069"><a href="${SITIO_URL}" style="color:#3E5210;text-decoration:underline">nexusdv.pe</a> · NEXUSDV</p>
               </td></tr>
             </table>
           </td></tr>
         </table>
       </body>
     </html>`;
-  const texto = `¡Gracias por suscribirte!\n\nRecibimos tu correo y ya formas parte de la comunidad de NEXUSDV. Te enviaremos novedades por aquí.\n\nConoce NEXUSDV: ${SITIO_URL}\n\n¿No te suscribiste con ${email}? Escríbenos a ${contacto.correo}.`;
+  const texto = `¡Gracias por suscribirte!\n\nRecibimos tu correo y ya formas parte de la comunidad de NEXUSDV. Te enviaremos novedades por aquí.\n\nTu correo registrado: ${email}\nVisita NEXUSDV: ${SITIO_URL}\n\n¿No te suscribiste o quieres solicitar la baja? Escríbenos a ${contacto.correo}.`;
   return { html, text: texto };
 }
 

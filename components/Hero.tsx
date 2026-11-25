@@ -13,8 +13,8 @@ export function Hero() {
         <LimeGradientBlinds className="hero__blindsCanvas" />
       </div>
       <div className="wrap hero__in rv">
-        <h1 id="hero-t" className="hero__h">Tu negocio merece una <span className="hero__hl">página web profesional</span></h1>
-        <p className="hero__lead">Crea tu presencia digital, muestra tus servicios y recibe clientes directamente por WhatsApp.</p>
+        <h1 id="hero-t" className="hero__h">Tu negocio merece una <span className="hero__hl">página web en Lima</span></h1>
+        <p className="hero__lead">Muestra tus servicios y facilita que tus clientes te escriban por WhatsApp.</p>
         <div className="hero__cta">
           <a className="btn btn--lime btn--lg" href={waTexto(landing.mensaje, landing.campana)} target="_blank" rel="noopener"><Icon id="wa" />Quiero mi página web desde S/ 540</a>
           <a className="btn btn--ghost btn--lg" href="#precios">Ver precios<Icon id="right" /></a>

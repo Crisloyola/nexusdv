@@ -2,18 +2,12 @@
 import { Children, useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { Icon } from "./Icons";
 
-const PAUSA_MS = 5500;
-
-/** Carrusel horizontal con scroll-snap: se desliza con el dedo, flechas y puntos. Avanza solo y se pausa al pasar el mouse o tocarlo. */
+/** Carrusel horizontal con scroll-snap: se mueve con el dedo, las flechas y los puntos. */
 export function Carrusel({ children, etiqueta }: { children: ReactNode; etiqueta: string }) {
   const track = useRef<HTMLDivElement>(null);
   const total = Children.count(children);
   const [paginas, setPaginas] = useState(total);
   const [actual, setActual] = useState(0);
-  const pausado = useRef(false);
-  const visible = useRef(true);
-  const actualRef = useRef(0);
-  actualRef.current = actual;
 
   // Ancho de un paso (tarjeta + separación) y cuántas tarjetas entran a la vez.
   const medir = useCallback(() => {
@@ -38,7 +32,8 @@ export function Carrusel({ children, etiqueta }: { children: ReactNode; etiqueta
     const m = medir();
     if (!m) return;
     const destino = ((i % m.paginas) + m.paginas) % m.paginas;
-    m.el.scrollTo({ left: destino * m.paso, behavior: "smooth" });
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    m.el.scrollTo({ left: destino * m.paso, behavior });
   }, [medir]);
 
   useEffect(() => {
@@ -50,32 +45,12 @@ export function Carrusel({ children, etiqueta }: { children: ReactNode; etiqueta
     return () => { el.removeEventListener("scroll", actualizar); window.removeEventListener("resize", actualizar); };
   }, [actualizar]);
 
-  // Avance automático: solo si el carrusel está en pantalla, sin interacción y sin "reducir movimiento".
-  useEffect(() => {
-    const el = track.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const io = new IntersectionObserver(([e]) => { visible.current = e.isIntersecting; }, { threshold: 0.35 });
-    io.observe(el);
-    const t = window.setInterval(() => {
-      if (pausado.current || !visible.current || document.hidden) return;
-      ir(actualRef.current + 1);
-    }, PAUSA_MS);
-    return () => { io.disconnect(); window.clearInterval(t); };
-  }, [ir]);
-
-  const pausar = (v: boolean) => () => { pausado.current = v; };
-
   return (
     <div
       className="carr"
       role="region"
       aria-roledescription="carrusel"
       aria-label={etiqueta}
-      onPointerEnter={pausar(true)}
-      onPointerLeave={pausar(false)}
-      onFocusCapture={pausar(true)}
-      onBlurCapture={pausar(false)}
-      onTouchStart={pausar(true)}
     >
       <div className="carr__track" ref={track}>{children}</div>
       {paginas > 1 && (
