@@ -89,7 +89,16 @@ main { overflow-x: clip; }
 
 /* portada */
 .hero { position: relative; display: grid; place-items: center; padding-block: clamp(40px, 5vw, 56px) clamp(56px, 6vw, 80px); text-align: center; overflow: hidden; }
-.hero__rayos { inset: -10% -10% 0; }
+.hero__rayos { inset: -10% -10% 0; z-index: 0; isolation: isolate; }
+.hero__rayos::before { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(8,9,11,.42), rgba(8,9,11,.3) 50%, rgba(8,9,11,.42)); }
+.hero__rayos::after { z-index: 2; }
+@media (min-width: 961px) {
+  .hero__rayos::before {
+    background:
+      radial-gradient(ellipse 58% 70% at 50% 45%, rgba(8,9,11,.7), rgba(8,9,11,.48) 56%, rgba(8,9,11,.12)),
+      linear-gradient(90deg, rgba(8,9,11,.7), transparent 38%, transparent 65%, rgba(8,9,11,.72));
+  }
+}
 .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 70% at 50% 45%, transparent 45%, var(--bg) 95%); }
 @keyframes rayo { to { transform: rotate(-42deg) translateX(6vw); } }
 .hero__in { position: relative; z-index: 1; display: grid; justify-items: center; }
