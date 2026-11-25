@@ -5,6 +5,7 @@ import { abrirNexo } from "./Asistente";
 import { Icon, Logo } from "./Icons";
 import { WaChat } from "./WaDemo";
 import { abrirCookies } from "./AvisoCookies";
+import { LimeGradientBlinds } from "./FinalCtaBanner";
 
 /** Botón que copia el correo. Si el navegador no deja copiar, selecciona el texto para copiarlo a mano. */
 function Copiar({ texto }: { texto: string }) {
@@ -30,7 +31,9 @@ export function Contacto() {
     <footer className="end" id="contacto">
       <div className="wrap">
         <div className="cta rv">
-          <div className="cta__rayos" aria-hidden="true"><i /><i /><i /></div>
+          <div className="cta__rayos" aria-hidden="true">
+            <LimeGradientBlinds className="cta__blindsCanvas" />
+          </div>
           <h2 className="cta__h">¿Listo para que tu negocio se vea profesional?</h2>
           <p className="cta__p">Cuéntanos qué necesitas y te enviamos una cotización sin costo.</p>
           <div className="cta__btns">

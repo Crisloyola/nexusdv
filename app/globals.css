@@ -90,10 +90,10 @@ main { overflow-x: clip; }
 /* portada */
 .hero { position: relative; display: grid; place-items: center; padding-block: clamp(40px, 5vw, 56px) clamp(56px, 6vw, 80px); text-align: center; overflow: hidden; }
 .hero__rayos { inset: -10% -10% 0; z-index: 0; isolation: isolate; }
-.hero__rayos::before { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(8,9,11,.42), rgba(8,9,11,.3) 50%, rgba(8,9,11,.42)); }
-.hero__rayos::after { z-index: 2; }
+.hero__rayos::before, .cta__rayos::before { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(8,9,11,.42), rgba(8,9,11,.3) 50%, rgba(8,9,11,.42)); }
+.hero__rayos::after, .cta__rayos::after { z-index: 2; }
 @media (min-width: 961px) {
-  .hero__rayos::before {
+  .hero__rayos::before, .cta__rayos::before {
     background:
       radial-gradient(ellipse 58% 70% at 50% 45%, rgba(8,9,11,.7), rgba(8,9,11,.48) 56%, rgba(8,9,11,.12)),
       linear-gradient(90deg, rgba(8,9,11,.7), transparent 38%, transparent 65%, rgba(8,9,11,.72));
@@ -389,10 +389,10 @@ main { overflow-x: clip; }
 /* cierre */
 .end { position: relative; padding-top: clamp(110px, 13vw, 190px); }
 .cta { position: relative; display: grid; justify-items: center; gap: 22px; padding: clamp(56px, 8vw, 104px) clamp(20px, 5vw, 64px) clamp(40px, 5vw, 64px); border-radius: 30px; border: 1px solid var(--line); background: radial-gradient(70% 60% at 50% 0%, #15171B, var(--bg-2)); text-align: center; overflow: hidden; box-shadow: var(--hi); }
-.cta__rayos { inset: 0; opacity: .5; }
+.cta__rayos { inset: 0; z-index: 0; isolation: isolate; opacity: .5; }
 .cta__rayos i { width: 70%; height: 34px; }
 .cta__rayos i:nth-child(1) { left: 30%; top: -10%; } .cta__rayos i:nth-child(2) { left: 50%; top: 6%; height: 30px; opacity: .6; } .cta__rayos i:nth-child(3) { left: -20%; top: 0; height: 50px; opacity: .4; }
-.cta > :not(.cta__rayos) { position: relative; }
+.cta > :not(.cta__rayos) { position: relative; z-index: 1; }
 .cta__h { font-size: clamp(36px, 5vw, 68px); font-weight: 600; letter-spacing: -0.04em; line-height: 1.02; max-width: 16ch; text-wrap: balance; }
 .cta__p { font-size: clamp(17px, 1.4vw, 19px); color: var(--tx-2); max-width: 40ch; }
 .cta__btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }

@@ -678,6 +678,48 @@ export function GradientBlinds({
   );
 }
 
+export function LimeGradientBlinds({
+  className = "",
+  style,
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) {
+  return (
+    <GradientBlinds
+      className={className}
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        opacity: 0.72,
+        filter: "blur(9px)",
+        transform: "scale(1.04)",
+        ...style,
+      }}
+      gradientColors={["#C8F135", "#77921B", "#202C0E", "#08090B"]}
+      angle={-42}
+      blindCount={22}
+      blindMinWidth={80}
+      spotlightRadius={0.6}
+      spotlightOpacity={0.22}
+      shine={0.12}
+      relief={0.2}
+      glow={0.16}
+      sway={0.15}
+      hoverTilt={0.2}
+      clickEffect="none"
+      noise={0.06}
+      lightColor="#C8F135"
+      idle="drift"
+      mixBlendMode="normal"
+      lightMode={false}
+      intro
+    />
+  );
+}
+
 
 export type FinalCtaBannerProps = {
   eyebrow?: string;
