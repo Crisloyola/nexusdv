@@ -9,7 +9,6 @@ export type PlanWeb = {
   id: string; nombre: string; precio: number;
   /** true = el precio se muestra como "Desde S/ …". */ esDesde?: boolean;
   plazo: string; texto: string; incluye: string[]; destacado?: boolean;
-  /** Etiqueta sobre el plan destacado. */ etiqueta?: string;
   /** Mensaje que se escribe solo en WhatsApp al tocar el botón del plan. */ mensaje: string;
   /** utm_campaign del botón. */ campana: string
 };
@@ -21,7 +20,7 @@ export const PLANES_WEB: PlanWeb[] = [
     incluye: ["Una página personalizada", "Diseño responsive", "WhatsApp y formulario"],
   },
   {
-    id: "empresarial", nombre: "Web Empresarial", precio: 820, plazo: "unas 2 semanas", destacado: true, etiqueta: "Más recomendado", campana: "web_empresarial",
+    id: "empresarial", nombre: "Web Empresarial", precio: 820, plazo: "unas 2 semanas", destacado: true, campana: "web_empresarial",
     mensaje: "Hola, NEXUS. Necesito una Web Empresarial de S/ 820 para mi empresa. ¿Podrían enviarme más información?",
     texto: "Para empresas que quieren mostrar sus servicios y recibir clientes.",
     incluye: ["Hasta 3 páginas", "Diseño personalizado", "WhatsApp y formularios", "SEO básico", "Dominio .com por 1 año"],
@@ -44,7 +43,7 @@ export const PLANES_WEB: PlanWeb[] = [
 export const soles = (n: number) => `S/ ${n.toLocaleString("en-US")}`;
 
 /** Correo corporativo (con tu dominio). Lo muestra Precios debajo de los planes y lo conoce Nexo. */
-export type PlanCorreo = { id: string; nombre: string; precio: number; detalle: string; destacado?: boolean; etiqueta?: string; mensaje: string; campana: string };
+export type PlanCorreo = { id: string; nombre: string; precio: number; detalle: string; destacado?: boolean; mensaje: string; campana: string };
 export const CORREO = {
   titulo: "Correo corporativo",
   texto: "Da una imagen seria desde el primer mensaje con correos a nombre de tu empresa.",
@@ -57,7 +56,7 @@ export const CORREO = {
       mensaje: "Hola, NEXUS. Me interesa la promoción de 1 correo corporativo + dominio .com por S/ 250. ¿Podrían darme más información?",
     },
     {
-      id: "correo4", nombre: "4 correos + dominio .com", precio: 550, detalle: "Para tu equipo", destacado: true, etiqueta: "Más recomendado", campana: "correo_4",
+      id: "correo4", nombre: "4 correos + dominio .com", precio: 550, detalle: "Para tu equipo", destacado: true, campana: "correo_4",
       mensaje: "Hola, NEXUS. Me interesa el plan de 4 correos corporativos + dominio .com por S/ 550. ¿Podrían darme más información?",
     },
     {

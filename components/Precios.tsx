@@ -14,7 +14,6 @@ export function Precios() {
         <div className="plans">
           {planes.map((p) => (
             <article key={p.id} className={`plan rv${p.destacado ? " plan--hl" : ""}`}>
-              {p.etiqueta && <span className="plan__tag">{p.etiqueta}</span>}
               <h3>{p.nombre}</h3>
               <div className="plan__price">{p.esDesde && <small className="plan__desde">Desde</small>}{soles(p.precio)}</div>
               <p className="plan__plazo"><Icon id="chk" />Lista en {p.plazo}</p>
@@ -44,7 +43,6 @@ export function Precios() {
           <div className="mail__opts">
             {CORREO.planes.map((c) => (
               <a key={c.id} className={`mail__opt${c.destacado ? " mail__opt--hl" : ""}`} href={waTexto(c.mensaje, c.campana)} target="_blank" rel="noopener">
-                {c.etiqueta && <span className="plan__tag mail__tag">{c.etiqueta}</span>}
                 <span className="mail__name">{c.nombre}</span>
                 <b className="mail__price">{soles(c.precio)}</b>
                 <small>{c.detalle}</small>
