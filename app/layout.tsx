@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: SITIO_URL,
     siteName: "NEXUSDV",
     title: SEO.titulo,
-    description: "Páginas web en Lima desde S/ 540: landing, web empresarial, web corporativa y tienda virtual. Apps, sistemas y asistentes con IA a medida. Cotización sin costo.",
+    description: SEO.descripcion,
     images: [{ url: "/share.jpg", alt: "NEXUSDV: páginas web, apps y sistemas para negocios en Perú" }],
   },
   twitter: { card: "summary_large_image", title: SEO.titulo, description: SEO.descripcion, images: ["/share.jpg"] },

@@ -16,7 +16,7 @@ export default function Privacidad() {
       <div className="wrap legal__in">
         <a className="logo" href="/" aria-label="NEXUSDV, volver al inicio"><i><Logo /></i>NEXUSDV</a>
         <h1>Política de privacidad</h1>
-        <p className="legal__fecha">Última actualización: 15 de noviembre de 2026</p>
+        <p className="legal__fecha">Última actualización: 24 de noviembre de 2026</p>
 
         <h2>Quiénes somos</h2>
         <p>NEXUSDV es un estudio de diseño y desarrollo web en {contacto.ciudad}. Para cualquier consulta sobre tus datos escríbenos a <a href={`mailto:${contacto.correo}`}>{contacto.correo}</a>.</p>
@@ -26,7 +26,8 @@ export default function Privacidad() {
           <li><b>Cuando nos escribes por WhatsApp o correo:</b> usamos tu nombre, número o correo y lo que nos cuentas para responderte y enviarte tu cotización.</li>
           <li><b>Chat con Nexo:</b> lo que escribes en el chat se envía a un servicio de inteligencia artificial para generar la respuesta. Nuestra web no guarda esas conversaciones. Por favor, no escribas datos sensibles como tu DNI, tarjetas o contraseñas.</li>
           <li><b>Medición de visitas:</b> usamos Vercel Analytics, que cuenta visitas de forma agregada y sin cookies. Si aceptas las cookies, también usamos herramientas de Google (a través de Google Tag Manager) para medir cómo se usa la web.</li>
-          <li><b>Preferencias en tu navegador:</b> guardamos tu elección sobre las cookies y si ya viste el saludo de Nexo, para no volver a mostrártelos.</li>
+          <li><b>Cuando te suscribes por correo:</b> usamos tu email para enviarte novedades y un mensaje de bienvenida, y para avisar al equipo. Los mensajes se envían mediante el correo de NEXUSDV alojado en Hostinger; esta web no mantiene una base de suscriptores. Puedes pedir que retiremos tu correo escribiendo a <a href={`mailto:${contacto.correo}`}>{contacto.correo}</a>.</li>
+          <li><b>Preferencias en tu navegador:</b> guardamos tu elección sobre las cookies, si ya viste el saludo de Nexo y si cerraste la pantalla de cotización, para no volver a mostrártelos.</li>
         </ul>
 
         <h2>Cookies</h2>

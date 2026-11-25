@@ -533,4 +533,44 @@ main { overflow-x: clip; }
   .opin__item { scroll-snap-align: center; }
   .opin__item[aria-hidden] { display: none; }
   .nx-hola { transition: opacity .2s; transform: none; }
+  .lead__caja { transition: none; transform: none; }
+}
+
+/* Pantalla breve de suscripción por correo (components/Suscripcion.tsx). */
+html.lead-open body { overflow: hidden; }
+html.lead-open .fab, html.lead-open .nx-hola { opacity: 0; pointer-events: none; }
+.lead { position: fixed; inset: 0; z-index: 90; display: grid; place-items: end center; padding: 12px 12px calc(12px + env(safe-area-inset-bottom, 0px)); }
+.lead__fondo { position: absolute; inset: 0; border: 0; background: rgba(5,6,8,.72); cursor: pointer; }
+.lead__caja { position: relative; width: min(440px, 100%); max-height: min(640px, calc(100dvh - 24px)); overflow: auto; padding: 26px 24px 20px; border-radius: 20px; border: 1px solid var(--line-2); background: var(--s2); color: var(--tx); box-shadow: var(--hi), 0 28px 70px rgba(0,0,0,.55); outline: none; animation: in .35s var(--ease); }
+.lead__caja h2 { font-size: 26px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.15; text-wrap: balance; }
+.lead__caja p { margin-top: 8px; font-size: 15px; line-height: 1.45; color: var(--tx-2); }
+.lead__x { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 10px; background: transparent; color: var(--tx-2); cursor: pointer; display: grid; place-items: center; }
+.lead__x:hover { background: rgba(255,255,255,.06); color: var(--tx); }
+.lead__x svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+.lead__form { display: grid; gap: 0; margin-top: 18px; }
+.lead__form h2, .lead__form p { margin-top: 0; }
+.lead__form p { margin-bottom: 16px; }
+.lead__form label, .lead__form legend { margin-top: 12px; margin-bottom: 6px; font-size: 13.5px; font-weight: 600; color: var(--tx); }
+.lead__form input[type="email"] { width: 100%; height: 48px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line-2); background: var(--bg-2); color: var(--tx); caret-color: var(--lime); font: inherit; font-size: 16px; outline: none; }
+.lead__form input::placeholder { color: var(--tx-2); }
+.lead__form input:focus { border-color: var(--lime); box-shadow: 0 0 0 4px rgba(200,241,53,.14); }
+.lead__consent { display: grid; grid-template-columns: 18px 1fr; align-items: start; gap: 0 10px; margin-top: 16px; color: var(--tx-2); font-size: 13px; line-height: 1.5; }
+.lead__consent input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--lime); }
+.lead__consent label { grid-column: 2; margin: 0; color: var(--tx-2); font-size: 13px; line-height: 1.5; font-weight: 400; cursor: pointer; }
+.lead__privacy { grid-column: 2; justify-self: start; margin-top: 4px; color: var(--tx); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.lead__privacy:hover { color: var(--lime); }
+.lead__form input:focus-visible, .lead__consent input:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.lead__trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.lead__e, .lead__caja .lead__e { margin-top: 6px; font-size: 13.5px; font-weight: 600; color: #ffb4b4; }
+.lead__form .btn { width: 100%; margin-top: 18px; }
+.lead__form .btn:disabled { cursor: wait; opacity: .7; }
+.lead__luego { margin-top: 4px; height: 40px; border: 0; background: none; color: var(--tx-2); font: inherit; font-size: 14.5px; font-weight: 600; cursor: pointer; text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 3px; }
+.lead__luego:hover { color: var(--tx); }
+.lead__ok { display: grid; gap: 8px; padding-right: 28px; }
+.lead__ok .btn { margin-top: 10px; }
+@media (min-width: 640px) {
+  .lead { place-items: center; padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lead__caja { animation: none; }
 }

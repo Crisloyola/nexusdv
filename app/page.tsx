@@ -10,6 +10,7 @@ import { Testimonios } from "@/components/Testimonios";
 import { Preguntas } from "@/components/Preguntas";
 import { Confianza } from "@/components/Confianza";
 import { Contacto } from "@/components/Contacto";
+import { Suscripcion } from "@/components/Suscripcion";
 import { Asistente } from "@/components/Asistente";
 import { RevealInit } from "@/components/RevealInit";
 import { datosEstructurados } from "@/lib/seo";
@@ -34,6 +35,7 @@ export default function Home() {
         <Preguntas />
       </main>
       <Contacto />
+      <Suscripcion />
       <Asistente />
       <RevealInit />
     </>

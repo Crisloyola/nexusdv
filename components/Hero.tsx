@@ -1,6 +1,7 @@
 import { contacto, planes, waTexto } from "@/lib/data";
 import { Icon } from "./Icons";
 import { AbrirNexo } from "./AbrirNexo";
+import { AbrirSuscripcion } from "./Suscripcion";
 import { LimeGradientBlinds } from "./FinalCtaBanner";
 
 /** Portada: promesa centrada sobre rayos de luz lima y la acción principal. */
@@ -19,6 +20,7 @@ export function Hero() {
           <a className="btn btn--ghost btn--lg" href="#precios">Ver precios<Icon id="right" /></a>
         </div>
         <p className="hero__meta">Ves el diseño antes de programar · Landing lista en 5 a 7 días hábiles · 30 días de soporte</p>
+        <AbrirSuscripcion className="hero__nexo">Recibe novedades por correo</AbrirSuscripcion>
         <AbrirNexo className="hero__nexo">¿Dudas? Pregúntale a Nexo</AbrirNexo>
       </div>
     </section>

@@ -123,4 +123,20 @@ Para probarlo en tu computadora, copia `.env.example` como `.env.local` y llena 
 - El vidrio estriado usa WebGL. Si un navegador no lo soporta, se ve un fondo verde de respaldo.
 - Las capturas de Creatrix son una recreación de su pantalla de inicio; reemplázalas por capturas
   reales con el mismo nombre de archivo cuando las tengas.
+
+## 8. Suscripciones por correo
+
+El formulario envía un aviso a `contacto@nexusdv.pe` y un mensaje de bienvenida al suscriptor usando
+el buzón de NEXUSDV en Hostinger. No se guarda una lista en una base de datos: cada registro queda
+en el correo de contacto para gestionarlo manualmente.
+
+Configura estas variables en Vercel → **Settings → Environment Variables** y vuelve a publicar:
+
+- `SMTP_HOST`, `SMTP_PORT` y `SMTP_SECURE`: datos SMTP que aparecen en Hostinger hPanel.
+- `SMTP_USER`: el buzón autenticado (por ejemplo, `contacto@nexusdv.pe`).
+- `SMTP_PASSWORD`: contraseña de ese buzón. No la publiques ni la compartas por el chat.
+
+Para probar en local, agrega esos valores a `.env.local` (nunca al repositorio). Si luego quieres
+enviar campañas a toda la lista, conecta un servicio de email marketing con bajas y gestión de
+suscriptores; la bandeja de entrada por sí sola no administra campañas.
 # nexusdv

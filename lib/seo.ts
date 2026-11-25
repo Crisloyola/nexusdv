@@ -6,9 +6,9 @@ import { PLANES_WEB, SERVICIOS, preguntas } from "./servicios";
 export const SITIO_URL = "https://www.nexusdv.pe";
 
 export const SEO = {
-  titulo: "Páginas web en Lima desde S/ 540 | Tiendas virtuales, apps y sistemas · NEXUSDV",
+  titulo: "Páginas web en Lima para negocios | NEXUSDV",
   descripcion:
-    "Páginas web en Lima desde S/ 540: landing, web empresarial, web corporativa y tienda virtual con pedidos online. Apps, sistemas y asistentes con IA a medida. Ves el diseño antes de programar. Cotiza sin costo.",
+    "Diseñamos páginas web a medida en Lima para que tu negocio reciba consultas por WhatsApp. Tiendas virtuales, apps, sistemas y asistentes con IA. Mira proyectos reales y pide una cotización sin costo.",
   palabras: [
     "páginas web Lima", "diseño web Lima", "diseño de páginas web Perú", "landing page Lima", "crear página web para mi negocio",
     "desarrollo de apps Perú", "apps Android y iPhone", "sistemas a medida Lima", "tienda virtual Lima", "landing page Perú",

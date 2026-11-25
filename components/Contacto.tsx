@@ -2,6 +2,7 @@
 import { useRef, useState } from "react";
 import { contacto } from "@/lib/data";
 import { abrirNexo } from "./Asistente";
+import { abrirSuscripcion } from "./Suscripcion";
 import { Icon, Logo } from "./Icons";
 import { WaChat } from "./WaDemo";
 import { abrirCookies } from "./AvisoCookies";
@@ -38,6 +39,7 @@ export function Contacto() {
           <p className="cta__p">Cuéntanos qué necesitas y te enviamos una cotización sin costo.</p>
           <div className="cta__btns">
             <a className="btn btn--lime btn--lg" href={contacto.whatsappLink} target="_blank" rel="noopener"><Icon id="wa" />Escribir por WhatsApp</a>
+            <button className="btn btn--ghost btn--lg" type="button" onClick={abrirSuscripcion}>Suscribirme por correo</button>
             <button className="btn btn--ghost btn--lg" type="button" onClick={abrirNexo}>Hablar con Nexo</button>
           </div>
           <WaChat />
