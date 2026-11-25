@@ -85,7 +85,7 @@ export function Suscripcion() {
       if (!puedeAuto()) return;
       mostrar(false);
     };
-    reloj = window.setTimeout(intentar, 20000);
+    reloj = window.setTimeout(intentar, 4000);
     return () => window.clearTimeout(reloj);
   }, []);
 

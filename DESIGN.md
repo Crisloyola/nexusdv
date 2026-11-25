@@ -324,7 +324,7 @@ Two graphite cards (18px, Bright Hairline) each tagged "Ejemplo" with a small ou
 The chat input is 44px, 12px corners, Bright Hairline on Screen Black, lime caret; focus is a lime border plus `0 0 0 4px rgba(200,241,53,.14)`. The subscription dialog uses one 48px email field and an unchecked consent checkbox with a separate privacy link; both keep a visible lime focus ring.
 
 ### Subscription dialog
-A compact graphite dialog, centered on desktop and anchored near the bottom on phones. It asks only for an email and explicit consent, with one full-width lime action. The close button, Escape key and backdrop dismiss it. The timed prompt waits until the cookie notice, Nexo greeting and menu are closed; a dismissed prompt waits seven days before appearing again.
+A compact graphite dialog, centered on desktop and anchored near the bottom on phones. It asks only for an email and explicit consent, with one full-width lime action. The close button, Escape key and backdrop dismiss it. The timed prompt appears four seconds after page load, waits until the cookie notice, Nexo greeting and menu are closed, and rechecks every 1.5 seconds; a dismissed prompt waits seven days before appearing again.
 The welcome email uses Graphite 1 (#111215) for both the message canvas and its header, so the background stays dark around the brand and message content.
 
 ### Motion
