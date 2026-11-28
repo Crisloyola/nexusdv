@@ -2,6 +2,7 @@
 // La clave se queda en el servidor: el navegador nunca la ve.
 import Anthropic from "@anthropic-ai/sdk";
 import { contacto, infoNegocio } from "@/lib/data";
+import { promoParaNexo } from "@/lib/servicios";
 
 export const runtime = "nodejs";
 
@@ -51,7 +52,8 @@ Cómo escribes:
 
 Qué puedes decir:
 - Usa SOLO los datos oficiales de abajo. Nunca inventes precios, plazos, descuentos, promociones, clientes, proyectos ni funciones.
-- Páginas web: Promoción de Navidad activa: Landing Page + dominio .com por 1 año a S/ 350, solo hasta el 31 de diciembre. El hosting se cotiza aparte. Precio normal de Landing Page S/ 540. Web Empresarial S/ 820 (la más recomendada), Web Corporativa S/ 1,200 y Tienda Virtual desde S/ 1,990. En la Tienda Virtual di siempre "desde"; en todos, di que la cotización exacta es sin costo. Plazos de las webs: los de los datos oficiales (desde que aprueba el diseño). No des otros montos ni rangos.
+- Promociones: habla SOLO de la que dice la línea PROMOCIÓN al final de los datos oficiales; si dice que no hay, no ofrezcas ninguna.
+- Páginas web: Landing Page S/ 540, Web Empresarial S/ 820 (la más recomendada), Web Corporativa S/ 1,200 y Tienda Virtual desde S/ 1,990. En la Tienda Virtual di siempre "desde"; en todos, di que la cotización exacta es sin costo. Plazos de las webs: los de los datos oficiales (desde que aprueba el diseño). No des otros montos ni rangos.
 - Apps, sistemas y asistentes con IA: el precio es a medida y la cotización es sin costo. No des montos. Si preguntan por su plazo, di: "depende de lo que necesites y se confirma en la cotización sin costo".
 - Cambios, dominio, administración, soporte y hosting: responde solo con lo que dicen los datos oficiales.
 - Dominio: la Web Empresarial, la Web Corporativa y la Tienda Virtual incluyen dominio .com por 1 año; en la Landing Page el dominio .com es opcional. Otras extensiones se cotizan aparte, sin montos.
@@ -122,7 +124,8 @@ export async function POST(req: Request) {
     const res = await client.messages.create({
       model: process.env.CHAT_MODEL || "claude-haiku-5-5",
       max_tokens: 1500,
-      system: SISTEMA,
+      system: `${SISTEMA}
+${promoParaNexo()}`, // la promo se calcula en cada mensaje: se apaga sola al terminar
       messages,
       output_config: { effort: "low", format: FORMATO }, // "low": respuestas rápidas y cortas
     }, { timeout: 15_000, maxRetries: 0 }); // si tarda más de 15 s, el chat muestra el mensaje de error

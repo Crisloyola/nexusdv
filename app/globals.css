@@ -115,37 +115,6 @@ main { overflow-x: clip; }
 .hero__lead { margin-top: 22px; max-width: 54ch; font-size: clamp(17px, 1.4vw, 20px); color: var(--tx); opacity: .82; text-wrap: balance; }
 .hero__cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
 .hero__meta { margin-top: 14px; font-size: 13.5px; color: var(--tx-3); }
-.hero__promo { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 18px; margin: 18px auto 0; width: min(620px, 100%); padding: 12px 12px 12px 18px; border: 1px solid rgba(200,241,53,.34); border-radius: 14px; background: linear-gradient(110deg, rgba(200,241,53,.13), rgba(200,241,53,.04)); color: var(--tx); text-align: left; text-decoration: none; box-shadow: 0 14px 38px rgba(0,0,0,.18); transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease); }
-.hero__promo:hover { transform: translateY(-2px); border-color: rgba(200,241,53,.62); background: linear-gradient(110deg, rgba(200,241,53,.17), rgba(200,241,53,.06)); }
-.hero__promo-main { display: grid; gap: 3px; min-width: 0; }
-.hero__promo-kicker { color: var(--lime); font-size: 12.5px; font-weight: 600; letter-spacing: .01em; text-transform: uppercase; }
-.hero__promo-main b { font-size: 16.5px; line-height: 1.2; }
-.hero__promo-main small { color: var(--tx-2); font-size: 12.5px; }
-.hero__promo-price { display: grid; grid-template-columns: auto 40px; grid-template-rows: auto auto; align-items: center; column-gap: 10px; min-width: 156px; }
-.hero__promo-price small { grid-column: 1; color: var(--tx-2); font-size: 12.5px; }
-.hero__promo-price strong { grid-column: 1; color: var(--lime); font-size: 27px; line-height: 1; letter-spacing: -.035em; }
-.hero__promo-price > span { grid-column: 2; grid-row: 1 / span 2; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: var(--lime); color: var(--ink); }
-.hero__promo-price svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.hero__promo--navidad {
-  border-color: rgba(224, 82, 73, .58);
-  background:
-    linear-gradient(100deg, rgba(224,82,73,.24), rgba(224,82,73,.07) 72%, rgba(242,243,238,.06));
-  box-shadow: 0 16px 42px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.07);
-}
-.hero__promo--navidad:hover {
-  border-color: rgba(242,243,238,.5);
-  background:
-    linear-gradient(100deg, rgba(224,82,73,.31), rgba(224,82,73,.1) 72%, rgba(242,243,238,.08));
-}
-.hero__promo--navidad .hero__promo-kicker {
-  color: #FFB3AA;
-}
-.hero__promo--navidad .hero__promo-main b {
-  color: var(--paper);
-}
-.hero__promo--navidad .hero__promo-price strong {
-  color: #FFF4D6;
-}
 .hero__nexo { margin-top: 10px; padding: 4px 2px; border: 0; background: none; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--tx-2); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; transition: color .2s, text-decoration-color .2s; }
 .hero__nexo:hover { color: var(--lime); text-decoration-color: var(--lime); }
 
@@ -334,8 +303,6 @@ main { overflow-x: clip; }
 .plan h3 { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; color: var(--tx-2); }
 .plan__price { font-size: clamp(36px, 3.4vw, 46px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; margin-top: 10px; }
 .plan__price .plan__desde { display: block; margin: 0 0 6px; font-size: 13.5px; font-weight: 500; letter-spacing: 0; color: var(--tx-3); }
-.plan__anterior { display: block; margin-top: 8px; font-size: 15px; font-weight: 500; letter-spacing: 0; color: var(--tx-3); }
-.plan__promo { padding: 9px 10px; border-radius: 8px; background: var(--lime-soft); color: var(--lime); font-size: 13.5px; line-height: 1.45; }
 .plan__plazo { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 6px 10px; border-radius: 8px; background: var(--lime-soft); color: var(--lime); font-size: 13.5px; font-weight: 600; }
 .plan__plazo svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .plan-extra { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 12px 32px; margin-top: 16px; padding: 22px 24px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); }
@@ -490,6 +457,50 @@ main { overflow-x: clip; }
 .js .rv { opacity: 0; transform: translateY(28px) scale(.985); filter: blur(10px); transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease); }
 .js .rv.in { opacity: 1; transform: none; filter: none; }
 
+/* promoción temporal (lib/servicios.ts → PROMOCION). Rojo navideño como acento solo mientras dura la promo. */
+:root { --nav: #E05249; --nav-tx: #FFB3AA; --nav-soft: rgba(224,82,73,.16); --nav-line: rgba(224,82,73,.55); --nav-cream: #FFF4D6; }
+html:has(.pbar) { scroll-padding-top: 156px; }
+
+/* tarjeta de la portada: es la acción principal mientras hay promo */
+.hero__promo { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 14px 18px; margin: 26px auto 0; width: min(560px, 100%); padding: 16px 16px 14px 20px; border: 1px solid var(--nav-line); border-radius: 16px; background: linear-gradient(100deg, rgba(224,82,73,.24), rgba(224,82,73,.07) 72%, rgba(242,243,238,.06)); color: var(--tx); text-align: left; text-decoration: none; box-shadow: 0 16px 42px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.07); transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease); }
+.hero__promo:hover { transform: translateY(-2px); border-color: rgba(242,243,238,.5); background: linear-gradient(100deg, rgba(224,82,73,.31), rgba(224,82,73,.1) 72%, rgba(242,243,238,.08)); }
+.hero__promo-main { display: grid; gap: 4px; min-width: 0; }
+.hero__promo-kicker { color: var(--nav-tx); font-size: 13px; font-weight: 600; }
+.hero__promo-main b { font-size: 18px; line-height: 1.2; color: var(--paper); letter-spacing: -0.01em; }
+.hero__promo-main small { color: var(--tx-2); font-size: 13.5px; }
+.hero__promo-ahorro { color: var(--paper); font-weight: 600; }
+.hero__promo-price { display: grid; justify-items: end; gap: 2px; }
+.hero__promo-price s { color: var(--tx-3); font-size: 15px; font-weight: 500; }
+.hero__promo-price strong { color: var(--nav-cream); font-size: 34px; line-height: 1; letter-spacing: -0.04em; }
+.hero__promo-cta { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 9px; height: 46px; border-radius: 11px; background: var(--lime); color: var(--ink); font-size: 15px; font-weight: 600; transition: background .2s; }
+.hero__promo:hover .hero__promo-cta { background: var(--lime-hover); }
+.hero__promo-cta svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s var(--ease); }
+.hero__promo:hover .hero__promo-cta svg { transform: translateX(2px); }
+.hero__promo + .hero__cta { margin-top: 14px; }
+
+/* barra fina sobre el menú (escritorio y tablet) */
+.pbar { display: flex; align-items: center; gap: 14px; max-width: 1200px; height: 38px; margin: 0 auto 8px; padding: 0 6px 0 6px; border-radius: 11px; border: 1px solid var(--nav-line); background: #1E1111; color: var(--tx); font-size: 14px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.22); transition: border-color .2s, background .2s; }
+.pbar:hover { border-color: rgba(242,243,238,.45); background: #261413; }
+.pbar__tag { flex: none; padding: 3px 9px; border-radius: 7px; background: var(--nav); color: #fff; font-size: 12.5px; font-weight: 600; }
+.pbar__txt { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.pbar__txt b { font-weight: 600; color: var(--paper); }
+.pbar__txt span { color: var(--tx-2); }
+.pbar__dias { flex: none; margin-left: auto; color: var(--nav-tx); font-weight: 600; font-size: 13.5px; }
+.pbar__ver { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 8px; background: rgba(255,255,255,.08); font-weight: 600; font-size: 13.5px; }
+.pbar__ver svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* tarjeta de la promo en Precios */
+.plan--promo { border-color: var(--nav-line); background: linear-gradient(180deg, rgba(224,82,73,.12), var(--card) 46%); }
+.plan .plan__cinta { align-self: flex-start; padding: 5px 10px; border-radius: 8px; background: var(--nav); color: #fff; font-size: 13px; font-weight: 600; }
+.plan--promo .plan__price { color: var(--nav-cream); }
+.plan--promo .plan__desde s { color: var(--tx-2); }
+.plan .plan__ahorro { align-self: flex-start; margin-top: -6px; color: var(--paper); font-size: 15px; font-weight: 600; }
+.plan .plan__promo { padding: 9px 10px; border-radius: 8px; background: var(--nav-soft); color: var(--nav-tx); font-size: 13.5px; line-height: 1.45; }
+.ticks li.plan__extra { font-weight: 600; color: var(--paper); }
+
+/* botón fijo de la promo en celular (al lado de Nexo) */
+.pmov { display: none; }
+
 @media (max-width: 1100px) {
   .top__bar nav a { padding: 8px 8px; font-size: 14px; }
   .plans { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
@@ -519,12 +530,21 @@ main { overflow-x: clip; }
   .hero__h { font-size: clamp(40px, 11.6vw, 56px); }
   .hero__rayos i { height: 16vw; }
   .hero__cta { flex-direction: column; align-self: stretch; } .hero__cta .btn { width: 100%; }
-  .hero__promo { gap: 10px; width: 100%; padding: 11px 10px 11px 14px; }
-  .hero__promo-main b { font-size: 15px; }
-  .hero__promo-main small { max-width: 20ch; }
-  .hero__promo-price { min-width: 132px; column-gap: 7px; }
-  .hero__promo-price strong { font-size: 24px; }
-  .hero__promo-price > span { width: 36px; height: 36px; }
+  .hero__promo { width: 100%; gap: 12px 10px; padding: 14px 12px 12px 14px; }
+  .hero__promo-main b { font-size: 16px; }
+  .hero__promo-main small { font-size: 13px; }
+  .hero__promo-price strong { font-size: 28px; }
+  .hero__promo-cta { height: 48px; }
+  .pbar { display: none; }
+  html:has(.pbar) { scroll-padding-top: 110px; }
+  .pmov { position: fixed; z-index: 44; left: calc(16px + env(safe-area-inset-left, 0px)); right: calc(16px + 64px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 10px; height: 54px; padding: 0 6px 0 14px; border-radius: 12px; border: 1px solid var(--nav-line); background: #1E1111; color: var(--tx); text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,.45); opacity: 0; transform: translateY(14px); visibility: hidden; pointer-events: none; transition: opacity .25s, transform .35s var(--ease), visibility .25s; }
+  .pmov--on { opacity: 1; transform: none; visibility: visible; pointer-events: auto; }
+  .pmov__t { display: grid; min-width: 0; line-height: 1.25; }
+  .pmov__t b { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 14.5px; font-weight: 600; color: var(--paper); }
+  .pmov__t small { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12.5px; color: var(--nav-tx); }
+  .pmov__wa { flex: none; display: grid; place-items: center; width: 42px; height: 42px; margin-left: auto; border-radius: 10px; background: var(--lime); color: var(--ink); }
+  .pmov__wa .ico-wa { width: 20px; height: 20px; }
+  html.bot-open .pmov, html.menu-open .pmov, html.cookies-abierto .pmov, html.lead-open .pmov { opacity: 0; visibility: hidden; pointer-events: none; }
   .sec { padding-top: 96px; }
   .vit__marco { padding: 6px; border-radius: 16px; }
   .vit__pantalla { height: 500px; border-radius: 12px; }

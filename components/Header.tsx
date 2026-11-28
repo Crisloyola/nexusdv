@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { contacto } from "@/lib/data";
 import { Icon, Logo } from "./Icons";
 
@@ -10,8 +10,8 @@ const NAV = [
   { href: "#preguntas", label: "Preguntas" },
 ];
 
-/** Barra flotante redondeada. En celular el menú se abre debajo. */
-export function Header() {
+/** Barra flotante redondeada. En celular el menú se abre debajo. `aviso`: barra de la promo encima del menú (si hay). */
+export function Header({ aviso }: { aviso?: ReactNode }) {
   const [abierto, setAbierto] = useState(false);
 
   useEffect(() => {
@@ -28,6 +28,7 @@ export function Header() {
 
   return (
     <header className={`top${abierto ? " top--open" : ""}`}>
+      {aviso}
       <div className="top__bar">
         <a className="logo" href="#inicio" aria-label="NEXUSDV, inicio" onClick={cerrar}><i><Logo /></i>NEXUSDV</a>
         <nav aria-label="Principal">

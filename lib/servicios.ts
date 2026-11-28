@@ -4,16 +4,6 @@
 
 export const NOTA_PRECIOS = "El equipo confirma tu cotización según lo que necesitas";
 
-/** Promoción temporal de diciembre 2026. Solo se anuncia durante este mes. */
-export const PROMOCION_DICIEMBRE = {
-  activa: true,
-  nombre: "Promoción de Navidad",
-  precio: 350,
-  texto: "Landing Page + dominio .com por 1 año.",
-  condiciones: "Solo durante diciembre. Incluye diseño, página responsive, WhatsApp/formulario y SEO básico. El hosting se cotiza aparte.",
-  mensaje: "Hola, NEXUS. Me interesa la promoción de diciembre: Landing Page + dominio .com por 1 año por S/ 350.",
-};
-
 /** Planes de páginas web. Los muestra Precios y los conoce Nexo. */
 export type PlanWeb = {
   id: string; nombre: string; precio: number;
@@ -52,6 +42,55 @@ export const PLANES_WEB: PlanWeb[] = [
 /** Precio para mostrar: "S/ 1,000". */
 export const soles = (n: number) => `S/ ${n.toLocaleString("en-US")}`;
 
+/**
+ * Promoción temporal. Se muestra SOLA entre `inicio` y `fin` (hora de Lima, -05:00):
+ * antes o después de esas fechas desaparece de la web, de Nexo y de la imagen para compartir.
+ * Para una nueva promo, cambia solo este bloque.
+ */
+const PROMO_BASE = {
+  nombre: "Promoción de Navidad",
+  /** Versiones cortas para espacios chicos (cinta de la tarjeta, botón fijo en celular). */
+  etiqueta: "Navidad",
+  corto: "Landing + dominio",
+  inicio: "2026-11-27T00:00:00-05:00",
+  fin: "2026-12-31T23:59:59-05:00",
+  finTexto: "31 de diciembre",
+  /** Plan de PLANES_WEB al que se aplica. */ planId: "landing",
+  precio: 350,
+  producto: "Landing Page + dominio .com",
+  /** Lo que la promo suma a la lista del plan. */ extra: "Dominio .com por 1 año incluido",
+  condiciones: "El hosting se cotiza aparte.",
+  campana: "promocion_navidad",
+};
+const planPromo = PLANES_WEB.find((p) => p.id === PROMO_BASE.planId)!;
+export const PROMOCION = {
+  ...PROMO_BASE,
+  plan: planPromo,
+  precioNormal: planPromo.precio,
+  ahorro: planPromo.precio - PROMO_BASE.precio,
+  mensaje: `Hola, NEXUS. Me interesa la ${PROMO_BASE.nombre}: ${PROMO_BASE.producto} por 1 año por ${soles(PROMO_BASE.precio)}.`,
+};
+
+/** ¿La promo está vigente ahora? */
+export const promoActiva = (ahora = new Date()) =>
+  ahora >= new Date(PROMOCION.inicio) && ahora <= new Date(PROMOCION.fin);
+
+/** Días que le quedan a la promo, contando hoy (1 = último día). */
+export const diasPromo = (ahora = new Date()) =>
+  Math.max(0, Math.ceil((new Date(PROMOCION.fin).getTime() - ahora.getTime()) / 86_400_000));
+
+/** "Quedan 35 días" / "¡Último día!" */
+export const quedanPromo = (ahora = new Date()) => {
+  const d = diasPromo(ahora);
+  return d <= 1 ? "¡Último día!" : `Quedan ${d} días`;
+};
+
+/** Lo que Nexo sabe de la promo. Se calcula en cada mensaje para que se apague sola al terminar. */
+export function promoParaNexo(ahora = new Date()): string {
+  if (!promoActiva(ahora)) return "PROMOCIÓN: no hay ninguna promoción activa. Si preguntan, di que por ahora no hay promociones y da los precios normales.";
+  return `PROMOCIÓN ACTIVA (${PROMOCION.nombre}): ${PROMOCION.producto} por 1 año a ${soles(PROMOCION.precio)} (precio normal de la ${PROMOCION.plan.nombre}: ${soles(PROMOCION.precioNormal)}, ahorra ${soles(PROMOCION.ahorro)}). Válida hasta el ${PROMOCION.finTexto} (${quedanPromo(ahora).toLowerCase()}). Incluye: ${[PROMOCION.extra, ...PROMOCION.plan.incluye, "SEO básico"].join(", ")}. ${PROMOCION.condiciones} Cuando hablen de páginas web o precios, menciónala primero.`;
+}
+
 /** Correo corporativo (con tu dominio). Lo muestra Precios debajo de los planes y lo conoce Nexo. */
 export type PlanCorreo = { id: string; nombre: string; precio: number; detalle: string; destacado?: boolean; mensaje: string; campana: string };
 export const CORREO = {
@@ -63,7 +102,7 @@ export const CORREO = {
   planes: [
     {
       id: "correo1", nombre: "1 correo + dominio .com", precio: 250, detalle: "Ideal para empezar", campana: "correo_1",
-      mensaje: "Hola, NEXUS. Me interesa la promoción de 1 correo corporativo + dominio .com por S/ 250. ¿Podrían darme más información?",
+      mensaje: "Hola, NEXUS. Me interesa el plan de 1 correo corporativo + dominio .com por S/ 250. ¿Podrían darme más información?",
     },
     {
       id: "correo4", nombre: "4 correos + dominio .com", precio: 550, detalle: "Para tu equipo", destacado: true, campana: "correo_4",
@@ -74,7 +113,7 @@ export const CORREO = {
       mensaje: "Hola, NEXUS. Ya tengo (o voy a contratar) mi web con ustedes y quiero agregar 3 correos corporativos por S/ 350.",
     },
   ] as PlanCorreo[],
-  paraNexo: "Correo corporativo con el dominio del cliente (por ejemplo ventas@tuempresa.com). Precios por 1 año: 1 correo + dominio .com S/ 250 (promoción); 4 correos + dominio .com S/ 550; 3 correos para clientes que ya tienen o contratan su web con NEXUSDV (el dominio .com ya viene en la web) S/ 350. Si quieren dominio .pe, se cotiza aparte, sin montos. La renovación anual se informa antes de contratar.",
+  paraNexo: "Correo corporativo con el dominio del cliente (por ejemplo ventas@tuempresa.com). Precios por 1 año: 1 correo + dominio .com S/ 250; 4 correos + dominio .com S/ 550; 3 correos para clientes que ya tienen o contratan su web con NEXUSDV (el dominio .com ya viene en la web) S/ 350. Si quieren dominio .pe, se cotiza aparte, sin montos. La renovación anual se informa antes de contratar.",
 };
 
 /** Renovaciones y extras que se muestran en Precios (debajo de los planes). */
@@ -192,6 +231,6 @@ export function datosParaNexo(): string {
     `PLAZOS: ${POLITICAS.plazos}`,
     `HOSTING: ${POLITICAS.hosting}`,
     `CORREO CORPORATIVO: ${CORREO.paraNexo}`,
-    `PROMOCIÓN TEMPORAL: ${PROMOCION_DICIEMBRE.activa ? `${PROMOCION_DICIEMBRE.texto} ${PROMOCION_DICIEMBRE.precio} soles. ${PROMOCION_DICIEMBRE.condiciones}` : "No hay promoción activa."}`,
+    // La promoción NO va aquí: app/api/chat/route.ts la agrega en cada mensaje con promoParaNexo().
   ].join("\n");
 }

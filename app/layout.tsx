@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SEO, SITIO_URL } from "@/lib/seo";
+import { PROMOCION, promoActiva, soles } from "@/lib/servicios";
 import { AvisoCookies } from "@/components/AvisoCookies";
 import "./globals.css";
 
@@ -9,7 +10,7 @@ import "./globals.css";
 /** Google Tag Manager del proyecto. Las etiquetas (Analytics, Ads, clics a WhatsApp) se configuran en tagmanager.google.com. */
 const GTM_ID = "GTM-M8V6J96W";
 
-export const metadata: Metadata = {
+const BASE: Metadata = {
   metadataBase: new URL(SITIO_URL),
   title: SEO.titulo,
   description: SEO.descripcion,
@@ -42,6 +43,14 @@ export const metadata: Metadata = {
   // Verificación de Google Search Console: pega aquí tu código cuando lo tengas (ver instrucciones).
   ...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION } } : {}),
 };
+
+/** Mientras hay promo, el link compartido muestra la imagen de la promo (app/og-promo.png); si no, public/share.jpg. */
+export function generateMetadata(): Metadata {
+  if (!promoActiva()) return BASE;
+  const alt = `${PROMOCION.nombre}: ${PROMOCION.producto} a ${soles(PROMOCION.precio)} · NEXUSDV`;
+  const img = { url: "/og-promo.png", width: 1200, height: 630, alt };
+  return { ...BASE, openGraph: { ...BASE.openGraph, images: [img] }, twitter: { ...BASE.twitter, images: [img.url] } };
+}
 
 export const viewport: Viewport = { themeColor: "#08090B", width: "device-width", initialScale: 1, viewportFit: "cover" };
 

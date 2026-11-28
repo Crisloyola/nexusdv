@@ -1,9 +1,35 @@
 import { A_MEDIDA, planes, waTexto } from "@/lib/data";
-import { CORREO, NOTA_PRECIOS, PROMOCION_DICIEMBRE, RENOVACIONES, soles } from "@/lib/servicios";
+import { CORREO, NOTA_PRECIOS, PROMOCION, RENOVACIONES, promoActiva, quedanPromo, soles, type PlanWeb } from "@/lib/servicios";
 import { Icon } from "./Icons";
+
+/** Tarjeta del plan que tiene la promo vigente: precio rebajado, ahorro, días que quedan y botón directo a WhatsApp. */
+function PlanPromo({ p }: { p: PlanWeb }) {
+  return (
+    <article id="promo" className="plan plan--promo rv">
+      <p className="plan__cinta">{PROMOCION.etiqueta} · {quedanPromo()}</p>
+      <h3>{p.nombre}</h3>
+      <div className="plan__price">
+        <small className="plan__desde">Antes <s>{soles(PROMOCION.precioNormal)}</s></small>
+        {soles(PROMOCION.precio)}
+      </div>
+      <p className="plan__ahorro">Ahorras {soles(PROMOCION.ahorro)}</p>
+      <p className="plan__plazo"><Icon id="chk" />Lista en {p.plazo}</p>
+      <p>{p.texto}</p>
+      <ul className="ticks">
+        <li className="plan__extra">{PROMOCION.extra}</li>
+        {p.incluye.map((x) => <li key={x}>{x}</li>)}
+      </ul>
+      <p className="plan__promo">Válida hasta el {PROMOCION.finTexto}. {PROMOCION.condiciones}</p>
+      <a className="btn btn--lg btn--lime" href={waTexto(PROMOCION.mensaje, PROMOCION.campana)} target="_blank" rel="noopener">
+        <Icon id="wa" />Pedir la promo
+      </a>
+    </article>
+  );
+}
 
 /** Precios: los 4 planes web, una línea para lo que va a medida y qué incluye. Datos en lib/servicios.ts. */
 export function Precios() {
+  const promo = promoActiva();
   return (
     <section className="sec" id="precios" aria-labelledby="precios-t">
       <div className="wrap">
@@ -12,22 +38,14 @@ export function Precios() {
           <p className="sec__p">Te enviamos la cotización exacta sin costo, según lo que necesitas.</p>
         </div>
         <div className="plans">
-          {planes.map((p) => (
+          {planes.map((p) => promo && p.id === PROMOCION.planId ? <PlanPromo key={p.id} p={p} /> : (
             <article key={p.id} className={`plan rv${p.destacado ? " plan--hl" : ""}`}>
               <h3>{p.nombre}</h3>
-              {PROMOCION_DICIEMBRE.activa && p.id === "landing" ? (
-                <div className="plan__price"><small className="plan__desde">Promoción de Navidad</small>{soles(PROMOCION_DICIEMBRE.precio)}<s className="plan__anterior">{soles(p.precio)}</s></div>
-              ) : (
-                <div className="plan__price">{p.esDesde && <small className="plan__desde">Desde</small>}{soles(p.precio)}</div>
-              )}
+              <div className="plan__price">{p.esDesde && <small className="plan__desde">Desde</small>}{soles(p.precio)}</div>
               <p className="plan__plazo"><Icon id="chk" />Lista en {p.plazo}</p>
               <p>{p.texto}</p>
-              {PROMOCION_DICIEMBRE.activa && p.id === "landing" && (
-                <p className="plan__promo">{PROMOCION_DICIEMBRE.texto} {PROMOCION_DICIEMBRE.condiciones}</p>
-              )}
               <ul className="ticks">{p.incluye.map((x) => <li key={x}>{x}</li>)}</ul>
-              <a className={`btn btn--lg ${p.destacado || (PROMOCION_DICIEMBRE.activa && p.id === "landing") ? "btn--lime" : "btn--ghost"}`}
-                href={waTexto(PROMOCION_DICIEMBRE.activa && p.id === "landing" ? PROMOCION_DICIEMBRE.mensaje : p.mensaje, p.campana)}
+              <a className={`btn btn--lg ${p.destacado ? "btn--lime" : "btn--ghost"}`} href={waTexto(p.mensaje, p.campana)}
                 target="_blank" rel="noopener">Cotizar {p.nombre.toLowerCase()}<Icon id="right" /></a>
             </article>
           ))}

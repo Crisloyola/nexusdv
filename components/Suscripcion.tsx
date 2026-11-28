@@ -73,8 +73,24 @@ export function Suscripcion() {
     return () => window.removeEventListener(EVENTO, manual);
   }, []);
 
+  // Sale solo cuando la persona ya vio la página (30 s o al llegar cerca del final), no apenas entra:
+  // así no tapa la portada ni la promo.
   useEffect(() => {
-    if (puedeAuto()) mostrar(false);
+    if (!puedeAuto()) return;
+    let listo = false;
+    const abrirUnaVez = () => {
+      if (listo) return;
+      if (document.documentElement.classList.contains("bot-open")) return; // no interrumpir el chat con Nexo
+      listo = true; limpiar(); mostrar(false);
+    };
+    const alBajar = () => {
+      const fin = document.documentElement.scrollHeight - window.innerHeight;
+      if (fin > 0 && window.scrollY / fin > 0.7) abrirUnaVez();
+    };
+    const reloj = setTimeout(abrirUnaVez, 30_000);
+    window.addEventListener("scroll", alBajar, { passive: true });
+    const limpiar = () => { clearTimeout(reloj); window.removeEventListener("scroll", alBajar); };
+    return limpiar;
   }, []);
 
   useEffect(() => {

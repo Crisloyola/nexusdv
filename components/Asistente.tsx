@@ -1,14 +1,15 @@
 "use client";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { CHIP_TEMA, MENU, RESPUESTAS, SALUDO, detectarTema, type Tema } from "@/lib/bot";
+import { CHIP_PROMO, CHIP_TEMA, MENU, RESPUESTAS, SALUDO, detectarTema, type Tema } from "@/lib/bot";
 import { waTexto } from "@/lib/data";
+import { PROMOCION, promoActiva, soles } from "@/lib/servicios";
 import { Icon, NexoCara } from "./Icons";
 
 // Pon NEXT_PUBLIC_CHAT_IA=true en .env.local para que la IA responda (ruta app/api/chat).
 // Con IA: lo escrito, los chips de servicios y los chips que propone la IA van a la IA (flujo de venta).
 // "Precios" y "Ver proyectos" siempre usan las respuestas fijas de lib/bot.ts. Sin IA, todo es fijo.
 const USAR_IA = process.env.NEXT_PUBLIC_CHAT_IA === "true";
-const SIEMPRE_FIJO = ["Precios", "Ver proyectos"];
+const SIEMPRE_FIJO = ["Precios", "Ver proyectos", CHIP_PROMO];
 const ERROR_IA = "Se me complicó responder ahora. Escríbenos por WhatsApp y te atendemos.";
 
 /** Cualquier parte de la web puede abrir el chat de Nexo con abrirNexo() (por ejemplo, la demo de la sección #nexo). */
@@ -135,7 +136,9 @@ export function Asistente() {
       <div className={`nx-hola${hola && !abierto ? "" : " nx-hola--off"}`} role="status" aria-hidden={!hola || abierto}>
         <button className="nx-hola__txt" type="button" onClick={abrir} tabIndex={hola ? 0 : -1}>
           <b>¡Hola! 👋 Soy Nexo</b>
-          <span>¿Tienes alguna pregunta? Toca aquí y te ayudo con tu web, tienda virtual, app, sistema o asistente con IA.</span>
+          <span suppressHydrationWarning>{promoActiva()
+            ? `🎄 Pregúntame por la ${PROMOCION.nombre}: ${PROMOCION.producto} a ${soles(PROMOCION.precio)}, hasta el ${PROMOCION.finTexto}.`
+            : "¿Tienes alguna pregunta? Toca aquí y te ayudo con tu web, tienda virtual, app, sistema o asistente con IA."}</span>
         </button>
         <button className="nx-hola__x" type="button" onClick={() => setHola(false)} aria-label="Cerrar saludo" tabIndex={hola ? 0 : -1}>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
