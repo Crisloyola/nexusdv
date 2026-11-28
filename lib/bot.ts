@@ -12,10 +12,10 @@ const lineaPromo = PROMO
 
 export type Tema = "ia" | "web" | "app" | "sys" | "mail" | "price" | "proj" | "time" | "hi" | "promo" | "human" | "contact" | "thanks" | "none";
 
-export const MENU: string[] = [...(PROMO ? [CHIP_PROMO] : []), "Páginas web", "Apps", "Sistemas", "Asistentes con IA", "Precios", "Ver proyectos"];
+export const MENU: string[] = [...(PROMO ? [CHIP_PROMO] : []), "Páginas web", "Apps", "Sistemas", "Asistentes con IA", "Precios", "Correo corporativo", "Ver proyectos"];
 export const CHIP_TEMA: Record<string, Tema> = {
   [CHIP_PROMO]: "promo",
-  "Páginas web": "web", Apps: "app", Sistemas: "sys", "Asistentes con IA": "ia", Precios: "price", "Ver proyectos": "proj",
+  "Páginas web": "web", Apps: "app", Sistemas: "sys", "Asistentes con IA": "ia", Precios: "price", "Correo corporativo": "mail", "Ver proyectos": "proj",
 };
 
 export const SALUDO =
@@ -31,7 +31,9 @@ export const RESPUESTAS: Record<Tema, { tema: string; msg: string; chips: string
   proj: { tema: "sus proyectos", msg: "Algunos proyectos entregados:\n• <b>LML Agency</b>: página web de una productora audiovisual\n• <b>LML Agency · Alquiler</b>: página de alquiler de equipos de audio y video\n• <b>Creatrix</b>: sistema de fidelización con puntos y promociones\n• <b>Creatrix · Control de ventas</b>: sistema de control de ventas a medida\n• <b>Franyer Cargo</b>: web de una agencia de carga y aduanas con cotizador a WhatsApp\n• <b>Mara Capital</b>: web de préstamos en línea con simulador\n\nTe llevo a la sección de proyectos 👇", chips: ["Páginas web", "Sistemas"], ir: "#proyectos" },
   time: { tema: "los tiempos de entrega", msg: "El tiempo depende de lo que necesites ⏱️\nAl cotizar sin costo te confirmamos la <b>fecha exacta</b> de entrega.\n\nAntes de programar te mostramos el diseño para que lo apruebes.", chips: ["Precios", "Páginas web"] },
   promo: PROMO
-    ? { tema: "la Promoción de Navidad", msg: `🎄 <b>${P.nombre}</b>\n${P.producto} por 1 año a <b>${soles(P.precio)}</b>. Antes ${soles(P.precioNormal)}: <b>ahorras ${soles(P.ahorro)}</b> 💰\n\nIncluye:\n${[P.extra, ...P.plan.incluye, "SEO básico"].map((x) => `• ${x}`).join("\n")}\n\n⏱️ Válida hasta el ${P.finTexto} (${quedanPromo().toLowerCase()}). ${P.condiciones}\n\n👇 Toca <b>Hablar por WhatsApp</b> y el equipo te la separa.`, chips: ["Páginas web", "Ver proyectos"] }
+    ? { tema: "la Promoción de Navidad", msg: `🎄 <b>${P.nombre}</b>\n${P.producto} por 1 año a <b>${soles(P.precio)}</b>. Antes ${soles(P.precioNormal)}: <b>ahorras ${soles(P.ahorro)}</b> 💰\n\nIncluye:\n${[P.extra, ...P.plan.incluye, "SEO básico"].map((x) => `• ${x}`).join("\n")}\n\n⏱️ Válida hasta el ${P.finTexto} (${quedanPromo().toLowerCase()}). ${P.condiciones}\n\n📧 ¿Quieres correos con tu dominio (como ventas@tuempresa.com)? Puedes agregar <b>3 correos por S/ 350</b> al año.
+
+👇 Toca <b>Hablar por WhatsApp</b> y el equipo te la separa.`, chips: ["Correo corporativo", "Páginas web", "Ver proyectos"] }
     : { tema: "información", msg: "Por ahora no tenemos promociones activas 😊 Igual te cotizamos sin costo.\n\nLa <b>Landing Page</b> cuesta S/ 540 y la <b>Web Empresarial</b> S/ 820, con dominio .com por 1 año.", chips: ["Precios", "Páginas web"] },
   hi: { tema: "información", msg: "¡Hola! 😊 ¿En qué te puedo ayudar?", chips: [...MENU] },
   human: { tema: "información", msg: "Claro, te paso con una persona del equipo por WhatsApp. Te responden lo antes posible.\n\n👇 Toca el botón <b>Hablar por WhatsApp</b> aquí abajo y escríbenos directo.", chips: [] },

@@ -2,6 +2,9 @@ import { A_MEDIDA, planes, waTexto } from "@/lib/data";
 import { CORREO, NOTA_PRECIOS, PROMOCION, RENOVACIONES, promoActiva, quedanPromo, soles, type PlanWeb } from "@/lib/servicios";
 import { Icon } from "./Icons";
 
+/** Plan de correos pensado para quien ya tiene (o contrata) su web: se ofrece desde la tarjeta de la promo. */
+const CORREO_WEB = CORREO.planes.find((c) => c.id === "correo3web");
+
 /** Tarjeta del plan que tiene la promo vigente: precio rebajado, ahorro, días que quedan y botón directo a WhatsApp. */
 function PlanPromo({ p }: { p: PlanWeb }) {
   return (
@@ -23,6 +26,9 @@ function PlanPromo({ p }: { p: PlanWeb }) {
       <a className="btn btn--lg btn--lime" href={waTexto(PROMOCION.mensaje, PROMOCION.campana)} target="_blank" rel="noopener">
         <Icon id="wa" />Pedir la promo
       </a>
+      {CORREO_WEB && (
+        <a className="plan__mas" href="#correo">¿Quieres correos con tu dominio? Agrega {CORREO_WEB.nombre.replace(" para tu web", "")} por {soles(CORREO_WEB.precio)} →</a>
+      )}
     </article>
   );
 }
@@ -58,7 +64,7 @@ export function Precios() {
           <b className="plan-extra__precio">{A_MEDIDA.precio}</b>
           <a className="btn btn--ghost" href={waTexto("Hola NEXUSDV, vengo de su web y quiero cotizar una app, un sistema o un asistente con IA.")} target="_blank" rel="noopener">{A_MEDIDA.boton}<Icon id="right" /></a>
         </div>
-        <div className="mail rv">
+        <div id="correo" className="mail rv">
           <div className="mail__head">
             <span className="mail__ico"><Icon id="mail" /></span>
             <h3>{CORREO.titulo}</h3>

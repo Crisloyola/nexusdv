@@ -497,6 +497,8 @@ html:has(.pbar) { scroll-padding-top: 156px; }
 .plan .plan__ahorro { align-self: flex-start; margin-top: -6px; color: var(--paper); font-size: 15px; font-weight: 600; }
 .plan .plan__promo { padding: 9px 10px; border-radius: 8px; background: var(--nav-soft); color: var(--nav-tx); font-size: 13.5px; line-height: 1.45; }
 .ticks li.plan__extra { font-weight: 600; color: var(--paper); }
+.plan .plan__mas { display: block; margin-top: -4px; color: var(--tx-2); font-size: 13.5px; line-height: 1.4; text-align: center; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
+.plan .plan__mas:hover { color: var(--tx); }
 
 /* botón fijo de la promo en celular (al lado de Nexo) */
 .pmov { display: none; }
