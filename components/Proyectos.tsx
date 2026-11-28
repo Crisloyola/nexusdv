@@ -19,7 +19,7 @@ export function Proyectos() {
               <a className="case__media" href={p.url} target="_blank" rel="noopener" tabIndex={-1} aria-hidden="true">
                 <span className="case__win">
                   <span className="case__bar"><i /><i /><i /><span>{p.dominio}</span></span>
-                  <Image src={p.imgDesktop.src} width={p.imgDesktop.w} height={p.imgDesktop.h} alt="" quality={85} sizes="(max-width: 640px) 86vw, (max-width: 960px) 46vw, 400px" />
+                  <Image src={p.imgDesktop.src} width={p.imgDesktop.w} height={p.imgDesktop.h} alt={p.imgDesktop.alt} quality={85} sizes="(max-width: 640px) 86vw, (max-width: 960px) 46vw, 400px" />
                 </span>
               </a>
               <div className="case__head">

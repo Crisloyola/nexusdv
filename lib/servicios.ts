@@ -4,6 +4,16 @@
 
 export const NOTA_PRECIOS = "El equipo confirma tu cotización según lo que necesitas";
 
+/** Promoción temporal de diciembre 2026. Solo se anuncia durante este mes. */
+export const PROMOCION_DICIEMBRE = {
+  activa: true,
+  nombre: "Promoción de Navidad",
+  precio: 350,
+  texto: "Landing Page + dominio .com por 1 año.",
+  condiciones: "Solo durante diciembre. Incluye diseño, página responsive, WhatsApp/formulario y SEO básico. El hosting se cotiza aparte.",
+  mensaje: "Hola, NEXUS. Me interesa la promoción de diciembre: Landing Page + dominio .com por 1 año por S/ 350.",
+};
+
 /** Planes de páginas web. Los muestra Precios y los conoce Nexo. */
 export type PlanWeb = {
   id: string; nombre: string; precio: number;
@@ -182,5 +192,6 @@ export function datosParaNexo(): string {
     `PLAZOS: ${POLITICAS.plazos}`,
     `HOSTING: ${POLITICAS.hosting}`,
     `CORREO CORPORATIVO: ${CORREO.paraNexo}`,
+    `PROMOCIÓN TEMPORAL: ${PROMOCION_DICIEMBRE.activa ? `${PROMOCION_DICIEMBRE.texto} ${PROMOCION_DICIEMBRE.precio} soles. ${PROMOCION_DICIEMBRE.condiciones}` : "No hay promoción activa."}`,
   ].join("\n");
 }

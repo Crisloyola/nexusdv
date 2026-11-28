@@ -6,7 +6,7 @@ export function Servicios() {
     <section className="sec" id="servicios" aria-labelledby="servicios-t">
       <div className="wrap">
         <div className="sec__head rv">
-          <h2 id="servicios-t" className="tit tit--c"><b>Un solo equipo para todo lo digital.</b> <span>Todo se cotiza sin costo.</span></h2>
+          <h2 id="servicios-t" className="tit tit--c"><b>Desarrollo web y soluciones digitales.</b> <span>Todo se cotiza sin costo.</span></h2>
           <p className="sec__p">Elige lo que tu negocio necesita hoy.</p>
         </div>
         <div className="rv"><Vitrina /></div>

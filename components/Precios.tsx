@@ -1,5 +1,5 @@
 import { A_MEDIDA, planes, waTexto } from "@/lib/data";
-import { CORREO, NOTA_PRECIOS, RENOVACIONES, soles } from "@/lib/servicios";
+import { CORREO, NOTA_PRECIOS, PROMOCION_DICIEMBRE, RENOVACIONES, soles } from "@/lib/servicios";
 import { Icon } from "./Icons";
 
 /** Precios: los 4 planes web, una línea para lo que va a medida y qué incluye. Datos en lib/servicios.ts. */
@@ -15,11 +15,20 @@ export function Precios() {
           {planes.map((p) => (
             <article key={p.id} className={`plan rv${p.destacado ? " plan--hl" : ""}`}>
               <h3>{p.nombre}</h3>
-              <div className="plan__price">{p.esDesde && <small className="plan__desde">Desde</small>}{soles(p.precio)}</div>
+              {PROMOCION_DICIEMBRE.activa && p.id === "landing" ? (
+                <div className="plan__price"><small className="plan__desde">Promoción de Navidad</small>{soles(PROMOCION_DICIEMBRE.precio)}<s className="plan__anterior">{soles(p.precio)}</s></div>
+              ) : (
+                <div className="plan__price">{p.esDesde && <small className="plan__desde">Desde</small>}{soles(p.precio)}</div>
+              )}
               <p className="plan__plazo"><Icon id="chk" />Lista en {p.plazo}</p>
               <p>{p.texto}</p>
+              {PROMOCION_DICIEMBRE.activa && p.id === "landing" && (
+                <p className="plan__promo">{PROMOCION_DICIEMBRE.texto} {PROMOCION_DICIEMBRE.condiciones}</p>
+              )}
               <ul className="ticks">{p.incluye.map((x) => <li key={x}>{x}</li>)}</ul>
-              <a className={`btn btn--lg ${p.destacado ? "btn--lime" : "btn--ghost"}`} href={waTexto(p.mensaje, p.campana)} target="_blank" rel="noopener">Cotizar {p.nombre.toLowerCase()}<Icon id="right" /></a>
+              <a className={`btn btn--lg ${p.destacado || (PROMOCION_DICIEMBRE.activa && p.id === "landing") ? "btn--lime" : "btn--ghost"}`}
+                href={waTexto(PROMOCION_DICIEMBRE.activa && p.id === "landing" ? PROMOCION_DICIEMBRE.mensaje : p.mensaje, p.campana)}
+                target="_blank" rel="noopener">Cotizar {p.nombre.toLowerCase()}<Icon id="right" /></a>
             </article>
           ))}
         </div>
